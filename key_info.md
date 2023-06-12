@@ -48,6 +48,7 @@ If you have an error do not stress. Let us know at the beginning the session, we
 <b> If you already have R and RStudio installed </b>
  - Download R from the [CRAN website](http://cran.r-project.org/bin/macosx).
  - Click on and run the .exe file that was just downloaded. Leave all default settings in the installation options.
+ - Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download) 
  - Under Installers select RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit) (where x, y, and z represent version numbers)
  - Double click the file to install it
  - Once it’s installed, open RStudio to make sure it works and you don’t get any error messages
