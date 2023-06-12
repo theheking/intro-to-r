@@ -34,7 +34,7 @@ Session 2
 R and RStudio are separate downloads and installations. R is the underlying statistical computing environment, but using R alone is no fun. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you install RStudio.
 
 ## Windows
-### If you already have R and RStudio installed
+<b> If you already have R and RStudio installed </b>
  - Download R from the [CRAN website](http://cran.r-project.org/bin/windows/base/release.htm).
  - Click on and run the .exe file that was just downloaded. Leave all default settings in the installation options.
  - Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download) 
@@ -44,7 +44,7 @@ R and RStudio are separate downloads and installations. R is the underlying stat
 
 
 ## macOS
-### If you already have R and RStudio installed
+<b> If you already have R and RStudio installed </b>
  - Download R from the [CRAN website](http://cran.r-project.org/bin/macosx).
  - Click on and run the .exe file that was just downloaded. Leave all default settings in the installation options.
  - Under Installers select RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit) (where x, y, and z represent version numbers)
