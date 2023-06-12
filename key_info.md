@@ -31,7 +31,7 @@ Session 2
 
 
 # RStudio and R installation
-R and RStudio are separate downloads and installations. R is the underlying statistical computing environment, but using R alone is no fun. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you install RStudio.
+R and RStudio are separate downloads and installations. R is the underlying statistical computing environment, but using R alone is no fun. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you install RStudio. Please choose the operating system (OS) that you use.
 
 ## Windows
 <b> If you already have R and RStudio installed </b>
@@ -41,7 +41,8 @@ R and RStudio are separate downloads and installations. R is the underlying stat
  - Under Installers select RStudio x.yy.zzz - Windows XP/Vista/7/8 (where x, y, and z represent version numbers)
  - Double click the file to install it
  - Once it’s installed, open RStudio to make sure it works and you don’t get any error messages
-
+ 
+If you have an error do not stress. Let us know at the beginning the session, we will be able to help out.
 
 ## macOS
 <b> If you already have R and RStudio installed </b>
@@ -51,6 +52,7 @@ R and RStudio are separate downloads and installations. R is the underlying stat
  - Double click the file to install it
  - Once it’s installed, open RStudio to make sure it works and you don’t get any error messages
 
+If you have an error do not stress. Let us know at the beginning the session, we will be able to help out.
 
 
 
