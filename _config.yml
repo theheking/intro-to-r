@@ -22,15 +22,9 @@ author: Helen King
 navbar-links:
   Key Information: "key_info"
   Practical:
-    - Week 1: "tutorial_overview_1/week1"
-    - Week 2: "tutorial_overview_1/week2"
-    - Week 3: "tutorial_overview_1/week3"
-    - Week 4: "tutorial_overview_1/week4"
-    - Week 5: "tutorial_overview_1/week5"
-    - Week 6: "tutorial_overview_1/week6"
-    - Week 7: "tutorial_overview_1/week7"
-    - Week 8: "tutorial_overview_1/week8"
-    - Week 9: "tutorial_overview_1/week9"
+    - Day 1: "practical/day1"
+    - Day 2: "practical/day2"
+    - Day 3: "practical/day3"
 
 
 
