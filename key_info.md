@@ -3,7 +3,7 @@ layout: page
 title: Key Infomation
 ---
 
-# Intro to Command Line and HPC
+# Intro to R
 Welcome All!
 
 
