@@ -30,7 +30,7 @@ Session 2
 - Plot informative plots using ggplot
 
 
-#RStudio and R installation
+# RStudio and R installation
 R and RStudio are separate downloads and installations. R is the underlying statistical computing environment, but using R alone is no fun. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you install RStudio.
 
 ## Windows
