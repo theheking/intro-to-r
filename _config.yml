@@ -21,11 +21,13 @@ author: Helen King
 
 navbar-links:
   Key Information: "key_info"
-  Practical:
-    - Day 1: "practical/day1"
-    - Day 2: "practical/day2"
-    - Day 3: "practical/day3"
-
+  Content:
+    - 1 - Setup RStudio: "content/1_setup_rstudio"
+    - 2 - DataTypes: "content/2_datatypes"
+    - 3 - DataFrames: "content/3_dataframes"
+    - 4 - Dplyr: "content/4_dplyr"
+    - 5 - Apply: "content/5_apply"
+    - 6 - Data Visualisation: "content/6_datavisualisation"
 
 
 ################
