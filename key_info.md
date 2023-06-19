@@ -20,13 +20,13 @@ Session 2
 
 ## Before the course please make sure you have:
  - Charger 
- - Postive attitude!
+ - Positive attitude!
  - RStudio and R installed (see the instructions below)
  
  
 ## At the end of the workshop you will be able to:
 - Use R to navigate data
-- Import, reformat and manipulate dataframes
+- Import, reformat, and manipulate data frames
 - Plot informative plots using ggplot
 
 
@@ -39,21 +39,21 @@ R and RStudio are separate downloads and installations. R is the underlying stat
  - Click on and run the .exe file that was just downloaded. Leave all default settings in the installation options.
  - Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download) 
  - Under Installers select RStudio x.yy.zzz - Windows XP/Vista/7/8 (where x, y, and z represent version numbers)
- - Double click the file to install it
+ - Double-click the file to install it
  - Once it’s installed, open RStudio to make sure it works and you don’t get any error messages
  
-If you have an error do not stress. Let us know at the beginning the session, we will be able to help out.
+If you have an error do not stress. Let us know at the beginning of the session, we will be able to help out.
 
 ## macOS
 <b> If you already have R and RStudio installed </b>
- - Download R from the [CRAN website](http://cran.r-project.org/bin/macosx).
- - Click on and run the .exe file that was just downloaded. Leave all default settings in the installation options.
+ - Download R from the [CRAN website](https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.3.1-arm64.pkg).
+ - Click on the pkg file that was just downloaded. Leave all default settings in the installation options.
  - Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download) 
  - Under Installers select RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit) (where x, y, and z represent version numbers)
- - Double click the file to install it
+ - Double-click the file to install it
  - Once it’s installed, open RStudio to make sure it works and you don’t get any error messages
 
-If you have an error do not stress. Let us know at the beginning the session, we will be able to help out.
+If you have an error do not stress. Let us know at the beginning of the session, we will be able to help out.
 
 
 
