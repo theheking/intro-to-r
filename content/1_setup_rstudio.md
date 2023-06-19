@@ -64,7 +64,7 @@ Parts of the RStudio
     - Better to enter the commands in the script editor, and save the script. This way, you have a complete record of what you did, you can easily show others how you did it and you can do it again later on if needed. 
     - `>` indicates that R is ready to accept commands.
     - Let's write the a code that creates an error:
-```{r class.source="bg-danger", class.output="bg-warning"}
+```
     "Hello
 ```
     - `+` indicates that R is waiting for you to finish entering a command. This is usually due to not writing the pair of brackets or quotations.
