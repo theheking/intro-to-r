@@ -101,7 +101,7 @@ weight_rounded <- round(weight_kg, 1)
 
 Let’s create a vector containing the first ten letters of the alphabet.
 
-````
+```
     ten_letters <- c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j')
 ```
 
