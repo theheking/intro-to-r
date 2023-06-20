@@ -45,6 +45,13 @@ RStudio is:
 # Layout of RStudio and Interacting with R
 ![layout](../photos/layout.png)
 Parts of the RStudio 
+
+
+-  Folder setup, Plots, Packages, Help and more <b> Blue </b>
+    - Let's save the Rscript we have been writing into. Please select `File --> Save` and enter in a suitable name for your Rscript. 
+    - You should see this is now be available in the folder.
+    - We will explore the other tabs in this corner in the next sections.  
+
 - Interpreter/Console is where R is actually running <b> Dark purple </b>
     - Work in here interactively. 
     - Let's first try and run our first line of code into our console. I will explain more about this in a bit.
@@ -98,12 +105,6 @@ Parts of the RStudio
 - How much is a and b added together?
 - Change the value of a to 10
 - Assign the value of a and b together to a new variable, c.
-
-
--  Folder setup, Plots, Packages, Help and more <b> Blue </b>
-    - Let's save the Rscript we have been writing into. Please select `File --> Save` and enter in a suitable name for your Rscript. 
-    - You should see this is now be available in the folder.
-    - We will explore the other tabs in this corner in the next sections.  
 
 
 Material adapted from (https://datacarpentry.org/R-genomics/01-intro-to-R.html) and (https://datacarpentry.org/semester-biology/materials/r-intro/)
