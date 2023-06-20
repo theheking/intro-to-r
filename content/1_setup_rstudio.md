@@ -107,5 +107,8 @@ Parts of the RStudio
 - Assign the value of a and b together to a new variable, c.
 
 
+
+
+****
 Material adapted from (https://datacarpentry.org/R-genomics/01-intro-to-R.html) and (https://datacarpentry.org/semester-biology/materials/r-intro/)
 
