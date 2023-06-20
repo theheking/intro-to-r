@@ -147,10 +147,11 @@ We can extract multiple elements at a time by specifying mulitple indices inside
 To form a simple matrix we use the command as below.
 ```
 matrix(1:9, nrow = 3, ncol = 3)
+
 ```
 However, when we want to fill the matrix row wise, we can start using different arguements. 
 We will use the `byrow` arguement to fill matrix row-wise using boolean T/F. 
-````
+```
 x <- matrix(1:9, nrow=3, byrow=TRUE)    
 ```
 
@@ -170,6 +171,7 @@ To access elements of a matrix.
 - elements can be accessed as `matrix[row_num,col_num]` where row_num/column_num is a vector of the number assigned to the row/column of interest.
 
 Select rows 2 and 3 and columns 1 and 3.
+
 ```
 x[c(2,3),c(1,3)]    
 ```
