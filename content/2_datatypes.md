@@ -34,7 +34,11 @@ A variable is a name that has a value associated with it
 
 
 # Functions 
-A function is a takes the input returns an output. 
+A function is a "canned script" that automate processing of input and return a value. 
+
+We will be using <i>in-built</i> function, however other functions need to be first loaded (more on this later) before they can be <i> executed </i>.
+For instance with `sqrt`: the input (the argument) must be a number, and the return value (in fact, the output) is the square root of that number. Executing a function or running it is called <i>calling</i> the function.
+
 ```
     sqrt(49)
 ```
@@ -48,40 +52,55 @@ For instance as above:
 
 We can also pass variables as the argument.
 ```
-weight_kg <- 0.11
-sqrt(weight_kg)
-```
-
-Another function that we’ll use a lot is class(). All values and therefore all variables have types.
-
-```
-class(weight_kg)
+genome_length_mb <- 4.61
+sqrt(genome_length_mb)
 ```
 
 Functions can take multiple arguments. For instance, let's round weight_lb to one decimal place.
 Typing `round()` shows there are two arguments (pops up a yellow box).
 
 
-To find out more details about the command of interest, we can use the `help` command too. 
+If you know the function, but don't know how to use it. 
+We can find out more details about the command of interest, we can use the `help` command too. 
 
 ```
 help(round)
 ```
+> Hint: Other helpful commands to explain the function are `?` before the function e.g. `?round` and `args(round)`
+>
+
+However, if you are not sure what function is appropriate you can search all the help pages by running the command below... or simply searching google. 
+```
+help.search("rounding of numbers")
+```
+
 
 There are two arguments: 1) number to be rounded and 2) number of digits
 ```
-round(weight_kg, 1)
+round(genome_length_mb, 1)
 ```
 
 Functions return values, so as with other values and expressions, if we don’t save the output of a function then there is no way to access it later.
 Check the current value using the `print` command.
 ```
-print(weight_kg)
+print(genome_length_mb)
 ```
 
 To save the output of a function we assign it to a variable.
 ```
-weight_rounded <- round(weight_kg, 1)
+genome_length_mb_rounded <- round(genome_length_mb, 1)
+```
+
+> Exercise
+> Now that R has genome_length_mb in memory, we can do arithmetic with it. 
+> For instance, we may want to convert this to the weight of the genome in picograms (for some reason).
+>  978Mb = 1picogram. 
+> Divide the genome length and rounded genome length in Mb by 978. 
+
+
+Another function that we’ll use a lot is class(). All values and therefore all variables have types.
+```
+class(genome_length_mb)
 ```
 
 
@@ -90,37 +109,44 @@ weight_rounded <- round(weight_kg, 1)
 > 
 > Check the data type of the following variables. 
 > one <- 1.5
-> two <- 2L
+> two <- "mega"
 > three <- FALSE
 > 
 
 
+There are 6 datatypes:
+- "character" 
+- "numeric"
+- "logical" for TRUE and FALSE (the boolean data type)
+- "integer" for integer numbers (e.g., 2L, the L indicates to R that it’s an integer)
+- "complex" to represent complex numbers with real and imaginary parts (e.g., 1+4i) and that’s all we’re going to say about them
+- "raw" that we won’t discuss further
 
 
 # Vectors
 
-Let’s create a vector containing the first ten letters of the alphabet.
+Let’s create a vector containing the model organisms.
 
 ```
-    ten_letters <- c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j')
+    model_org <- c("echerichia_coli", "homo_sapiens", "chlamydomonas_reinhardtii","drosophilia_melanogaster","schizosaccharomyces_pombe","Saccharomyces_cerevisiae","arabidopsis_thaliana","cavia_porcellus","xenopus_laevis","nothobranchius_furzeri","xenopus_laevis","rattus_norvegicus","danio_rerio")
 ```
 
-In order to extract one or several values from a vector, we must provide one or several indices in square brackets, just as we do in math. R indexes start at 1. Programming languages like Fortran, MATLAB, and R start counting at 1, because that’s what human beings typically do. Languages in the C family (including C++, Java, Perl, and Python) count from 0 because that’s simpler for computers to do.
+In order to extract one or several values from a vector, we must provide one or several indices in square brackets, just as we do in math. R indexes start at 1.
 
-So, to extract the 2nd element of `ten_letters` we type:
+So, to extract the 2nd element of `model_org` we type:
 ```
-    ten_letters[2]
+    model_org[2]
 ```
 
 We can extract multiple elements at a time by specifying mulitple indices inside the square brackets as a vector. Notice how you can use `:` to make a vector of all integers two numbers.
 ```
-    ten_letters[c(1,7)]
+    model_org[c(1,7)]
     
-    ten_letters[3:6]
+    model_org[3:6]
     
-    ten_letters[10:1]
+    model_org[10:1]
     
-    ten_letters[c(2, 8:10)]
+    model_org[c(2, 8:10)]
 ```
 
 
@@ -128,13 +154,48 @@ We can extract multiple elements at a time by specifying mulitple indices inside
 > Exercise
 > --------
 > 
-> 1) Select every other element in `ten_letters`.
-> Using ten_letters\[\_\_\_\_\_\_\_\_\_\_\_\_\]
+> 1) Select every other element in `model_org`.
+> Using model_org[c()]
 > 
 > 
 > 2) However, this is laborious. If we were dealing with a much longer vector- we can use the `seq()` function to quickly create sequences of numbers.
-> Use the help command to find how to form that repeating element. Fill in the blank to select the even elements of ten\_letters using the seq() function.
+> Use the help command to find how to form that repeating element. Fill in the blank to select the even elements of ten_letters using the seq() function.
 >
+
+
+# List
+Note a vector is actually an atomic vector. This means that it has homogeneous element datatype. 
+A list is actually still a vector in R, but it’s not an atomic vector.
+```
+(drosophilia <- list(model_org = TRUE, num_nobel_drosophilists = 9L, num_species = 3 * 500, nobel = c("Thomas Hunt Morgan","Hermann Joseph Muller")))
+#> $model_org
+#> [1] TRUE
+#> 
+#> $num_nobel_drosophilists
+#> [1] 9
+#> 
+#> $num_species
+#> [1] 1500
+#> 
+#> $nobel
+#> [1] "Thomas Hunt Morgan" "Hermann Joseph Muller"
+
+```
+
+As seen above the advantage of a list is that they can:
+- Be heterogeneous, i.e. can be of different “flavors”. Heck, they don’t even need to be atomic vectors – you can stick a function in there!
+- Have different lengths.
+- Have names. Or not. Or some of both.
+
+
+> Exercise
+> --------
+> How do we extract the name "Hermann Joseph Muller"? 
+> Choose one or more of the options below.
+> a. `drosophilia$nobel[2]`
+> b. `drosophilia[4][2]`
+> c. `drosophilia[[4]][2]`
+> d. `drosophilia[-1][1]`
 
 
 
@@ -149,8 +210,9 @@ To form a simple matrix we use the command as below.
 matrix(1:9, nrow = 3, ncol = 3)
 
 ```
-However, when we want to fill the matrix row wise, we can start using different arguements. 
-We will use the `byrow` arguement to fill matrix row-wise using boolean T/F. 
+However, when we want to fill the matrix row wise, we can start using different arguments. 
+We will use the `byrow` argument to fill matrix row-wise using boolean T/F. This is an example of a <i>default</i> argument which means it will have a automatic value assigned, so does not need to be specified, unlike a <i>keyword</i> argument.
+
 ```
 x <- matrix(1:9, nrow=3, byrow=TRUE)    
 ```
