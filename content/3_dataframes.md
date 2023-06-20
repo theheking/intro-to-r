@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Week 3 - Importing Data Frames
+title: 3 - Importing Data Frames
 ---
 
-Week 3 - Importing and Manipulating Data Frames
+Importing and Manipulating Data Frames
 =========================
 
 
