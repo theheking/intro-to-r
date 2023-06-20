@@ -90,12 +90,12 @@ Let's create a very common error you might encounter.
 
 
 # What to do when you get an error
-1) Don't panic - you are not special
-2) First read the error message - what does it say 
-3) Next, check your code for easily done errors (a) matched brackets (b) matched quotation marks (c) correct names 
-4) Then google the error message. However, this doesn’t always work very well because often, package developers rely on the error catching provided by R. 
-5) You end up with general error messages that might not be very helpful to diagnose a problem (e.g. “subscript out of bounds”).
-6) However, you should check stackoverflow.com. Search using the [r] tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: http://stackoverflow.com/questions/tagged/r
+1. Don't panic - you are not special
+2. First read the error message - what does it say 
+3. Next, check your code for easily done errors (a) matched brackets (b) matched quotation marks (c) correct names 
+4. Then google the error message. However, this doesn’t always work very well because often, package developers rely on the error catching provided by R. 
+5. You end up with general error messages that might not be very helpful to diagnose a problem (e.g. “subscript out of bounds”).
+6. However, you should check stackoverflow.com. Search using the [r] tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: http://stackoverflow.com/questions/tagged/r
 
 
 
