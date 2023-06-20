@@ -3,12 +3,8 @@ layout: page
 title: 4 - Utilising dplyr
 ---
 
-4 - Utilising dplyr
-=====================
-
-
 Aggregating and analyzing data with dplyr
-=========================================
+=====================
 
 
 Learning Objectives
