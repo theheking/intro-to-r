@@ -200,9 +200,9 @@ Look at [Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/
 
 
 
-
+****
 This lesson was copied or adapted from Jeff Hollister’s [materials](http://usepa.github.io/introR/2015/01/14/03-Clean/)_
 Material adapted from (https://datacarpentry.org/R-genomics/01-intro-to-R.html) and (https://datacarpentry.org/semester-biology/materials/r-intro/)
-[Data Carpentry](http://datacarpentry.org/), 2017-2018. [License](LICENSE.html). [Contributing](CONTRIBUTING.html).  
+
 
 
