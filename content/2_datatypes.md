@@ -3,11 +3,11 @@ layout: page
 title: 2 - Understanding Data Types
 ---
 
-2 - Understanding Data Types and Basic Functions
+Understanding Data Types and Basic Functions
 ================================================
 
 ## Learning Objectives
-- Describe what variables, vectors and matrixes are and how they can be manipulated in R.
+- Describe what variables, vectors, and matrixes are and how they can be manipulated in R.
 - Use the built-in RStudio help interface to search for more information on R functions.
 - Describe what a function is in R.
 - Inspect the content of vectors in R and describe their content with class and str.
@@ -34,9 +34,9 @@ A variable is a name that has a value associated with it
 
 
 # Functions 
-A function is a "canned script" that automate processing of input and return a value. 
+A function is a "canned script" that automates the processing of input and returns a value. 
 
-We will be using <i>in-built</i> function, however other functions need to be first loaded (more on this later) before they can be <i> executed </i>.
+We will be using <i>in-built</i> function, however, other functions need to be first loaded (more on this later) before they can be <i> executed </i>.
 For instance with `sqrt`: the input (the argument) must be a number, and the return value (in fact, the output) is the square root of that number. Executing a function or running it is called <i>calling</i> the function.
 
 ```
@@ -114,9 +114,9 @@ class(genome_length_mb)
 > 
 
 
-There are 6 datatypes:
-- "character" 
-- "numeric"
+There are 6 data types:
+- "character" for string values 
+- "numeric" for numbers
 - "logical" for TRUE and FALSE (the boolean data type)
 - "integer" for integer numbers (e.g., 2L, the L indicates to R that it’s an integer)
 - "complex" to represent complex numbers with real and imaginary parts (e.g., 1+4i) and that’s all we’re going to say about them
@@ -138,7 +138,7 @@ So, to extract the 2nd element of `model_org` we type:
     model_org[2]
 ```
 
-We can extract multiple elements at a time by specifying mulitple indices inside the square brackets as a vector. Notice how you can use `:` to make a vector of all integers two numbers.
+We can extract multiple elements at a time by specifying multiple indices inside the square brackets as a vector. Notice how you can use `:` to make a vector of all integers and two numbers.
 ```
     model_org[c(1,7)]
     
@@ -159,12 +159,12 @@ We can extract multiple elements at a time by specifying mulitple indices inside
 > 
 > 
 > 2) However, this is laborious. If we were dealing with a much longer vector- we can use the `seq()` function to quickly create sequences of numbers.
-> Use the help command to find how to form that repeating element. Fill in the blank to select the even elements of ten_letters using the seq() function.
+> Use the help command to find how to form that repeating element. Fill in the blank to select the even elements of model_org using the seq() function.
 >
 
 
 # List
-Note a vector is actually an atomic vector. This means that it has homogeneous element datatype. 
+Note a vector is actually an atomic vector. This means that it has a homogeneous element datatype. 
 A list is actually still a vector in R, but it’s not an atomic vector.
 ```
 (drosophilia <- list(model_org = TRUE, num_nobel_drosophilists = 9L, num_species = 3 * 500, nobel = c("Thomas Hunt Morgan","Hermann Joseph Muller")))
@@ -183,7 +183,7 @@ A list is actually still a vector in R, but it’s not an atomic vector.
 ```
 
 As seen above the advantage of a list is that they can:
-- Be heterogeneous, i.e. can be of different “flavors”. Heck, they don’t even need to be atomic vectors – you can stick a function in there!
+- Be heterogeneous, i.e. can be of different datatype. They don’t need to be atomic vectors – you can stick a function in there!
 - Have different lengths.
 - Have names. Or not. Or some of both.
 
@@ -200,18 +200,18 @@ As seen above the advantage of a list is that they can:
 
 
 # Matrixes 
-- two dimensional organisation of a m*n array
-- good for arithmetc operations
+- two-dimensional organisation of a m*n array
+- good for arithmetic operations
 - only a single class of data
-    - why we utilise dataframes instead
+    - why we utilize data frames instead
 
 To form a simple matrix we use the command as below.
 ```
 matrix(1:9, nrow = 3, ncol = 3)
 
 ```
-However, when we want to fill the matrix row wise, we can start using different arguments. 
-We will use the `byrow` argument to fill matrix row-wise using boolean T/F. This is an example of a <i>default</i> argument which means it will have a automatic value assigned, so does not need to be specified, unlike a <i>keyword</i> argument.
+However, when we want to fill the matrix row-wise, we can start using different arguments. 
+We will use the `byrow` argument to fill the matrix row-wise using boolean T/F. This is an example of a <i>default</i> argument which means it will have an automatic value assigned, so does not need to be specified, unlike a <i>keyword</i> argument.
 
 ```
 x <- matrix(1:9, nrow=3, byrow=TRUE)    
@@ -221,7 +221,7 @@ x <- matrix(1:9, nrow=3, byrow=TRUE)
 > Exercise
 > --------
 > 
-> Let's check the dimensions using the `dim` command or `attibutes`. What is the difference between the outputs of both commands?
+> Let's check the dimensions using the `dim` command or `attributes`. What is the difference between the outputs of both commands?
 > ```
 > attributes(x)
 > dim(x)
@@ -245,7 +245,7 @@ x[c(2,3),c(1,3)]
 > 1) the 2nd row of the matrix, x
 > 2) the element from the 3rd row and 2nd column in the matrix, x
 >  Extension:
-> 1) Check the class of (1) , (2) and (3) the matrix, x, 
+> 1) Check the class of (1), (2), and (3) the matrix, x, 
 > 2) Try leaving the column field blank. What does this output?
 
 
