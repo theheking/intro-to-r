@@ -1,14 +1,10 @@
 ---
 layout: page
-title: Week 3 - Importing Data Frames
+title: 3 - Importing Data Frames
 ---
 
-Week 3 - Importing and Manipulating Data Frames
-=========================
-
-
-Using data in data frames
-=========================
+Importing and Manipulating Data Frames
+=============================
 
 > Learning Objectives
 > -------------------
@@ -35,9 +31,9 @@ The metadata file required for this lesson can be [downloaded directly here](htt
 
 1) Select `File --> Import Dataset --> From Text (base)...`
 2) Navigate to where you have downloaded your Ecoli_metadata.csv file.
-3) It should look like the image below. Please trial out the different settings. 
+3) It should look like the image below. Please try out the different settings. 
 ![GUI](./photos/gui.png)
-4) This will automatically run the import in the console. Please make sure you copy and paste into your R script. 
+4) This will automatically run the import in the console. Please make sure you copy and paste it into your R script. 
 
 ## Directly in the console
 
@@ -45,7 +41,7 @@ You are now ready to load the data. We are going to use the R function `read.csv
 ```
     metadata <- read.csv('data/Ecoli_metadata.csv')
 ```
-This statement doesn’t produce any output because assignment doesn’t display anything. If we want to check that our data has been loaded, we can print the variable’s value: `metadata`
+This statement doesn’t produce any output because the assignment doesn’t display anything. If we want to check that our data has been loaded, we can print the variable’s value: `metadata`
 
 Alternatively, wrapping an assignment in parentheses will perform the assignment and display it at the same time.
 ```
@@ -65,7 +61,7 @@ Let’s check the top (the first 6 lines) of this `data.frame` using the functio
     ## 5   ZDB446      15000      UC REL606 unknown SRR098283        4.66
     ## 6   ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63
 
-We’ve just done two very useful things. 1. We’ve read our data in to R, so now we can work with it in R 2. We’ve created a data frame (with the read.csv command) the standard way R works with data.
+We’ve just done two very useful things. 1. We’ve read our data into R, so now we can work with it in R 2. We’ve created a data frame (with the read.csv command) the standard way R works with data.
 ```
 
 ## Debugging errors 
@@ -101,7 +97,7 @@ A `data.frame` can be created by the functions `read.csv()` or `read.table()`, i
 
 By default, `data.frame` converts (= coerces) columns that contain characters (i.e., text) into the `factor` data type. Depending on what you want to do with the data, you may want to keep these columns as `character`. To do so, `read.csv()` and `read.table()` have an argument called `stringsAsFactors` which can be set to `FALSE`:
 
-Let’s now check the \_\_str\_\_ucture of this `data.frame` in more details with the function `str()`:
+Let’s now check the structure of this `data.frame` in more details with the function `str()`:
 
     str(metadata)
 
@@ -111,7 +107,7 @@ Inspecting `data.frame` objects
 We already saw how the functions `head()` and `str()` can be useful to check the content and the structure of a `data.frame`. Here is a non-exhaustive list of functions to get a sense of the content/structure of the data.
 
 *   Size:
-    *   `dim()` - returns a vector with the number of rows in the first element, and the number of columns as the second element (the \_\_dim\_\_ensions of the object)
+    *   `dim()` - returns a vector with the number of rows in the first element and the number of columns as the second element (the \_\_dim\_\_ensions of the object)
     *   `nrow()` - returns the number of rows
     *   `ncol()` - returns the number of columns
 *   Content:
@@ -121,7 +117,7 @@ We already saw how the functions `head()` and `str()` can be useful to check the
     *   `names()` - returns the column names (synonym of `colnames()` for `data.frame` objects)
     *   `rownames()` - returns the row names
 *   Summary:
-    *   `str()` - structure of the object and information about the class, length and content of each column
+    *   `str()` - structure of the object and information about the class, length, and content of each column
     *   `summary()` - summary statistics for each column
 
 Note: most of these functions are “generic”, they can be used on other types of objects besides `data.frame`.
@@ -141,7 +137,7 @@ Factors
 
 Factors are used to represent categorical data. Factors can be ordered or unordered and are an important class for statistical analysis and for plotting.
 
-Factors are stored as integers, and have labels associated with these unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
+Factors are stored as integers and have labels associated with these unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
 
 In the data frame we just imported, let’s do
 
@@ -149,11 +145,9 @@ In the data frame we just imported, let’s do
 
 We can see the names of the multiple columns. And, we see that some say things like `Factor w/ 30 levels`
 
-When we read in a file, any column that contains text is automatically assumed to be a factor. Once created, factors can only contain a pre-defined set values, known as _levels_. By default, R always sorts _levels_ in alphabetical order.
+When we read a file, any column that contains text is automatically assumed to be a factor. Once created, factors can only contain a pre-defined set of values, known as _levels_. By default, R always sorts _levels_ in alphabetical order.
 
-For instance, we see that `cit` is a Factor w/ 3 levels, `minus`, `plus` and `unknown`.
-
-
+For instance, we see that `cit` is a Factor w/ 3 levels, `minus`, `plus`, and `unknown`.
 
 
 
@@ -171,7 +165,7 @@ The metadata data frame has rows and columns (it has 2 dimensions), if we want t
 > Challenge
 > ---------
 > 
-> The function `nrow()` on a `data.frame` returns the number of rows. For example, try typing nrow(metadata)`. Use`nrow()`and`seq()`to create a new data frame called`meta\_by\_2`that includes all even numbered rows of`metadata\`.
+> The function `nrow()` on a `data.frame` returns the number of rows. For example, try typing nrow(metadata)`. Use `nrow()` and `seq()` to create a new data frame called`meta\_by\_2`that includes all even numbered rows of`metadata\`.
 > 
 > Solution
 > --------
