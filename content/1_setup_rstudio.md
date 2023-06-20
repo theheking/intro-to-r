@@ -3,7 +3,7 @@ layout: page
 title: 1 - Setup of R and RStudio
 ---
 
-1 - Familiarising with R and RStudio
+The Basics of R and RStudio
 ===================================
 
 ## Learning Objectives
