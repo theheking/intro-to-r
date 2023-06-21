@@ -6,12 +6,14 @@ title: 2 - Understanding Data Types
 Understanding Data Types and Basic Functions
 ================================================
 
-## Learning Objectives
-- Describe what variables, vectors, and matrixes are and how they can be manipulated in R.
-- Use the built-in RStudio help interface to search for more information on R functions.
-- Describe what a function is in R.
-- Inspect the content of vectors in R and describe their content with class and str.
-
+> Learning Objectives
+> -------------------
+> 
+> * Describe what variables, vectors, and matrixes are and how they can be manipulated in R.
+> * Use the built-in RStudio help interface to search for more information on R functions.
+> * Describe what a function is in R.
+> * Inspect the content of vectors in R and describe their content with class and str.
+>
 
 
 # Recap Variables
