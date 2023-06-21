@@ -24,7 +24,7 @@ R is:
 - An open-source programming language under GPL
 - Aimed as a statistics and data analysis environment
 - Adapted to build websites, run simulations, and more
-- Good general language as is both object-orientated and functional language
+- Good general language as it is both object-orientated and functional language
 
 R is the underlying statistical computing environment, but using R alone is not as intuitive 
 
@@ -53,7 +53,7 @@ Parts of the RStudio
 -  Folder setup, Plots, Packages, Help, and more <b> Blue </b>
     - Let's save the Rscript we have been writing into. Please select `File --> Save` and enter in a suitable name for your Rscript. 
     - You should see this is now available in the folder.
-    - We will explore the other tabs in this corner in the next sections.  
+    - The following sections will explore the other tabs in this corner.  
 
 - Interpreter/Console is where R is actually running <b> Dark purple </b>
     - Work in here interactively. 
@@ -71,7 +71,7 @@ Parts of the RStudio
     "Hello"
 ```
     - You can copy-paste into the R console, but the Rstudio script editor allows you to ‘send’ the current line or the currently selected text to the R console using the `Ctrl-Enter` shortcut.
-    - Better to enter the commands in the script editor, and save the script. This way, you have a complete record of what you did, you can easily show others how you did it and you can do it again later on if needed. 
+    - Better to enter the commands in the script editor and save the script. This way, you have a complete record of what you did, you can easily show others how you did it, and you can do it again later on if needed. 
     - `>` indicates that R is ready to accept commands.
     - Let's write the code that creates an error:
 ```
@@ -95,7 +95,7 @@ Parts of the RStudio
 
     - You should now be able to see the name in the environment tab. Does it tell you anything about 
 
-> Hint - A comment is a line of code with `#` at the beginning. This signifies to the R interpreter to not use this line as code but in fact information about the code. 
+> Hint - A comment is a line of code with `#` at the beginning. This signifies to the R interpreter to not use this line as code but, in fact, information about the code. 
 ```
     #Assign 9 to a 
     a <- 9
