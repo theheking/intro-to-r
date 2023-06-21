@@ -104,10 +104,10 @@ Parts of the RStudio
 ```
 
 
-<b> Exercise </b>
-- How much are a and b added together?
-- Change the value of a to 10
-- Assign the value of a and b together to a new variable, c.
+> <b> Exercise </b>
+> 1. How much are a and b added together?
+> 2. Change the value of a to 10
+> 3. Assign the value of a and b together to a new variable, c.
 
 
 
