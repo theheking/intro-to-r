@@ -7,12 +7,12 @@ The Basics of R and RStudio
 ===================================
 
 ## Learning Objectives
-- Create an R project.
-- Describe the purpose of RStudio’s script, console, environment, and file/plot/help windows.
-- Assign names to objects in R with <- and =.
-- Solve mathematical operations in R.
-- Organize files and directories for a set of analyses as an R Project.
-
+> *  Create an R project.
+> *  Describe the purpose of RStudio’s script, console, environment, and file/plot/help windows.
+> *  Assign names to objects in R with <- and =.
+> * Solve mathematical operations in R.
+> * Organize files and directories for a set of analyses as an R Project.
+* * *
 
 # Introducing R and RStudio
 R and RStudio are distinct programs and need separate downloads and installations. 
