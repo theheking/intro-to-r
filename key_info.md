@@ -10,7 +10,7 @@ Welcome All!
 ### Dates
 Session 1
 - Day 1: 9am - 1pm Monday 26th June
-- Day 2: 9am - 1pm Wednesday 28th June 
+- Day 2: 1pm - 5pm Wednesday 28th June 
 
 Session 2
 - Day 1: 11:30am - 5pm Friday 14th June
