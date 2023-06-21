@@ -6,15 +6,14 @@ title: 4 - Utilising dplyr
 Aggregating and analyzing data with dplyr
 =====================
 
-
-Learning Objectives
-===================
-
-*   Install and load dplyr package 
-*   Apply common dplyr functions to manipulate data in R.
-*   Employ the ‘pipe’ operator to link together a sequence of functions.
-*   Employ the ‘mutate’ function to apply other chosen functions to existing columns and create new columns of data.
-*   Employ the ‘split-apply-combine’ concept to split the data into groups, apply analysis to each group, and combine the results.
+> Learning Objectives
+> -------------------
+> 
+> * Install and load dplyr package
+> * Apply common dplyr functions to manipulate data in R.
+> * Employ the ‘pipe’ operator to link together a sequence of functions.
+> * Employ the ‘mutate’ function to apply other chosen functions to existing columns and create new columns of data.
+> * Employ the ‘split-apply-combine’ concept to split the data into groups, apply analysis to each group, and combine the results.
 
 
 # Installing packages 
