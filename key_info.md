@@ -39,7 +39,7 @@ If anyone has a Garvan-owned Windows device and requires any software installed,
 
 
 ## Windows
-<b> If you don't already have R and RStudio installed </b>
+<b> To install R and RStudio </b>
  - Download R from the [CRAN website](http://cran.r-project.org/bin/windows/base/release.htm).
  - Click on and run the .exe file that was just downloaded. Leave all default settings in the installation options.
  - Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download) 
@@ -50,7 +50,7 @@ If anyone has a Garvan-owned Windows device and requires any software installed,
 If you have an error do not stress. Let us know at the beginning of the session, we will be able to help out.
 
 ## macOS
-<b> If you don;t already have R and RStudio installed </b>
+<b> To install R and RStudio </b>
  - Download R from the [CRAN website](https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.3.1-arm64.pkg).
     - Note that for older Macs, without the M1/M2 chip, you must select the appropriate Intel download from https://cran.r-project.org/bin/macosx/. 
  - Click on the pkg file that was just downloaded. Leave all default settings in the installation options.
