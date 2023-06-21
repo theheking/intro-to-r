@@ -59,17 +59,14 @@ Parts of the RStudio
     - Work in here interactively. 
     - Let's first try and run our first line of code into our console. I will explain more about this in a bit. 
       ```
-      "Hello
+      "Hello"
       ```
     - Type commands directly into the console, but they will be forgotten when you close the session.
 
 3. Text editor  <b> Green </b>
     - Where we write code we want to keep and potentially reuse later
     - Creates a plain text file that stores the code we’ve written
-    - Let's write the same line of code as before in the text editor.
-      ```
-      "Hello"
-      ```
+    - Let's write the same line of code, `Hello`, as before but this time in the text editor. 
     - You can copy-paste into the R console, but the Rstudio script editor allows you to ‘send’ the current line or the currently selected text to the R console using the `Ctrl-Enter` shortcut.
     - Better to enter the commands in the script editor and save the script. This way, you have a complete record of what you did, you can easily show others how you did it, and you can do it again later on if needed. 
     - `>` indicates that R is ready to accept commands.
@@ -100,7 +97,7 @@ Parts of the RStudio
    #Assign 9 to a
    a <- 9
    #Assign 2 to b
-b <- 2
+   b <- 2
 ```
 
 
