@@ -33,6 +33,11 @@ Session 2
 # RStudio and R installation
 R and RStudio are separate downloads and installations. R is the underlying statistical computing environment, but using R alone is no fun. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you install RStudio. Please choose the operating system (OS) that you use.
 
+
+## Garvan Owned Devices 
+If anyone has a Garvan-owned Windows device and requires any software installed, they need to contact ithelp@garvan.org.au to get it done (as they might not have administrator privileges) and if they have Garvan-owned MacBook, they can install any software by themselves
+
+
 ## Windows
 <b> If you already have R and RStudio installed </b>
  - Download R from the [CRAN website](http://cran.r-project.org/bin/windows/base/release.htm).
@@ -54,7 +59,5 @@ If you have an error do not stress. Let us know at the beginning of the session,
  - Once it’s installed, open RStudio to make sure it works and you don’t get any error messages
 
 If you have an error do not stress. Let us know at the beginning of the session, we will be able to help out.
-
-
 
 #### We acknowledge and pay respects to the Elders and Traditional Owners of the land
