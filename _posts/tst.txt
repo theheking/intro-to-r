@@ -1,1 +1,17 @@
-testing
+---
+layout: post
+title: Welcome
+tags: [intro]
+---
+
+Welcome all, to the tutorial website for Intro to R.
+
+Please bring a personal laptop and charger! Please navigate to the *Key Info* to get more general infomation of the class.
+
+The content that you will be working on will be found in the *Content* tab. 
+
+
+
+
+
+
