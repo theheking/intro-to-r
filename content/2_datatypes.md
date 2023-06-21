@@ -77,18 +77,18 @@ help.search("rounding of numbers")
 ```
 
 
-There are two arguments: 1) number to be rounded and 2) number of digits
+There are two arguments: 1) the number to be rounded and 2) the number of digits
 ```
 round(genome_length_mb, 1)
 ```
 
-Functions return values, so as with other values and expressions, if we don’t save the output of a function then there is no way to access it later.
+Functions return values, so as with other values and expressions, if we don’t save the output of a function, then there is no way to access it later.
 Check the current value using the `print` command.
 ```
 print(genome_length_mb)
 ```
 
-To save the output of a function we assign it to a variable.
+To save the output of a function, we assign it to a variable.
 ```
 genome_length_mb_rounded <- round(genome_length_mb, 1)
 ```
@@ -100,7 +100,7 @@ genome_length_mb_rounded <- round(genome_length_mb, 1)
 > Divide the genome length and rounded genome length in Mb by 978. 
 
 
-Another function that we’ll use a lot is class(). All values and therefore all variables have types.
+Another function that we’ll use a lot is class(). All values and, therefore, all variables have types.
 ```
 class(genome_length_mb)
 ```
@@ -121,7 +121,7 @@ There are 6 data types:
 - "numeric" for numbers
 - "logical" for TRUE and FALSE (the boolean data type)
 - "integer" for integer numbers (e.g., 2L, the L indicates to R that it’s an integer)
-- "complex" to represent complex numbers with real and imaginary parts (e.g., 1+4i) and that’s all we’re going to say about them
+- "complex" to represent complex numbers with real and imaginary parts (e.g., 1+4i), and that’s all we’re going to say about them
 - "raw" that we won’t discuss further
 
 
@@ -160,7 +160,7 @@ We can extract multiple elements at a time by specifying multiple indices inside
 > Using model_org[c()]
 > 
 > 
-> 2) However, this is laborious. If we were dealing with a much longer vector- we can use the `seq()` function to quickly create sequences of numbers.
+> 2) However, this is laborious. If we were dealing with a much longer vector- we can use the `seq()` function to create sequences of numbers quickly.
 > Use the help command to find how to form that repeating element. Fill in the blank to select the even elements of model_org using the seq() function.
 >
 
@@ -202,10 +202,10 @@ As seen above the advantage of a list is that they can:
 
 
 # Matrixes 
-- two-dimensional organisation of a m*n array
+- two-dimensional organisation of an m*n array
 - good for arithmetic operations
 - only a single class of data
-    - why we utilize data frames instead
+    - why do we utilize data frames instead
 
 To form a simple matrix we use the command as below.
 ```
