@@ -58,36 +58,50 @@ Parts of the RStudio
 - Interpreter/Console is where R is actually running <b> Dark purple </b>
     - Work in here interactively. 
     - Let's first try and run our first line of code into our console. I will explain more about this in a bit.
+ 
+      
 ```
     "Hello"
 ```
+
     - Type commands directly into the console, but they will be forgotten when you close the session.
 
 - Text editor  <b> Green </b>
     - Where we write code we want to keep and potentially reuse later
     - Creates a plain text file that stores the code we’ve written
     - Let's write the same line of code as before in the text editor.
+ 
+      
 ```
     "Hello"
 ```
+
     - You can copy-paste into the R console, but the Rstudio script editor allows you to ‘send’ the current line or the currently selected text to the R console using the `Ctrl-Enter` shortcut.
     - Better to enter the commands in the script editor and save the script. This way, you have a complete record of what you did, you can easily show others how you did it, and you can do it again later on if needed. 
     - `>` indicates that R is ready to accept commands.
     - Let's write the code that creates an error:
+
+   
 ```
     "Hello
 ```
+
     - `+` indicates that R is waiting for you to finish entering a command. This is usually due to not writing the pair of brackets or quotations.
 
 - Environment, History, Git, and more  <b> Orange </b>
     - You can even use R like a sophisticated calculator. Run the commands below.
+ 
 ```  
     3 + 5
     12/3
 ```
+
+
     - But if you want to be able to access a value later, we need to assign <i> values </i> to <i>objects </i>. 
     - You can either assign a value using `<-` or `=`. 
     - However, it is good practce to use `<-` for assignments and `=` for values of arguements in a function. 
+
+    
 ```
     name <- "Hello"
     name = "Hello"
