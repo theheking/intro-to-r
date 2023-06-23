@@ -26,7 +26,7 @@ We are studying a population of Escherichia coli (designated Ara-3), which were 
 
 The metadata file required for this lesson can be [downloaded directly here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv) or [viewed in Github](./data/Ecoli_metadata.csv).
 
-> Tip: If you can’t find the Ecoli\_metadata.csv file, or have lost track of it, download the file directly using the R `download.file() function`
+> Hint: If you can’t find the Ecoli\_metadata.csv file, or have lost track of it, download the file directly using the R `download.file() function`
 
     download.file("https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv", "data/Ecoli_metadata.csv")
 
@@ -141,20 +141,20 @@ Note: most of these functions are “generic”, they can be used on other types
 > Challenge
 > --------
 > Based on the given table of functions to asses data structure, can you answer the following questions?
-> - What is the class of the object metadata?
-> - How many rows and how many columns are in this object?
-> - How many citrate+ mutants have been recorded in this population?
+> 1) What is the class of the object metadata?
+> 2) How many rows and how many columns are in this object?
+> 3) How many citrate+ mutants have been recorded in this population?
 
 
 
-As you can see, many of the columns in our data frame are of a special class called `factor`. Before we learn more about the `data.frame` class, we are going to talk about factors. They are very useful but not necessarily intuitive, and therefore require some attention.
+As you can see, many of the columns in our data frame are of a special class called `factor`. Before we learn more about the `data.frame` class, we are going to talk about factors. They are very useful but not necessarily intuitive and therefore require some attention.
 
 Factors
 -------
 
 Factors are used to represent categorical data. Factors can be ordered or unordered and are an important class for statistical analysis and for plotting.
 
-Factors are stored as integers, and have labels associated with these unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
+Factors are stored as integers and have labels associated with these unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
 
 In the data frame we just imported, let’s do
 ```
@@ -162,12 +162,9 @@ In the data frame we just imported, let’s do
 ```
 We can see the names of the multiple columns. And, we see that some say things like `Factor w/ 30 levels`
 
-When we read in a file, any column that contains text is automatically assumed to be a factor. Once created, factors can only contain a pre-defined set values, known as _levels_. By default, R always sorts _levels_ in alphabetical order.
+When we read in a file, any column that contains text is automatically assumed to be a factor. Once created, factors can only contain a pre-defined set of values, known as _levels_. By default, R always sorts _levels_ in alphabetical order.
 
 For instance, we see that `cit` is a Factor w/ 3 levels, `minus`, `plus` and `unknown`.
-
-
-
 
 
 Subsetting Data frames
