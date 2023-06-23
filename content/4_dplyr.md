@@ -21,7 +21,7 @@ Aggregating and analyzing data with dplyr
 
 It is a member of the tidyverse family, which is a collection of packages aiming to help transform and better present data. In this course, we are learning dplyr and ggplot that have their own unique roles. 
 
-!(tidyverse)[../img/tidyverse-package-workflow.png]
+![tidyverse](../img/tidyverse-package-workflow.png)
 
 Packages in R are basically sets of additional functions that let you do more stuff in R. The functions we’ve been using, like `str()`, come built into R; packages give you access to more functions. You need to install a package and then load it to be able to use it.
 
