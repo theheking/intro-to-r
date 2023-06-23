@@ -13,8 +13,8 @@ The Basics of R and RStudio
 > *  Create an R project.
 > *  Describe the purpose of RStudio’s script, console, environment, and file/plot/help windows.
 > *  Assign names to objects in R with <- and =.
-> * Solve mathematical operations in R.
-> * Organize files and directories for a set of analyses as an R Project.
+> *  Solve mathematical operations in R.
+> *  Organize files and directories for a set of analyses as an R Project.
 >
 
 # Introducing R and RStudio
@@ -84,12 +84,12 @@ Parts of the RStudio
       ```
     - But if you want to be able to access a value later, we need to assign <i> values </i> to <i>objects </i>. 
     - You can either assign a value using `<-` or `=`. 
-    - However, it is good practce to use `<-` for assignments and `=` for values of arguements in a function. 
+    - However, it is good practice to use `<-` for assignments and `=` for values of arguments in a function. 
       ```
       name <- "Hello"
       name = "Hello"
       ```
-    - You should now be able to see the name in the environment tab. Does it tell you anything about 
+    - You should now be able to see the name in the environment tab. Some details about your new variable should be beside the name. 
 
 > Hint - A comment is a line of code with `#` at the beginning. This signifies to the R interpreter to not use this line as code but, in fact, information about the code.
 
