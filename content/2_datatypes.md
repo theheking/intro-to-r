@@ -131,6 +131,8 @@ There are 6 data types:
 - "complex" to represent complex numbers with real and imaginary parts (e.g., 1+4i), and that’s all we’re going to say about them
 - "raw" that we won’t discuss further
 
+# Data Structures
+We will be going through vectors, lists, matrixes, and dataframes. 
 
 # Vectors
 
@@ -215,6 +217,7 @@ As seen above the advantage of a list is that they can:
 
 
 # Matrixes 
+Matrixes are:
 - two-dimensional organisation of an m*n array
 - good for arithmetic operations
 - only a single class of data
