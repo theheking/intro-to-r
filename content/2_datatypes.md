@@ -93,10 +93,13 @@ To save the output of a function, we assign it to a variable.
 genome_length_mb_rounded <- round(genome_length_mb, 1)
 ```
 
+
+
 > Exercise
+> --------
 > Now that R has genome_length_mb in memory, we can do arithmetic with it. 
 > For instance, we may want to convert this to the weight of the genome in picograms (for some reason).
->  978Mb = 1picogram. 
+>  <b> 978Mb = 1picogram. </b>
 > Divide the genome length and rounded genome length in Mb by 978. 
 
 
