@@ -99,7 +99,9 @@ genome_length_mb_rounded <- round(genome_length_mb, 1)
 > --------
 > - Now that R has genome_length_mb in memory, we can do arithmetic with it. 
 > - For instance, we may want to convert this to the weight of the genome in picograms (for some reason).
+>   
 >  <b> 978Mb = 1picogram. </b>
+>
 > - Divide the genome length and rounded genome length in Mb by 978. 
 
 
@@ -113,9 +115,11 @@ class(genome_length_mb)
 > --------
 > 
 > Check the data type of the following variables. 
-> - one <- 1.5
-> - two <- "mega"
-> - three <- FALSE
+> one <- 1.5
+> 
+> two <- "mega"
+>   
+> three <- FALSE
 > 
 
 
@@ -199,9 +203,13 @@ As seen above the advantage of a list is that they can:
 > --------
 > How do we extract the name "Hermann Joseph Muller"? 
 > Choose one or more of the options below.
+>
 > a. `drosophilia$nobel[2]`
+>
 > b. `drosophilia[4][2]`
+> 
 > c. `drosophilia[[4]][2]`
+> 
 > d. `drosophilia[-1][1]`
 
 
