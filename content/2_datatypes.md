@@ -163,13 +163,15 @@ We can extract multiple elements at a time by specifying multiple indices inside
 > Using model_org[c()]
 > 
 > 
-> 2) However, this is laborious. If we were dealing with a much longer vector- we can use the `seq()` function to create sequences of numbers quickly.
-> Use the help command to find how to form that repeating element. Fill in the blank to select the even elements of model_org using the seq() function.
+> 2) However, this is laborious.
+> If we were dealing with a much longer vector- we can use the `seq()` function to create sequences of numbers quickly.
+> Use the help command to find how to form the elements in the vector you created above
+> Fill in the blank to select the even elements of model_org using the seq() function.
 >
 
 
 # List
-Note a vector is actually an atomic vector. This means that it has a homogeneous element datatype. 
+Note a vector is actually an "atomic" vector. An "atomic" vector has a homogeneous datatype in every element. 
 A list is actually still a vector in R, but it’s not an atomic vector.
 ```
 (drosophilia <- list(model_org = TRUE, num_nobel_drosophilists = 9L, num_species = 3 * 500, nobel = c("Thomas Hunt Morgan","Hermann Joseph Muller")))
