@@ -97,10 +97,10 @@ genome_length_mb_rounded <- round(genome_length_mb, 1)
 
 > Exercise
 > --------
-> Now that R has genome_length_mb in memory, we can do arithmetic with it. 
-> For instance, we may want to convert this to the weight of the genome in picograms (for some reason).
+> - Now that R has genome_length_mb in memory, we can do arithmetic with it. 
+> - For instance, we may want to convert this to the weight of the genome in picograms (for some reason).
 >  <b> 978Mb = 1picogram. </b>
-> Divide the genome length and rounded genome length in Mb by 978. 
+> - Divide the genome length and rounded genome length in Mb by 978. 
 
 
 Another function that we’ll use a lot is class(). All values and, therefore, all variables have types.
@@ -113,9 +113,9 @@ class(genome_length_mb)
 > --------
 > 
 > Check the data type of the following variables. 
-> one <- 1.5
-> two <- "mega"
-> three <- FALSE
+> - one <- 1.5
+> - two <- "mega"
+> - three <- FALSE
 > 
 
 
