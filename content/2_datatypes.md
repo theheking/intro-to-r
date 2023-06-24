@@ -179,6 +179,17 @@ We can extract multiple elements at a time by specifying multiple indices inside
 # List
 Note a vector is actually an "atomic" vector. An "atomic" vector has a homogeneous datatype in every element. 
 A list is actually still a vector in R, but it’s not an atomic vector.
+
+
+There are three operators that can be used to extract subsets of R objects.
+
+- The `[` operator always returns an object of the same class as the original. It can be used to select multiple elements of an object
+- The `[[` operator is used to extract elements of a list or a data frame. It can only be used to extract a single element and the class of the returned object will not necessarily be a list or data frame.
+- The $ operator is used to extract elements of a list or data frame by literal name. Its semantics are similar to that of [[.
+
+You need [[ when working with lists. This is because when [ is applied to a list it always returns a list: it never gives you the contents of the list. To get the contents, you need [[:
+
+
 ```
 (drosophilia <- list(model_org = TRUE, num_nobel_drosophilists = 9L, num_species = 3 * 500, nobel = c("Thomas Hunt Morgan","Hermann Joseph Muller")))
 #> $model_org
@@ -223,7 +234,7 @@ Matrixes are:
 - only a single class of data
     - why do we utilize data frames instead
 
-To form a simple matrix we use the command as below.
+To form a simple matrix, we use the command as below.
 ```
 matrix(1:9, nrow = 3, ncol = 3)
 
