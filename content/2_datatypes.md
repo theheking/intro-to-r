@@ -271,11 +271,17 @@ x[c(2,3),c(1,3)]
 > --------
 > 
 > Access:
+> 
 > 1) the 2nd row of the matrix, x
+>    
 > 2) the element from the 3rd row and 2nd column in the matrix, x
+>    
 >  Extension:
-> 1) Check the class of (1), (2), and (3) the matrix, x, 
+> 
+> 1) Check the class of (1), (2), and (3) the matrix, x,
+>    
 > 2) Try leaving the column field blank. What does this output?
+>    
 
 
 
