@@ -63,47 +63,37 @@ To choose rows, use `filter()`:
 
 ### Pipes
 
-But what if you wanted to select and filter? There are three ways to do this: use intermediate dataframes, nested functions or pipes.
+But what if you wanted to select and filter? There are three ways to do this: use intermediate dataframes, nested functions or finally, pipes.
 
- - With the <b>intermediate data frames</b>, you essentially create a temporary data frame and use that as input to the next function. This can clutter up your workspace with lots of objects.
- - You can also <b>nest functions</b> (i.e. one function inside of another).This is handy, but can be difficult to read if too many functions are nested as the process from inside out. 
- -   The last option, pipes, takeA the output of one function and send it directly to the next. This is useful when you need to many things to the same data set. Pipes in R look like `%>%` and are made available via the `magrittr` package installed as part of `dplyr`.
+ - By forming <b>intermediate data frames</b>, you create a temporary data frame and use that as input to the subsequent function. This can clutter up your workspace with lots of objects.
+ - You can also <b>nest functions</b> (i.e. one function inside of another). This is handy but can be difficult to read if too many functions are nested as the process from the inside out.
+ -   The last option, pipes, takes one function's output and sends it directly to the next. This is useful when you need apply different filtering or functions to the same data set. Pipes in R look like `%>%` and are made available via the `magrittr` package. We actually installed as part of `dplyr`.
 
 First, we are <i>piping</i> 
 ```
     metadata %>%
       filter(cit == "plus")
-
+```
+```
   metadata %>%
         filter(cit == "plus") %>%
         select(sample, generation, clade)
-   
 ```
 
-In the above we use the pipe to send the `metadata` data set first through `filter`, to keep rows where `cit` was equal to ‘plus’, and then through `select` to keep the `sample` and `generation` and `clade` columns. When the data frame is being passed to the `filter()` and `select()` functions through a pipe, we don’t need to include it as an argument to these functions anymore.
+In the above, we use the pipe to send the `metadata` data set first through `filter` to keep rows where `cit` was equal to ‘plus’, and then through `select` to keep the `sample` and `generation` and `clade` columns. 
 
-If we wanted to create a new object with this smaller version of the data we could do so by assigning it a new name:
+When the data frame is being passed to the `filter()` and `select()` functions through a pipe, we no longer need to include it as an argument to these functions.
+
+If we wanted to create a new object with this smaller version of the data, we could do so by assigning it a new name:
 
 ```
     meta_citplus <- metadata %>%
       filter(cit == "plus") %>%
       select(sample, generation, clade)
-    
-    meta_citplus
-
-    ##     sample generation clade
-    ## 1   ZDB564      31500  Cit+
-    ## 2   ZDB172      32000  Cit+
-    ## 3   ZDB143      32500  Cit+
-    ## 4   CZB152      33000  Cit+
-    ## 5   CZB154      33000  Cit+
-    ## 6    ZDB87      34000    C2
-    ## 7    ZDB96      36000  Cit+
-    ## 8   ZDB107      38000  Cit+
-    ## 9 REL10979      40000  Cit+
 ```
 
-> ### Challenge
+> ### Exercise
+> ======
 > 
 > Using pipes, subset the data to include rows where the clade is ‘Cit+’. Retain columns `sample`, `cit`, and `genome_size.`
 
@@ -141,7 +131,13 @@ The row has a NA value for clade, so if we wanted to remove those we could inser
 
 ### Split-apply-combine data analysis and the summarize() function
 
-Many data analysis tasks can be approached using the “split-apply-combine” paradigm: split the data into groups, apply some analysis to each group, and then combine the results. `dplyr` makes this very easy through the use of the `group_by()` function, which splits the data into groups. When the data is grouped in this way `summarize()` can be used to collapse each group into a single-row summary. `summarize()` does this by applying an aggregating or summary function to each group. For example, if we wanted to group by citrate-using mutant status and find the number of rows of data for each status, we would do:
+Many data analysis tasks can be approached using the “split-apply-combine” paradigm.
+1. split the data into groups
+2. apply some analysis to each group
+3. then combine the results.
+  
+
+`dplyr` makes this very easy through the use of the `group_by()` function, which splits the data into groups. When the data is grouped in this way, `summarize()` can be used to collapse each group into a single-row summary. `summarize()` does this by applying an aggregating or summary function to each group. For example, if we wanted to group by citrate-using mutant status and find the number of rows of data for each status, we would do:
 
 ```
     metadata %>%
@@ -150,7 +146,11 @@ Many data analysis tasks can be approached using the “split-apply-combine” p
 ```
 
 
-Here the summary function used was `n()` to find the count for each group. We can also apply many other functions to individual columns to get other summary statistics. For example, in the R base package we can use built-in functions like `mean`, `median`, `min`, and `max`. By default, all **R functions operating on vectors that contains missing data will return NA**. It’s a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the mean, the easiest way to ignore `NA` (the missing data) is to use `na.rm=TRUE` (`rm` stands for remove).
+Here the summary function used was `n()` to find the count for each group. 
+
+We can also apply many other functions to individual columns to get other summary statistics. For example, in the R base package, we can use built-in functions like `mean`, `median`, `min`, and `max`. 
+
+By default, all **R functions operating on vectors that contain missing data will return NA**. It’s a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the mean, the easiest way to ignore `NA` (the missing data) is to use `na.rm=TRUE` (`rm` stands for remove).
 
 So to view mean `genome_size` by mutant status:
 
@@ -177,7 +177,8 @@ Looks like for one of these clones, the clade is missing. We could then discard 
       filter(!is.na(clade))
 ```
 
-All of a sudden this isn’t running off the screen anymore. That’s because `dplyr` has changed our `data.frame` to a `tbl_df`. 
+All of a sudden, the results are not running off the screen anymore. That’s because `dplyr` has changed our `data.frame` to a `tbl_df`. 
+
 This is a data structure that’s very similar to a data frame; for our purposes the only difference is that it won’t automatically show tons of data going off the screen.
 
 You can also summarize multiple variables at the same time:
@@ -193,6 +194,7 @@ Look at [Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/
 > --------
 > Using the cheatsheet above,
 > 1) Can you randomly select 3 rows from metadata?
+> 
 > 2) Can you group by the cit and summarize the mean generation number?
 >
 >
