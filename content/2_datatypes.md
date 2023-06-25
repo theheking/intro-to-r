@@ -183,11 +183,11 @@ A list is actually still a vector in R, but it’s not an atomic vector.
 
 There are three operators that can be used to extract subsets of R objects.
 
-- The `[` operator always returns an object of the same class as the original. It can be used to select multiple elements of an object
-- The `[[` operator is used to extract elements of a list or a data frame. It can only be used to extract a single element and the class of the returned object will not necessarily be a list or data frame.
+- `[` returns an object of the same class as the original.
+- `[[` used to extract elements of a list or a data frame. It can only be used to extract a single element, and the returned object's class will not necessarily be a list or data frame.
+-  Note: If you apply `[` to a list it always returns a list: it never gives you the contents of the list.
 - The $ operator is used to extract elements of a list or data frame by literal name. Its semantics are similar to that of [[.
 
-You need [[ when working with lists. This is because when [ is applied to a list it always returns a list: it never gives you the contents of the list. To get the contents, you need [[:
 
 
 ```
@@ -206,7 +206,7 @@ You need [[ when working with lists. This is because when [ is applied to a list
 
 ```
 
-As seen above the advantage of a list is that they can:
+As seen above, the advantage of a list is that they can:
 - Be heterogeneous, i.e. can be of different datatype. They don’t need to be atomic vectors – you can stick a function in there!
 - Have different lengths.
 - Have names. Or not. Or some of both.
@@ -234,13 +234,15 @@ Matrixes are:
 - only a single class of data
     - why do we utilize data frames instead
 
-To form a simple matrix, we use the command as below.
+To form a simple matrix, we use the command below.
+
 ```
 matrix(1:9, nrow = 3, ncol = 3)
 
 ```
+
 However, when we want to fill the matrix row-wise, we can start using different arguments. 
-We will use the `byrow` argument to fill the matrix row-wise using boolean T/F. This is an example of a <i>default</i> argument which means it will have an automatic value assigned, so does not need to be specified, unlike a <i>keyword</i> argument.
+We will use the `byrow` argument to fill the matrix row-wise using boolean T/F. This is an example of a <i>default</i> argument, which means it will have an automatic value assigned, so it does not need to be specified, unlike a <i>keyword</i> argument.
 
 ```
 x <- matrix(1:9, nrow=3, byrow=TRUE)    
