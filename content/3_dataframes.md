@@ -123,7 +123,7 @@ Inspecting `data.frame` objects
 We already saw how the functions `head()` and `str()` can be useful to check the content and the structure of a `data.frame`. Here is a non-exhaustive list of functions to get a sense of the content/structure of the data.
 
 *   Size:
-    *   `dim()` - returns a vector with the number of rows in the first element, and the number of columns as the second element (the \_\_dim\_\_ensions of the object)
+    *   `dim()` - returns a vector with the number of rows in the first element, and the number of columns as the second element (the dimensions of the object)
     *   `nrow()` - returns the number of rows
     *   `ncol()` - returns the number of columns
 *   Content:
