@@ -26,10 +26,24 @@ We are studying a population of Escherichia coli (designated Ara-3), which were 
 
 The metadata file required for this lesson can be [downloaded directly here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv) or [viewed in Github](./data/Ecoli_metadata.csv). This data was taken from the Blount et al. paper in [Nature](https://www.nature.com/articles/nature11514).
 
+The columns stand for: 
+| Column      | Description                                |
+| ----------- | ------------------------------------------ |
+| sample      | clone name                                 |
+| generation  | generation when the sample was frozen      |
+| clade       | based on parsimony-based tree              |
+| strain      | ancestral strain                           |
+| cit         | citrate-using mutant status                |
+| run         | Sequence read archive sample ID            |
+| genome_size | size in Mbp (made up data for this lesson) |
+
+
 > Hint: If you can’t find the Ecoli\_metadata.csv file, or have lost track of it, download the file directly using the R `download.file() function`
 > Hint: Make sure you make a new folder to save the new Ecoli_metadata.csv file. 
 
     download.file("https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv", "data/Ecoli_metadata.csv")
+
+
 
 # Two methods to import data 
 ## Using the visual IDE 
@@ -67,8 +81,8 @@ Let’s check the top (the first 6 lines) of this `data.frame` using the functio
 We’ve just done two very useful things. 
 
 1. We’ve read our data in to R, so now we can work with it in R
-2.
-3. 2. We’ve created a data frame (with the read.csv command) the standard way R works with data.
+
+2. We’ve created a data frame (with the read.csv command) in the standard way R works with data.
 
 
 ## Debugging errors 
@@ -143,30 +157,12 @@ Note: most of these functions are “generic”, they can be used on other types
 > Challenge
 > --------
 > Based on the given table of functions to asses data structure, can you answer the following questions?
+> 
 > 1) What is the class of the object metadata?
+>    
 > 2) How many rows and how many columns are in this object?
-> 3) How many citrate+ mutants have been recorded in this population?
-
-
-
-As you can see, many of the columns in our data frame are of a special class called `factor`. Before we learn more about the `data.frame` class, we are going to talk about factors. They are very useful but not necessarily intuitive and therefore require some attention.
-
-Factors
--------
-
-Factors are used to represent categorical data. Factors can be ordered or unordered. They are an important class for statistical analysis and for plotting.
-
-Factors are stored as integers and have labels associated with these unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
-
-In the data frame we just imported, let’s do
-```
-    str(metadata)
-```
-We can see the names of the multiple columns. And, we see that some say things like `Factor w/ 30 levels`
-
-When we read in a file, any column that contains text is automatically assumed to be a factor. Once created, factors can only contain a pre-defined set of values, known as _levels_. By default, R always sorts _levels_ in alphabetical order.
-
-For instance, we see that `cit` is a Factor w/ 3 levels, `minus`, `plus` and `unknown`.
+>    
+> 3) What are the column names for this data frame?
 
 
 Subsetting Data frames
@@ -223,13 +219,54 @@ You can even access columns by column name _and_ select specific rows of interes
 
 
 > Exercise
-> --------
+> ===========
 > Create a new variable of a dataframe that contains just the sample and genome size. 
 > 
 > Why would you create a subset of the original dataframe?
 > 
 
 
+
+
+Factors
+-------
+In the data frame we just imported, let’s do:
+```
+    str(metadata)
+```
+
+As you can see, many of the columns in our data frame are character datatypes. However, there is also a special class called `factor`. 
+
+They are very useful but not necessarily intuitive and therefore require some attention.
+
+Factors are used to represent categorical data. Factors can be ordered or unordered. They are an important class for statistical analysis and for plotting.
+
+Factors are:
+- stored as integers
+- have labels associated with these unique integers.
+- While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
+
+Let us convert the clade columns from a character to a factor column using the `factor` command.
+
+```
+    factor(metadata[,3])
+```
+
+We can see the levels associated with this factor are: `Levels: (C1,C2) C1 C2 C3 Cit+ UC unknown`. 
+
+> Exercise
+> ===========
+> Let's reread in our metadata data frame, but set every character column to be a factor.
+> 
+> By looking at the help page can you edit the command below with a new arguement that would read in all strings as factors?
+> 
+> ```
+>    metadata <- read.csv('data/Ecoli_metadata.csv')
+> ```
+
+Once created, factors can only contain a pre-defined set of values known as _levels_. By default, R always sorts _levels_ in alphabetical order.
+
+For instance, we see that `cit` is a Factor w/ 3 levels, `minus`, `plus` and `unknown`.
 
 
 ****
