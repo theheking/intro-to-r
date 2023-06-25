@@ -22,7 +22,7 @@ Using data in data frames
 Looking at Metadata
 ===================
 
-We are studying a population of Escherichia coli (designated Ara-3), which were propagated for more than 40,000 generations in a glucose-limited minimal medium. This medium was supplemented with citrate which E. coli cannot metabolize in the aerobic conditions of the experiment. Sequencing of the populations at regular time points reveals that spontaneous citrate-using mutants (Cit+) appeared at around 31,000 generations. This metadata describes information on the Ara-3 clones. Read more about the Long Term Evolution Experiment [here](https://the-ltee.org/about/).
+We are studying a population of Escherichia coli (designated Ara-3), which were propagated for more than 40,000 generations in a glucose-limited minimal medium. This medium was supplemented with citrate which E. coli cannot metabolize in the aerobic conditions of the experiment. Sequencing of the populations at regular time points reveals that spontaneous citrate-using mutants (Cit+) appeared at around 31,000 generations. This metadata describes information on the Ara-3 clones. Read more about the Long Term Evolution Experiment [here](https://the-ltee.org/about/) from Lenski. The nature 
 
 The metadata file required for this lesson can be [downloaded directly here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv) or [viewed in Github](./data/Ecoli_metadata.csv).
 
@@ -63,8 +63,13 @@ Let’s check the top (the first 6 lines) of this `data.frame` using the functio
     ## 5   ZDB446      15000      UC REL606 unknown SRR098283        4.66
     ## 6   ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63
 
-We’ve just done two very useful things. 1. We’ve read our data in to R, so now we can work with it in R 2. We’ve created a data frame (with the read.csv command) the standard way R works with data.
 ```
+We’ve just done two very useful things. 
+
+1. We’ve read our data in to R, so now we can work with it in R
+2.
+3. 2. We’ve created a data frame (with the read.csv command) the standard way R works with data.
+
 
 ## Debugging errors 
 Let's create a very common error you might encounter. 
