@@ -22,11 +22,12 @@ Using data in data frames
 Looking at Metadata
 ===================
 
-We are studying a population of Escherichia coli (designated Ara-3), which were propagated for more than 40,000 generations in a glucose-limited minimal medium. This medium was supplemented with citrate which E. coli cannot metabolize in the aerobic conditions of the experiment. Sequencing of the populations at regular time points reveals that spontaneous citrate-using mutants (Cit+) appeared at around 31,000 generations. This metadata describes information on the Ara-3 clones.
+We are studying a population of Escherichia coli (designated Ara-3), which were propagated for more than 40,000 generations in a glucose-limited minimal medium. This medium was supplemented with citrate which E. coli cannot metabolize in the aerobic conditions of the experiment. Sequencing of the populations at regular time points reveals that spontaneous citrate-using mutants (Cit+) appeared at around 31,000 generations. This metadata describes information on the Ara-3 clones. Read more about the Long Term Evolution Experiment [here](https://the-ltee.org/about/).
 
 The metadata file required for this lesson can be [downloaded directly here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv) or [viewed in Github](./data/Ecoli_metadata.csv).
 
 > Hint: If you can’t find the Ecoli\_metadata.csv file, or have lost track of it, download the file directly using the R `download.file() function`
+> Hint: Make sure you make a new folder to save the new Ecoli_metadata.csv file. 
 
     download.file("https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv", "data/Ecoli_metadata.csv")
 
@@ -35,7 +36,7 @@ The metadata file required for this lesson can be [downloaded directly here](htt
 
 1) Select `File --> Import Dataset --> From Text (base)...`
 2) Navigate to where you have downloaded your Ecoli_metadata.csv file.
-3) It should look like the image below. Please trial out the different settings. 
+3) It should look like the image below. Please try out the different settings. 
 ![GUI](../photos/gui.png)
 4) This will automatically run the import in the console. Please make sure you copy and paste into your R script. 
 
@@ -44,12 +45,7 @@ You are now ready to load the data. We are going to use the R function `read.csv
 ```
     metadata <- read.csv('data/Ecoli_metadata.csv')
 ```
-This statement doesn’t produce any output because assignment doesn’t display anything. If we want to check that our data has been loaded, we can print the variable’s value: `metadata`
-
-Alternatively, wrapping an assignment in parentheses will perform the assignment and display it at the same time.
-```
-    (metadata <- read.csv('data/Ecoli_metadata.csv'))
-```
+This statement doesn’t produce any output because the assignment doesn’t display anything. If we want to check that our data has been loaded, we can print the variable’s value: `metadata`
 
 Let’s check the top (the first 6 lines) of this `data.frame` using the function `head()`:
 
@@ -85,8 +81,8 @@ Let's create a very common error you might encounter.
 
 > Exercise
 > --------
->  On your table can you each try and create a unique error message? 
-> I will run them at the front 
+> On your table can you please try to create a unique error message? 
+> 
 
 
 # What to do when you get an error
@@ -103,11 +99,9 @@ Let's create a very common error you might encounter.
 What are data frames?
 =====================
 
-A `data.frame` is a collection of vectors of identical lengths. Each vector represents a column, and each vector can be of a different data type (e.g., characters, integers, factors). The `str()` function is useful to inspect the data types of the columns.
+A `data.frame` is a collection of vectors of identical lengths. Each vector represents a column, and each vector can be of a different data type (e.g., characters, integers, factors). The `str()` function is useful for inspecting the data types of the columns.
 
-A `data.frame` can be created by the functions `read.csv()` or `read.table()`, in other words, when importing spreadsheets from your hard drive (or the web).
-
-By default, `data.frame` converts (= coerces) columns that contain characters (i.e., text) into the `factor` data type. Depending on what you want to do with the data, you may want to keep these columns as `character`. To do so, `read.csv()` and `read.table()` have an argument called `stringsAsFactors` which can be set to `FALSE`:
+By default, `data.frame` coerce) columns that contain characters (i.e., text) into the `factor` data type. Depending on what you want to do with the data, you may want to keep these columns as `character`. To do so, `read.csv()` and `read.table()` have an argument called `stringsAsFactors` which can be set to `FALSE`:
 
 Let’s now check the structure of this `data.frame` in more details with the function `str()`:
 
@@ -152,7 +146,7 @@ As you can see, many of the columns in our data frame are of a special class cal
 Factors
 -------
 
-Factors are used to represent categorical data. Factors can be ordered or unordered and are an important class for statistical analysis and for plotting.
+Factors are used to represent categorical data. Factors can be ordered or unordered. They are an important class for statistical analysis and for plotting.
 
 Factors are stored as integers and have labels associated with these unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
 
