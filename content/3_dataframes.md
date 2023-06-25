@@ -35,9 +35,12 @@ The metadata file required for this lesson can be [downloaded directly here](htt
 ## Using the visual IDE 
 
 1) Select `File --> Import Dataset --> From Text (base)...`
+
 2) Navigate to where you have downloaded your Ecoli_metadata.csv file.
+
 3) It should look like the image below. Please try out the different settings. 
 ![GUI](../photos/gui.png)
+
 4) This will automatically run the import in the console. Please make sure you copy and paste into your R script. 
 
 ## Directly in the console
