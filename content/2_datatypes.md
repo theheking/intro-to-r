@@ -114,12 +114,13 @@ class(genome_length_mb)
 > Exercise
 > --------
 > 
-> Check the data type of the following variables. 
-> one <- 1.5
+> Check the data type of the following variables.
 > 
-> two <- "mega"
+> - one <- 1.5
+> 
+> - two <- "mega"
 >   
-> three <- FALSE
+> - three <- FALSE
 > 
 
 
