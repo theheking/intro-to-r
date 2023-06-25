@@ -186,7 +186,7 @@ There are three operators that can be used to extract subsets of R objects.
 
 - `[` returns an object of the same class as the original.
 - `[[` used to extract elements of a list or a data frame. It can only be used to extract a single element, and the returned object's class will not necessarily be a list or data frame.
--  Note: If you apply `[` to a list it always returns a list: it never gives you the contents of the list.
+    > Hint: If you apply `[` to a list it always returns a list: it never gives you the contents of the list.
 - The $ operator is used to extract elements of a list or data frame by literal name. Its semantics are similar to that of [[.
 
 
