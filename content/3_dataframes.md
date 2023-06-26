@@ -27,6 +27,7 @@ We are studying a population of Escherichia coli (designated Ara-3), which were 
 The metadata file required for this lesson can be [downloaded directly here](https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv) or [viewed in Github](./data/Ecoli_metadata.csv). This data was taken from the Blount et al. paper in [Nature](https://www.nature.com/articles/nature11514).
 
 The columns stand for: 
+
 | Column      | Description                                |
 | ----------- | ------------------------------------------ |
 | sample      | clone name                                 |
