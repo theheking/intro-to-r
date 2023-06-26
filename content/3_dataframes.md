@@ -32,7 +32,7 @@ The columns stand for:
 | ----------- | ------------------------------------------ |
 | sample      | clone name                                 |
 | generation  | generation when the sample was frozen      |
-| clade       | based on parsimony-based tree              |
+| clade       | based on phylogeny-based tree              |
 | strain      | ancestral strain                           |
 | cit         | citrate-using mutant status                |
 | run         | Sequence read archive sample ID            |
