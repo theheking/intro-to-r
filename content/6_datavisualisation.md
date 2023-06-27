@@ -59,17 +59,21 @@ Boxplot
 
 Using additional information from our metadata, we can use plots to compare values between the different citrate mutant status using a **boxplot**. A boxplot provides a graphical view of the median, quartiles, maximum, and minimum of a data set.
 ```
-    # Boxplot
+    # creating a boxplot
+    cit <- metadata$cit
     boxplot(genome_size ~ cit, metadata)
 ```
 ![](../img/genome_size_cit.png)
 
-Similar to the scatterplots above, we can pass in arguments to add in extras like plot title, axis labels and colors.
+Similar to the scatterplots above, we can pass in arguments to add in extras like plot title, axis labels and colours.
 ```
-    boxplot(genome_size ~ cit, metadata,  col=c("pink","purple", "darkgrey"),
-            main="Average expression differences between celltypes", ylab="Expression")
+    boxplot(genome_size ~ cit, metadata,  col=c("pink","red", "orange"),
+            main="Average expression differences between cell types", ylab="Expression")
 ```
 ![](../img/genome_size_cit_col.png)
+
+> Hint: For more options for boxplots please explore [here](https://www.datamentor.io/r-programming/box-plot).
+> Or use the [R gallery](https://r-graph-gallery.com/) to visualise what plot you would like and some example code to adapt.
 
 Advanced figures (`ggplot2`)
 ============================
@@ -98,31 +102,41 @@ A plot **must have at least one geom**; there is no upper limit. You can add a g
     ggplot(metadata) +
       geom_point() 
 ```
-Run through the error protocol. 
 
-Each type of geom usually has a **required set of aesthetics** to be set, and usually accepts only a subset of all aesthetics –refer to the geom help pages to see what mappings each geom accepts. Aesthetic mappings are set with the aes() function. Examples include:
+Each type of geom usually has a **required set of aesthetics** to be set, and usually accepts only a subset of all aesthetics – refer to the geom help pages to see what mappings each geom accepts. 
 
+
+Aesthetic mappings are set with the aes() function. Examples include:
 *   position (i.e., on the x and y axes)
-*   color (“outside” color)
-*   fill (“inside” color) shape (of points)
-*   linetype
+*   colour (“outside” colour)
+*   fill (“inside” colour) shape (of points)
+*   line type
 *   size
 
-To start, we will add position for the x- and y-axis since `geom_point` requires mappings for x and y, all others are optional.
+To start, we will add the column names that correspond to the variable we want to set for the x- and y-values.
+`geom_point` requires arguments for x and y, all other arguements are optional.
+We will run the most basic scatterplot of `sample` against `genome size`.
 ```
     ggplot(metadata) +
       geom_point(aes(x = sample, y= genome_size))
 ```
 ![](../img/ggplot_1.png)
 
-The labels on the x-axis are quite hard to read. To do this we need to add an additional theme layer. The ggplot2 `theme` system handles non-data plot elements such as:
+The problem is that the labels on the x-axis are quite hard to read. To change this we need to add an additional theme layer. The ggplot2 `theme` system handles non-data plot infomation such as:
 
 *   Axis labels
 *   Plot background
-*   Facet label backround
+*   Facet label background
 *   Legend appearance
 
-There are built-in themes we can use, or we can adjust specific elements. For our figure we will change the x-axis labels to be plotted on a 45 degree angle with a small horizontal shift to avoid overlap. We will also add some additional aesthetics by mapping them to other variables in our dataframe. _For example, the color of the points will reflect the number of generations and the shape will reflect citrate mutant status._ The size of the points can be adjusted within the `geom_point` but does not need to be included in `aes()` since the value is not mapping to a variable.
+There are built-in themes we can use, or we can adjust specific elements. 
+
+
+For our figure we will change the x-axis labels to be plotted on a 45 degree angle with a small horizontal shift to avoid overlap. 
+
+We will also add some additional aesthetics by assigning them to other variables in our dataframe. 
+
+_For example, the color of the points will reflect the number of generations and the shape will reflect citrate mutant status._ The size of the points can be adjusted within the `geom_point` but does not need to be included in `aes()` since the value is not assigned to a variable.
 ```
     ggplot(metadata) +
       geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
@@ -136,7 +150,7 @@ Histogram
 To plot a histogram we require another geometric object `geom_bar`, which requires a statistical transformation. Some plot types (such as scatterplots) do not require transformations, each point is plotted at x and y coordinates equal to the original value. Other plots, such as boxplots, histograms, prediction lines etc. need to be transformed, and usually has a default statistic that can be changed via the `stat_bin` argument.
 ```
     ggplot(metadata) +
-      geom_bar(aes(x = genome_size))
+      geom_histogram(aes(x = genome_size))
 ```
 
 Try plotting with the default value and compare it to the plot using the binwidth values. How do they differ?
@@ -145,27 +159,33 @@ Try plotting with the default value and compare it to the plot using the binwidt
     ggplot(metadata) +
       geom_bar(aes(x = genome_size), stat = "bin", binwidth=0.05)
 ```
-    ## Warning: `geom_bar()` no longer has a `binwidth` parameter. Please use
-    ## `geom_histogram()` instead.
 
 
 ![](../img/ggplot_3.png)
 
-Please explore the different options found on the [cheatsheet](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf)
+
+
+Please explore the different options found on the [cheatsheet](https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf)
 
 
 > Exercise
 > --------
-> Change the colour of the histogram to red by within the ` aes() function.
+> Go to the [R Gallery(https://r-graph-gallery.com/). Choose your favourite histogram. Change the colour of the histogram to red. Should this be within the `aes()` function, or outside?
 > 
-> Change the theme to classic. **Hint** look at the cheatsheet
+> Change the theme to classic. **Hint** Look at the cheatsheet
+
 
 
 
 Boxplot
 -------
 
-Now that we have all the required information on let’s try plotting a boxplot similar to what we had done using the base plot functions at the start of this lesson. We can add some additional layers to include a plot title and change the axis labels. Explore the code below and all the different layers that we have added to understand what each layer contributes to the final graphic.
+Now that we have all the required information, let’s try plotting a boxplot similar to what we had done using the base plot functions at the start of this lesson. 
+
+We can add some additional layers to include a plot title and change the axis labels. 
+
+
+Explore the code below and all the different layers that we have added to understand what each layer contributes to the final graphic.
 ```
     ggplot(metadata) +
       geom_boxplot(aes(x = cit, y = genome_size, fill = cit)) +
@@ -210,8 +230,7 @@ The second option is to use R functions in the console, allowing you the flexibi
 
 > Exercise
 > --------
-> Make the prettiest plot you can !
->
+> Make the prettiest plot you can!
 > 
 
 Resources:
