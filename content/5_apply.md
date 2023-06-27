@@ -56,8 +56,11 @@ The apply function returned a vector containing the sums.
 > Exercise
 > --------
 > 1. By running the command. Have we calculated:
->   a. the sum of the rows 
+>    
+>   a. the sum of the rows
+> 
 >   b. the sum of the columns
+> 
 > 2. How would you calculate the opposite. (E.g. if we calculated rows, how do we calculate the sum of columns and vice versa)
 
 
