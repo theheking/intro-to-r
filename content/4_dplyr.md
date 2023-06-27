@@ -11,19 +11,19 @@ Aggregating and analyzing data with dplyr
 > 
 > * Install and load dplyr package
 > * Apply common dplyr functions to manipulate data in R.
-> * Employ the ‘pipe’ operator to link together a sequence of functions.
-> * Employ the ‘mutate’ function to apply other chosen functions to existing columns and create new columns of data.
-> * Employ the ‘split-apply-combine’ concept to split the data into groups, apply analysis to each group, and combine the results.
+> * Utilise the ‘pipe’ operator to link together a sequence of functions.
+> * Utilise the ‘mutate’ function to apply other chosen functions to existing columns and create new columns of data.
+> * Apply the ‘split-apply-combine’ concept to split the data into groups, apply analysis to each group, and combine the results.
 
 
 # Installing packages 
 `dplyr` is a package for making data manipulation easier.
 
-It is a member of the tidyverse family, which is a collection of packages aiming to help transform and better present data. In this course, we are learning dplyr and ggplot that have their own unique roles. 
+It is a member of the tidyverse family, which is a collection of packages aimed to transform and better present data. In this course, we are learning dplyr and ggplot that have their own unique roles visualised below. 
 
 ![tidyverse](../img/tidyverse-package-workflow.png)
 
-Packages in R are basically sets of additional functions that let you do more stuff in R. The functions we’ve been using, like `str()`, come built into R; packages give you access to more functions. You need to install a package and then load it to be able to use it.
+Packages in R are basically a collection of functions. The functions we’ve been using, like `str()`, come built into R; packages give you access to more functions. You need to install a package and then load it to be able to use it.
 
     install.packages("dplyr") ## install
 
@@ -47,6 +47,13 @@ What is dplyr?
 
 The package `dplyr` is a fairly new (2014) package that tries to provide easy tools for the most common data manipulation tasks. 
 It is built to work directly with data frames. 
+
+### Load Metadata CSV File
+Please rerun the command from Monday's session. This might be different depending on where you are within your directory. 
+
+```
+    metadata <- read.csv("data/Ecoli_metadata.csv", stringsAsFactors = TRUE)
+```
 
 ### Selecting columns and filtering rows
 
@@ -195,7 +202,7 @@ Look at [Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/
 > Using the cheatsheet above,
 > 1) Can you randomly select 3 rows from metadata?
 > 
-> 2) Can you group by the cit and summarize the mean generation number?
+> 2) Can you group by the cit and find the mean generation number across the groups?
 >
 >
 
