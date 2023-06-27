@@ -83,6 +83,7 @@ Sometimes R does not have an appropriate function for you to use. This is when y
 
 lapply, sapply and more....
 ============================
+So far with our application of apply across a dataframe. It is analogous to using the mutate function in apply. 
 
 lapply, and sapply are functions that will loop a function through data in a list or vector. There are numerous other apply functions with different arguement and outputs but we will just focus on these two.
 
@@ -134,7 +135,7 @@ sapply works just like lapply, but will simplify the output if possible. This me
 
 # Should I use, lapply sapply or another member of the apply group?
 
-If you are trying to decide which of these three functions to use, because it is the simplest, I would suggest to use sapply if possible. If you do not want your results to be simplified to a vector, lapply should be used. If you want to specify the type of result you are expecting, use vapply. To use vapply, please
+If you are trying to decide which of these three functions to use, because it is the simplest, I would suggest to use sapply if possible. If you do not want your results to be simplified to a vector, lapply should be used. If you want to specify the type of result you are expecting, use vapply. To learn more about vapply and why you would want to use it have a read [here](https://www.r-bloggers.com/2020/10/why-you-should-use-vapply-in-r/).
 
 
 
