@@ -11,6 +11,7 @@ Aggregating and analyzing data with dplyr
 > 
 > * Install and load dplyr package
 > * Apply common dplyr functions to manipulate data in R.
+> * Save a dataframe to csv file
 > * Utilise the ‘pipe’ operator to link together a sequence of functions.
 > * Utilise the ‘mutate’ function to apply other chosen functions to existing columns and create new columns of data.
 > * Apply the ‘split-apply-combine’ concept to split the data into groups, apply analysis to each group, and combine the results.
@@ -190,7 +191,7 @@ This is a data structure that’s very similar to a data frame; for our purposes
 
 You can also summarize multiple variables at the same time:
 ```
-    metadata %>%
+    summarise_metadata <- metadata %>%
       group_by(cit, clade) %>%
       summarize(mean_size = mean(genome_size, na.rm = TRUE),
                 min_generation = min(generation))
@@ -206,6 +207,13 @@ Look at [Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/
 >
 >
 
+### Exporting to csv 
+The goal is to export our processed dataset to a CSV file. 
+We will use the `write.csv` function which takes two arguments: the data frame you want to export and the location. 
+
+```
+write.csv(summarise_metadata, "data/summarised_metadata.csv")
+```
 
 
 ****
