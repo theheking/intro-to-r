@@ -81,7 +81,7 @@ Sometimes R does not have an appropriate function for you to use. This is when y
 
 ```
 
-# lapply, sapply and more....
+lapply, sapply and more....
 ============================
 
 lapply, and sapply are functions that will loop a function through data in a list or vector. There are numerous other apply functions with different arguement and outputs but we will just focus on these two.
