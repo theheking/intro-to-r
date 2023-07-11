@@ -199,6 +199,11 @@ Explore the code below and all the different layers that we have added to unders
 ```
 ![](../img/ggplot_4.png)
 
+> Exercise
+> --------
+> Check out other options using the [r-graph gallery](https://r-graph-gallery.com/263-ggplot2-boxplot-parameters.html).
+> 
+
 Writing figures to file
 =======================
 
@@ -230,13 +235,18 @@ The second option is to use R functions in the console, allowing you the flexibi
 
 > Exercise
 > --------
-> Make the prettiest plot you can!
+> Make the ugliest plot you can!
 > 
 
 Resources:
 ----------
 
 We have only scratched the surface here. To learn more, see the [ggplot2 reference site](http://docs.ggplot2.org/), and Winston Chang’s excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definative book on this subject. Much of the material here was adpapted from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).
+
+
+If still struggling to use ggplot
+---------------------------------
+Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it more easier to interact with ggplot. 
 
   
 ***
