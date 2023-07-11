@@ -286,6 +286,9 @@ x[c(2,3),c(1,3)]
 >    
 
 
+> Note: For particular packages there are custom R objects. These can combine all of the datatypes above to better streamline certain commands and pipelines. For example, Seurat has the format below.  
+![layout](../photos/layout.png)
+
 
 
 ****
