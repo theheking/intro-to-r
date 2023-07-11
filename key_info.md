@@ -13,8 +13,8 @@ First Session
 - Day 2: 1:30 pm – 5:30pm Wednesday 28th June
 
 Second Session
-- Day 1: 11:30am - 4pm Friday 14th June
-- Day 2: 1:15pm - 5:15pm Wednesday 19th June
+- Day 1: 11:30am - 4pm Friday 14th July
+- Day 2: 1:15pm - 5:15pm Wednesday 19th July
 
 
 
