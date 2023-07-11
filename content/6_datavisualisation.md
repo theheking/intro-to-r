@@ -235,8 +235,9 @@ The second option is to use R functions in the console, allowing you the flexibi
 
 > Exercise
 > --------
-> Make the ugliest plot you can!
-> 
+> Make the ugliest plot you can! Hint if you can make it uglier than Katherine's favourite graph I will be impressed
+> ![](../img/banana.png)
+
 
 Resources:
 ----------
