@@ -170,9 +170,9 @@ Please explore the different options found on the [cheatsheet](https://www.maths
 
 > Exercise
 > --------
-> Go to the [R Gallery(https://r-graph-gallery.com/). Choose your favourite histogram. Change the colour of the histogram to red. Should this be within the `aes()` function, or outside?
+> Go to the [R Gallery](https://r-graph-gallery.com/). Choose your favourite histogram. Change the colour of the histogram to red. Should this be within the `aes()` function, or outside?
 > 
-> Change the theme to classic. **Hint** Look at the cheatsheet
+>  **Hint** Look at the cheatsheet
 
 
 
@@ -201,7 +201,7 @@ Explore the code below and all the different layers that we have added to unders
 
 > Exercise
 > --------
-> Check out other options using the [r-graph gallery](https://r-graph-gallery.com/263-ggplot2-boxplot-parameters.html).
+> Check out other options using the [r-graph gallery](https://r-graph-gallery.com/264-control-ggplot2-boxplot-colors.html).
 > 
 
 Writing figures to file
