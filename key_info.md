@@ -7,22 +7,15 @@ title: Key Infomation
 Welcome All!
 
 
-### Dates
-First Session
-- Day 1: 1 pm – 5pm Monday 26th June
-- Day 2: 1:30 pm – 5:30pm Wednesday 28th June
-
-Second Session
-- Day 1: 11:30am - 4pm Friday 14th July
-- Day 2: 1:15pm - 5:15pm Wednesday 19th July
-
-
+## When (workshop will run over 2 days):
+Day 1: 10:00 am – 4 pm Monday 8th April 
+Day 2: 10:00 am – 4 pm Tuesday 9th April
 
 ## Before the course please make sure you have:
  - Charger 
  - Positive attitude!
  - RStudio and R installed (see the instructions below)
- 
+ - A jumper (The room can get cold in the afternoons so please bring something to keep warm.)
  
 ## At the end of the workshop you will be able to:
 - Use R to navigate data
