@@ -1,4 +1,4 @@
----
+![image](https://github.com/theheking/intro-to-r/assets/36276388/1475b061-519d-4e47-9e33-da6849dec916)---
 layout: page
 title: Key Infomation
 ---
@@ -8,8 +8,9 @@ Welcome All!
 
 
 ## When (workshop will run over 2 days):
-Day 1: 10:00 am – 4 pm Monday 8th April 
-Day 2: 10:00 am – 4 pm Tuesday 9th April
+- **Day 1:** 10:00 am – 4 pm Monday 8th April 
+
+- **Day 2:** 10:00 am – 4 pm Tuesday 9th April
 
 ## Before the course please make sure you have:
  - Charger 
