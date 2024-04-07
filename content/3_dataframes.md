@@ -42,6 +42,8 @@ The columns stand for:
 > Hint: If you can’t find the Ecoli\_metadata.csv file, or have lost track of it, download the file directly using the R `download.file() function`
 > Hint: Make sure you make a new folder to save the new Ecoli_metadata.csv file. 
 
+    dir.create('data')
+    
     download.file("https://raw.githubusercontent.com/theheking/intro-to-r/gh-pages/data/Ecoli_metadata.csv", "data/Ecoli_metadata.csv")
 
 
