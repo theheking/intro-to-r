@@ -42,7 +42,7 @@ The columns stand for:
 > Hint: If you can’t find the Ecoli\_metadata.csv file, or have lost track of it, download the file directly using the R `download.file() function`
 > Hint: Make sure you make a new folder to save the new Ecoli_metadata.csv file. 
 
-    download.file("https://raw.githubusercontent.com/datacarpentry/R-genomics/gh-pages/data/Ecoli_metadata.csv", "data/Ecoli_metadata.csv")
+    download.file("https://raw.githubusercontent.com/theheking/intro-to-r/gh-pages/data/Ecoli_metadata.csv", "data/Ecoli_metadata.csv")
 
 
 
@@ -112,7 +112,7 @@ Let's create a very common error you might encounter.
 1. Don't panic - you are not special
 2. First read the error message - what does it say 
 3. Next, check your code for easily done errors (a) matched brackets (b) matched quotation marks (c) correct names 
-4. Then google the error message. However, this doesn’t always work very well because often, package developers rely on the error catching provided by R. 
+4. Then, google the error message. However, this doesn’t always work very well because package developers often rely on the error catching provided by R. 
 5. You end up with general error messages that might not be very helpful to diagnose a problem (e.g. “subscript out of bounds”).
 6. However, you should check stackoverflow.com. Search using the [r] tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: http://stackoverflow.com/questions/tagged/r
 
@@ -253,13 +253,13 @@ Let us convert the clade columns from a character to a factor column using the `
     factor(metadata[,3])
 ```
 
-We can see the levels associated with this factor are: `Levels: (C1,C2) C1 C2 C3 Cit+ UC unknown`. 
+The levels associated with this factor are `Levels: (C1,C2) C1 C2 C3 Cit+ UC unknown`. 
 
 > Exercise
 > ===========
-> Let's reread in our metadata data frame, but set every character column to be a factor.
+> Let's reread our metadata data frame, but set every character column to be a factor.
 > 
-> By looking at the help page can you edit the command below with a new arguement that would read in all strings as factors?
+> By looking at the help page, can you edit the command below with a new argument that would read all strings as factors?
 > 
 > ```
 >    metadata <- read.csv('data/Ecoli_metadata.csv')
