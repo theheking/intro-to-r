@@ -187,7 +187,7 @@ Explore the code below and all the different layers that we have added to unders
       ggtitle('Boxplot of genome size by citrate mutant type') +
       xlab('citrate mutant') +
       ylab('genome size') +
-      theme(panel.grid.major = element_line(size = .5, color = "grey"),
+      theme(panel.grid.major = element_line(color = "grey"),
               axis.text.x = element_text(angle=45, hjust=1),
               axis.title = element_text(size = rel(1.5)),
               axis.text = element_text(size = rel(1.25)))
@@ -234,17 +234,38 @@ The second option is to use R functions in the console, allowing you the flexibi
 > ![](../img/banana.png)
 
 
+
+Integrating statistical tests into your plot
+--------------------------------------
+Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it easier to interact with ggplot and integrate statistics. Different statistical tests are appropriate depending on the number of groups and the distribution of the data within the groups. 
+
+First, you must install the ggubr, load it into your library and plot your boxplot. 
+
+```
+    install.packages("ggpubr")
+    library(ggpubr)
+    p <- ggboxplot(metadata, x = "cit", y = "genome_size",
+               color = "cit", palette =c("#4D00C7", "#DA3C07", "#05D3D3","#C6C7C5"),
+               add = "jitter", shape = "cit") +
+                xlab(" Citrate Mutant") + ylab("Genome Size (Mb)")
+    my_comparisons <- list( c("unknown", "minus"), c("unknown", "plus"), c("minus", "plus") )
+    p + stat_compare_means(  comparisons = my_comparisons, 
+                             aes(label = after_stat(p.signif)))   # add pvalue
+
+```
+
+> ![](../img/ggpubr.png)
+
+
 Resources:
 ----------
 
 We have only scratched the surface here. To learn more, see the [ggplot2 reference site](http://docs.ggplot2.org/), and Winston Chang’s excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definative book on this subject. Much of the material here was adpapted from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).
 
+To investigate more into colour palettes [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
 
-If still struggling to use ggplot
----------------------------------
-Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it more easier to interact with ggplot. 
 
-  
+
 ***
 
 Material adapted from (https://datacarpentry.org/R-genomics/01-intro-to-R.html) and (https://datacarpentry.org/semester-biology/materials/r-intro/)
