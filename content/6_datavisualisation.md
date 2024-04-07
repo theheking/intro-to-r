@@ -65,12 +65,7 @@ Using additional information from our metadata, we can use plots to compare valu
 ```
 ![](../img/genome_size_cit.png)
 
-Similar to the scatterplots above, we can pass in arguments to add in extras like plot title, axis labels and colours.
-```
-    boxplot(genome_size ~ cit, metadata,  col=c("pink","red", "orange"),
-            main="Average expression differences between cell types", ylab="Expression")
-```
-![](../img/genome_size_cit_col.png)
+However, these are really ugly plots, so we are going to facilitate using ggplot and other packages to improve visualisation. 
 
 > Hint: For more options for boxplots please explore [here](https://www.datamentor.io/r-programming/box-plot).
 > Or use the [R gallery](https://r-graph-gallery.com/) to visualise what plot you would like and some example code to adapt.
