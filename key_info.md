@@ -8,9 +8,9 @@ Welcome All!
 
 
 ## When (workshop will run over 2 days):
-- **Day 1:** 10:00 am – 4 pm Monday 8th April 
+- **Day 1:** Monday 30 June, 10am–3pm 
 
-- **Day 2:** 10:00 am – 4 pm Tuesday 9th April
+- **Day 2:** Tuesday 1 July, 10am–3pm
 
 ## Before the course please make sure you have:
  - Charger 
