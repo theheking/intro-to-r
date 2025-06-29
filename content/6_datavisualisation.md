@@ -238,9 +238,38 @@ The second option is to use R functions in the console, allowing you the flexibi
 
 Integrating statistical tests into your plot
 --------------------------------------
-Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it easier to interact with ggplot and integrate statistics. Different statistical tests are appropriate depending on the number of groups and the distribution of the data within the groups. 
+Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it easier to interact with ggplot and integrate statistics. Different statistical tests are appropriate depending on the number of groups and the distribution of the data within the groups. This is not a statistics class so, I will not go into all the statistical tests available.
 
 First, you'll need to install the ggubr, load it into your library and plot your boxplot. 
+
+Need to first check what type of test is appropriate. You need to check:
+
+1. Data type
+2. Comparing the number of groups
+3. The number of n per group
+4. The data distribution, outlier status and more.
+
+1. We know the `genome_size` is numeric and `cit` status is categorical. 
+
+We want to check if there is a signficant difference between the size of the genome across colonies that can metabolise citrate (plus, unknown and minus). 
+
+2. Comparing pair-wise with minus and plus, unknown and plus and finally, minus and unknown.
+
+3. Using `table` to show the number of counts. Group sizes are small. 
+
+```
+ table(metadata$cit)
+
+  minus    plus unknown 
+      9       9      12 
+```
+
+
+4. Shapiro-Wilk test ( `shapiro.test()` ) or Kolmogorov-Smirnov test ( `ks.test()` ) can be used for formal normality tests. However, visual checks are often sufficient, especially with larger sample sizes.
+
+The distribution of genome_size is unlikely to be perfectly normal, especially given: (a) Tied values (e.g., repeated 4.62, 4.63) (b) Small sample sizes (c) standard deviations are small and (d) pair-wise check. The Kruskal–Wallis test is the most appropriate choice here. It is a non-parametric test for comparing medians across 2 groups, and it doesn’t assume normality.
+
+
 
 ```
     install.packages("ggpubr")
@@ -250,12 +279,27 @@ First, you'll need to install the ggubr, load it into your library and plot your
                add = "jitter", shape = "cit") +
                 xlab(" Citrate Mutant") + ylab("Genome Size (Mb)")
     my_comparisons <- list( c("unknown", "minus"), c("unknown", "plus"), c("minus", "plus") )
-    p + stat_compare_means(  comparisons = my_comparisons, 
-                             aes(label = after_stat(p.signif)))   # add pvalue
+    p + stat_compare_means(comparisons = my_comparisons,
+                       method = "wilcox.test",
+                       aes(label = after_stat(p.signif)),
+                       exact = FALSE)
 
 ```
 
+
+
 > ![](../img/ggpubr.png)
+
+
+You will get a warning:
+```
+Warning messages:
+1: In wilcox.test.default(...):
+  cannot compute exact p-value with ties
+  ```
+
+because the Wilcoxon rank-sum test (also known as the Mann–Whitney U test) tries by default to compute exact p-values, which rely on all values being unique. When ties (duplicate values) exist in your data, the exact distribution of the test statistic cannot be determined, and the test has to switch to an approximate method.
+
 
 
 Resources:
