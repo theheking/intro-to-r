@@ -4,7 +4,7 @@ title: 6 - Data Visualisation
 ---
 
 
-Data Visualization using ggplot
+Data Visualisation using ggplot
 ===================================
 > Learning Objectives
 > -------------------
@@ -18,22 +18,22 @@ Data Visualization using ggplot
 Basic plots in R
 ================
 
-The mathematician Richard Hamming once said, “The purpose of computing is insight, not numbers”, and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few features of R’s plotting packages.
+The mathematician Richard Hamming once said, “The purpose of computing is insight, not numbers”, and the best way to develop insight is often to visualise data. Visualisation deserves an entire lecture (or course) of its own, but we can explore a few features of R’s plotting packages.
 
-When we are working with large sets of numbers it can be useful to display that information graphically. R has a number of built-in tools for basic graph types such as hisotgrams, scatter plots, bar charts, boxplots and much [more](http://www.statmethods.net/graphs/). We’ll test a few of these out here on the `genome_size` vector from our metadata.
+When we are working with large sets of numbers, it can be useful to display that information graphically. R has several built-in tools for basic graph types such as histograms, scatter plots, bar charts, boxplots and much [more](http://www.statmethods.net/graphs/). We’ll test a few of these out here on the `genome_size` vector from our metadata.
 
     genome_size <- metadata$genome_size
 
 Scatterplot
 -----------
 
-Let’s start with a **scatterplot**. A scatter plot provides a graphical view of the relationship between two sets of numbers. We don’t have a variable in our metadata that is a continous variable, so there is nothing to plot it against but we can plot the values against their index values just to demonstrate the function.
+Let’s start with a **scatterplot**. A scatter plot provides a graphical view of the relationship between two sets of numbers. We don’t have a variable in our metadata that is a continuous variable, so there is nothing to plot it against, but we can plot the values against their index values just to demonstrate the function.
 
     plot(genome_size)
 
 ![](../img/genome_size.png)
 
-Each point represents a clone and the value on the x-axis is the clone index in the file, where the values on the y-axis correspond to the genome size for the clone. For any plot you can customize many features of your graphs (fonts, colors, axes, titles) through [graphic options](http://www.statmethods.net/advgraphs/parameters.html) For example, we can change the shape of the data point using `pch`.
+Each point represents a clone, and the value on the x-axis is the clone index in the file, where the values on the y-axis correspond to the genome size for the clone. For any plot, you can customise many features of your graphs (fonts, colours, axes, titles) through [graphic options](http://www.statmethods.net/advgraphs/parameters.html). For example, we can change the shape of the data point using `pch`.
 ```
     plot(genome_size, pch=8)
 ```
@@ -48,7 +48,7 @@ We can add a title to the plot by assigning a string to `main`:
 Histogram
 ---------
 
-Another way to visualize the distribution of genome sizes is to use a histogram, we can do this buy using the `hist` function:
+Another way to visualise the distribution of genome sizes is to use a histogram. We can do this by using the `hist` function:
 ```
     hist(genome_size)
 ```
@@ -73,9 +73,9 @@ However, these are really ugly plots, so we are going to facilitate using ggplot
 Advanced figures (`ggplot2`)
 ============================
 
-More recently, R users have moved away from base graphic options and towards a plotting package called [`ggplot2`](http://docs.ggplot2.org/) that adds a lot of functionality to the basic plots seen above. The syntax takes some getting used to but it’s extremely powerful and flexible. We can start by re-creating some of the above plots but using ggplot functions to get a feel for the syntax.
+More recently, R users have shifted away from base graphic options and toward a plotting package called [`ggplot2`](http://docs.ggplot2.org/), which adds significant functionality to the basic plots seen above. The syntax takes some getting used to but it’s extremely powerful and flexible. We can start by re-creating some of the above plots but using ggplot functions to get a feel for the syntax.
 
-`ggplot2` is best used on data in the `data.frame` form, so we will will work with `metadata` for the following figures. Let’s start by loading the `ggplot2` library.
+`ggplot2` is best used on data in the `data.frame` form, so we will work with `metadata` for the following figures. Let’s start by loading the `ggplot2` library.
 ```
     library("ggplot2")
 ```
@@ -238,51 +238,66 @@ The second option is to use R functions in the console, allowing you the flexibi
 
 Integrating statistical tests into your plot
 --------------------------------------
-Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it easier to interact with ggplot and integrate statistics. Different statistical tests are appropriate depending on the number of groups and the distribution of the data within the groups. This is not a statistics class so, I will not go into all the statistical tests available.
+Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it easier to interact with ggplot and integrate statistics. Different statistical tests are appropriate depending on the number of groups and the distribution of the data within the groups. 
 
-First, you'll need to install the ggubr, load it into your library and plot your boxplot. 
+This isn’t a statistics class, so we won’t cover all available methods. However, we'll walk through the logic for choosing a suitable test for this dataset.
 
-First, we need to determine what type of test is appropriate. You need to check:
+Step-by-step: Choosing the appropriate test:
 
-1. Data type
-2. Comparing the number of groups
-3. The number of n per group
-4. The data distribution, outlier status and more.
+1. Data type.
+   i. genome_size is numeric.
+   ii. cit is a categorical variable with three levels: "plus", "minus", and "unknown".
 
+2. What are we comparing?
+   i. We're interested in whether genome size differs between citrate-utilisation groups (cit status).
+   ii. We will perform pairwise comparisons: "minus" vs "plus", "unknown" vs "plus" and "minus" vs "unknown".
 
+3. Group sizes. These are relatively small sample sizes.
 
-    
-    
-    1. We know the `genome_size` is numeric and `cit` status is categorical. We want to check if there is a signficant difference between the size of the genome across colonies that can metabolise citrate (plus, unknown and minus). 
-
-    2. Comparing pair-wise with minus and plus, unknown and plus and finally, minus and unknown.
-
-    3. Using `table` to show the number of counts. Group sizes are small.
-    4. Shapiro-Wilk test ( `shapiro.test()` ) or Kolmogorov-Smirnov test ( `ks.test()` ) can be used for formal normality tests. However, visual checks are often sufficient, especially with larger sample sizes.
-
-```
- table(metadata$cit)
-
+ `table(metadata$cit)`
   minus    plus unknown 
       9       9      12 
+
+4. Data distribution and normality. While formal normality tests (e.g., shapiro.test() or ks.test()) can be used, small sample sizes and the presence of tied values (e.g., repeated 4.62, 4.63) already suggest that the data likely violate normality assumptions. The standard deviations are small, and visual inspections show limited spread within each group.
+
+Choosing the test
+Because:
+- The data are numeric
+- The group sizes are small
+- There are tied values and limited variance
+- And we are comparing group medians across pairs of groups.
+
+We choose the Wilcoxon rank-sum test (a non-parametric alternative to the t-test) for pairwise comparisons.
+For testing across all three groups simultaneously, we would use the Kruskal–Wallis test; however, that’s not necessary here, as we're interested in pairwise differences.
+
+For visualisation, you'll need to install the ggubr, load it into your library and plot your boxplot. 
+
 ```
-
-
-The distribution of genome_size is unlikely to be perfectly normal, especially given: (a) Tied values (e.g., repeated 4.62, 4.63) (b) Small sample sizes (c) standard deviations are small and (d) pair-wise check. The Kruskal–Wallis test is the most appropriate choice here. It is a non-parametric test for comparing medians across 2 groups, and it doesn’t assume normality.
-
-```
+    # Install and load ggpubr
     install.packages("ggpubr")
-    library("ggpubr")
+    library(ggpubr)
+    
+    # Visualize with boxplot
     p <- ggboxplot(metadata, x = "cit", y = "genome_size",
-               color = "cit", palette =c("#4D00C7", "#DA3C07", "#05D3D3","#C6C7C5"),
-               add = "jitter", shape = "cit") +
-                xlab(" Citrate Mutant") + ylab("Genome Size (Mb)")
-    my_comparisons <- list( c("unknown", "minus"), c("unknown", "plus"), c("minus", "plus") )
-    p + stat_compare_means(comparisons = my_comparisons,
-                       method = "wilcox.test",
-                       aes(label = after_stat(p.signif)),
-                       exact = FALSE)
-
+                   color = "cit",
+                   palette = c("#4D00C7", "#DA3C07", "#05D3D3", "#C6C7C5"),
+                   add = "jitter", shape = "cit") +
+         xlab("Citrate Mutant") + ylab("Genome Size (Mb)")
+    
+    # Define pairwise comparisons
+    my_comparisons <- list(
+      c("unknown", "minus"),
+      c("unknown", "plus"),
+      c("minus", "plus")
+    )
+    
+    # Add Wilcoxon test results with significance labels
+    p + stat_compare_means(
+          comparisons = my_comparisons,
+          method = "wilcox.test",
+          aes(label = after_stat(p.signif)),
+          exact = FALSE  # avoid warning with ties
+      )
 ```
 
 
@@ -290,14 +305,16 @@ The distribution of genome_size is unlikely to be perfectly normal, especially g
 > ![](../img/ggpubr.png)
 
 
-You will get a warning:
+You might get a warning:
+
 ```
 Warning messages:
 1: In wilcox.test.default(...):
   cannot compute exact p-value with ties
   ```
 
-because the Wilcoxon rank-sum test (also known as the Mann–Whitney U test) tries by default to compute exact p-values, which rely on all values being unique. When ties (duplicate values) exist in your data, the exact distribution of the test statistic cannot be determined, and the test has to switch to an approximate method.
+This occurs because the Wilcoxon rank-sum test (also called the Mann–Whitney U test) attempts to compute an exact p-value by default. However, this method assumes that all values are unique. When your data contain tied values—as is the case here with repeated measurements like 4.62 and 4.63—the exact method is no longer valid. In such cases, the test automatically switches to an approximate method (based on a normal approximation) and raises this warning.
+
 
 
 
