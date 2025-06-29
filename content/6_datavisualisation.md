@@ -242,7 +242,7 @@ Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it easier to inter
 
 This isn’t a statistics class, so we won’t cover all available methods. However, we'll walk through the logic for choosing a suitable test for this dataset.
 
-Step-by-step: Choosing the appropriate test:
+### Step-by-step: Choosing the appropriate test:
 
 1. Data type.
    i. genome_size is numeric.
@@ -260,8 +260,7 @@ Step-by-step: Choosing the appropriate test:
 
 4. Data distribution and normality. While formal normality tests (e.g., shapiro.test() or ks.test()) can be used, small sample sizes and the presence of tied values (e.g., repeated 4.62, 4.63) already suggest that the data likely violate normality assumptions. The standard deviations are small, and visual inspections show limited spread within each group.
 
-Choosing the test
-Because:
+Choosing the test because:
 - The data are numeric
 - The group sizes are small
 - There are tied values and limited variance
@@ -270,14 +269,14 @@ Because:
 We choose the Wilcoxon rank-sum test (a non-parametric alternative to the t-test) for pairwise comparisons.
 For testing across all three groups simultaneously, we would use the Kruskal–Wallis test; however, that’s not necessary here, as we're interested in pairwise differences.
 
-For visualisation, you'll need to install the ggubr, load it into your library and plot your boxplot. 
+For visualisation, you'll need to install the ggubr package, load it into your library, and plot your boxplot. 
 
 ```
     # Install and load ggpubr
     install.packages("ggpubr")
     library(ggpubr)
     
-    # Visualize with boxplot
+    # Visualise with a boxplot
     p <- ggboxplot(metadata, x = "cit", y = "genome_size",
                    color = "cit",
                    palette = c("#4D00C7", "#DA3C07", "#05D3D3", "#C6C7C5"),
@@ -313,7 +312,8 @@ Warning messages:
   cannot compute exact p-value with ties
   ```
 
-This occurs because the Wilcoxon rank-sum test (also called the Mann–Whitney U test) attempts to compute an exact p-value by default. However, this method assumes that all values are unique. When your data contain tied values—as is the case here with repeated measurements like 4.62 and 4.63—the exact method is no longer valid. In such cases, the test automatically switches to an approximate method (based on a normal approximation) and raises this warning.
+This occurs because the Wilcoxon rank-sum test (also called the Mann–Whitney U test) attempts to compute an exact p-value by default. However, this method assumes that all values are unique. When your data contains tied values—as is the case here with repeated measurements like 4.62 and 4.63—the exact method is no longer valid. In such cases, the test automatically switches to an approximate method (based on a normal approximation) and raises this warning.
+
 
 
 
