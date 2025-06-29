@@ -242,12 +242,14 @@ Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it easier to inter
 
 First, you'll need to install the ggubr, load it into your library and plot your boxplot. 
 
-Need to first check what type of test is appropriate. You need to check:
+First, we need to determine what type of test is appropriate. You need to check:
 
 1. Data type
 2. Comparing the number of groups
 3. The number of n per group
 4. The data distribution, outlier status and more.
+
+
 
 1. We know the `genome_size` is numeric and `cit` status is categorical. 
 
@@ -264,10 +266,10 @@ We want to check if there is a signficant difference between the size of the gen
       9       9      12 
 ```
 
-
 4. Shapiro-Wilk test ( `shapiro.test()` ) or Kolmogorov-Smirnov test ( `ks.test()` ) can be used for formal normality tests. However, visual checks are often sufficient, especially with larger sample sizes.
 
 The distribution of genome_size is unlikely to be perfectly normal, especially given: (a) Tied values (e.g., repeated 4.62, 4.63) (b) Small sample sizes (c) standard deviations are small and (d) pair-wise check. The Kruskal–Wallis test is the most appropriate choice here. It is a non-parametric test for comparing medians across 2 groups, and it doesn’t assume normality.
+
 
 
 
