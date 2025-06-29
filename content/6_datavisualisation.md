@@ -244,7 +244,7 @@ First, you'll need to install the ggubr, load it into your library and plot your
 
 ```
     install.packages("ggpubr")
-    library(ggpubr)
+    library("ggpubr")
     p <- ggboxplot(metadata, x = "cit", y = "genome_size",
                color = "cit", palette =c("#4D00C7", "#DA3C07", "#05D3D3","#C6C7C5"),
                add = "jitter", shape = "cit") +
