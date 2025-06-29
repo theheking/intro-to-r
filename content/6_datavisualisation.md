@@ -251,13 +251,14 @@ First, we need to determine what type of test is appropriate. You need to check:
 
 
 
-1. We know the `genome_size` is numeric and `cit` status is categorical. 
+    
+    
+    1. We know the `genome_size` is numeric and `cit` status is categorical. We want to check if there is a signficant difference between the size of the genome across colonies that can metabolise citrate (plus, unknown and minus). 
 
-We want to check if there is a signficant difference between the size of the genome across colonies that can metabolise citrate (plus, unknown and minus). 
+    2. Comparing pair-wise with minus and plus, unknown and plus and finally, minus and unknown.
 
-2. Comparing pair-wise with minus and plus, unknown and plus and finally, minus and unknown.
-
-3. Using `table` to show the number of counts. Group sizes are small. 
+    3. Using `table` to show the number of counts. Group sizes are small.
+    4. Shapiro-Wilk test ( `shapiro.test()` ) or Kolmogorov-Smirnov test ( `ks.test()` ) can be used for formal normality tests. However, visual checks are often sufficient, especially with larger sample sizes.
 
 ```
  table(metadata$cit)
@@ -266,12 +267,8 @@ We want to check if there is a signficant difference between the size of the gen
       9       9      12 
 ```
 
-4. Shapiro-Wilk test ( `shapiro.test()` ) or Kolmogorov-Smirnov test ( `ks.test()` ) can be used for formal normality tests. However, visual checks are often sufficient, especially with larger sample sizes.
 
 The distribution of genome_size is unlikely to be perfectly normal, especially given: (a) Tied values (e.g., repeated 4.62, 4.63) (b) Small sample sizes (c) standard deviations are small and (d) pair-wise check. The Kruskal–Wallis test is the most appropriate choice here. It is a non-parametric test for comparing medians across 2 groups, and it doesn’t assume normality.
-
-
-
 
 ```
     install.packages("ggpubr")
