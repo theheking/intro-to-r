@@ -77,11 +77,12 @@ More recently, R users have moved away from base graphic options and towards a p
 
 `ggplot2` is best used on data in the `data.frame` form, so we will will work with `metadata` for the following figures. Let’s start by loading the `ggplot2` library.
 ```
-    library(ggplot2)
+    library("ggplot2")
 ```
-The `ggplot()` function is used to initialize the basic graph structure, then we add to it. The basic idea is that you specify different parts of the plot, and add them together using the `+` operator.
 
-We will start with a blank plot and will add layers as we go along.
+The `ggplot()` function is used to initialise the basic graph structure, and then we add to it. The basic idea is that you specify different parts of the plot and add them together using the `+` operator.
+
+We will start with a blank plot and add layers as we progress.
 ```
     ggplot(metadata)
 ```
@@ -109,7 +110,7 @@ Aesthetic mappings are set with the aes() function. Examples include:
 *   size
 
 To start, we will add the column names that correspond to the variable we want to set for the x- and y-values.
-`geom_point` requires arguments for x and y, all other arguements are optional.
+`geom_point` requires arguments for x and y, all other arguments are optional.
 We will run the most basic scatterplot of `sample` against `genome size`.
 ```
     ggplot(metadata) +
@@ -117,21 +118,21 @@ We will run the most basic scatterplot of `sample` against `genome size`.
 ```
 ![](../img/ggplot_1.png)
 
-The problem is that the labels on the x-axis are quite hard to read. To change this we need to add an additional theme layer. The ggplot2 `theme` system handles non-data plot infomation such as:
+The problem is that the labels on the x-axis are quite hard to read. To change this, we need to add a theme layer. The ggplot2 `theme` system handles non-data plot information such as:
 
 *   Axis labels
 *   Plot background
 *   Facet label background
 *   Legend appearance
 
-There are built-in themes we can use, or we can adjust specific elements. 
+We have built-in themes to use, or we can adjust specific elements. 
 
 
-For our figure we will change the x-axis labels to be plotted on a 45 degree angle with a small horizontal shift to avoid overlap. 
+For our figure, we will change the x-axis labels to be plotted on a 45-degree angle with a small horizontal shift to avoid overlap. 
 
 We will also add some additional aesthetics by assigning them to other variables in our dataframe. 
 
-_For example, the color of the points will reflect the number of generations and the shape will reflect citrate mutant status._ The size of the points can be adjusted within the `geom_point` but does not need to be included in `aes()` since the value is not assigned to a variable.
+_For example, the colour of the points will reflect the number of generations and the shape will reflect citrate mutant status._ The size of the points can be adjusted within the `geom_point` but does not need to be included in `aes()` since the value is not assigned to a variable.
 ```
     ggplot(metadata) +
       geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
@@ -142,13 +143,13 @@ _For example, the color of the points will reflect the number of generations and
 Histogram
 ---------
 
-To plot a histogram we require another geometric object `geom_bar`, which requires a statistical transformation. Some plot types (such as scatterplots) do not require transformations, each point is plotted at x and y coordinates equal to the original value. Other plots, such as boxplots, histograms, prediction lines etc. need to be transformed, and usually has a default statistic that can be changed via the `stat_bin` argument.
+To plot a histogram, we require another geometric object, `geom_bar`, which requires a statistical transformation. Some plot types (such as scatterplots) do not require transformations; each point is plotted at x and y coordinates equal to the original value. Other plots, such as boxplots and histograms, as well as prediction lines, require transformation and typically have a default statistic that can be modified via the `stat_bin` argument.
 ```
     ggplot(metadata) +
       geom_histogram(aes(x = genome_size))
 ```
 
-Try plotting with the default value and compare it to the plot using the binwidth values. How do they differ?
+Could you try plotting with the default value and compare it to the plot using the binwidth values? How do they differ?
 
 ```
     ggplot(metadata) +
@@ -180,7 +181,7 @@ Now that we have all the required information, let’s try plotting a boxplot si
 We can add some additional layers to include a plot title and change the axis labels. 
 
 
-Explore the code below and all the different layers that we have added to understand what each layer contributes to the final graphic.
+Please take a look at the code below and the various layers we have added to understand the contributions of each layer to the final graphic.
 ```
     ggplot(metadata) +
       geom_boxplot(aes(x = cit, y = genome_size, fill = cit)) +
@@ -199,14 +200,14 @@ Explore the code below and all the different layers that we have added to unders
 > Check out other options using the [r-graph gallery](https://r-graph-gallery.com/264-control-ggplot2-boxplot-colors.html).
 > 
 
-Writing figures to file
+Writing figures to a file
 =======================
 
 There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio ‘Plots’ panel, by clicking on `Export` when the image is plotted. This will give you the option of `png` or `pdf` and selecting the directory to which you wish to save it to.
 
-The second option is to use R functions in the console, allowing you the flexibility to specify parameters to dictate the size and resolution of the output image. Some of the more popular formats include `pdf()`, `png()`, which are functions that initialize a plot that will be written directly to a file in the `pdf` or `png` format, respectively. Within the function you will need to specify a name for your image in quotes and the width and height. Specifying the width and height is optional, but can be very useful if you are using the figure in a paper or presentation and need it to have a particular resolution. Note that the default units for image dimensions are either pixels (for png) or inches (for pdf). To save a plot to a file you need to:
+The second option is to use R functions in the console, allowing you the flexibility to specify parameters to dictate the size and resolution of the output image. Some of the more popular formats include `pdf()`, `png()`, which are functions that initialise a plot that will be written directly to a file in the `pdf` or `png` format, respectively. Within the function, you will need to specify a name for your image in quotes and the width and height. Specifying the width and height is optional, but can be very useful if you are using the figure in a paper or presentation and need it to have a particular resolution. Note that the default units for image dimensions are either pixels (for png) or inches (for pdf). To save a plot to a file, you need to:
 
-1.  Initialize the plot using the function that corresponds to the type of file you want to make: `pdf("filename")`
+1.  Initialise the plot using the function that corresponds to the type of file you want to make: `pdf("filename")`
 2.  Write the code that makes the plot.
 3.  Close the connection to the new file (with your plot) using `dev.off()`.
 
@@ -230,7 +231,7 @@ The second option is to use R functions in the console, allowing you the flexibi
 
 > Exercise
 > --------
-> Make the ugliest plot you can! Hint if you can make it uglier than Katherine's favourite graph I will be impressed
+> Make the ugliest plot you can! Hint: if you can make it uglier than Katherine's favourite graph, I will be impressed
 > ![](../img/banana.png)
 
 
@@ -239,7 +240,7 @@ Integrating statistical tests into your plot
 --------------------------------------
 Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it easier to interact with ggplot and integrate statistics. Different statistical tests are appropriate depending on the number of groups and the distribution of the data within the groups. 
 
-First, you must install the ggubr, load it into your library and plot your boxplot. 
+First, you'll need to install the ggubr, load it into your library and plot your boxplot. 
 
 ```
     install.packages("ggpubr")
@@ -260,7 +261,9 @@ First, you must install the ggubr, load it into your library and plot your boxpl
 Resources:
 ----------
 
-We have only scratched the surface here. To learn more, see the [ggplot2 reference site](http://docs.ggplot2.org/), and Winston Chang’s excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. Though slightly out of date, [ggplot2: Elegant Graphics for Data Anaysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definative book on this subject. Much of the material here was adpapted from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).
+We have only scratched the surface here. To learn more, see the [ggplot2 reference site](http://docs.ggplot2.org/), and Winston Chang’s excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. 
+
+Though slightly out of date, [ggplot2: Elegant Graphics for Data Analysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definitive book on this subject. Much of the material here wasadaptedd from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).
 
 To investigate more into colour palettes [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
 
