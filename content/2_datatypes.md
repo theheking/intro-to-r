@@ -9,7 +9,7 @@ Understanding Data Types and Basic Functions
 > Learning Objectives
 > -------------------
 > 
-> * Describe what variables, vectors, and matrixes are and how they can be manipulated in R.
+> * Describe what variables, vectors, and matrices are and how they can be manipulated in R.
 > * Use the built-in RStudio help interface to search for more information on R functions.
 > * Describe what a function is in R.
 > * Inspect the content of vectors in R and describe their content with class and str.
@@ -125,13 +125,13 @@ class(genome_length_mb)
 
 
 There are 6 data types:
-- "character" for string values 
-- "numeric" for numbers
-- "logical" for TRUE and FALSE (the boolean data type)
-- "integer" for integer numbers (e.g., 2L, the L indicates to R that it’s an integer)
-- "complex" to represent complex numbers with real and imaginary parts (e.g., 1+4i), and that’s all we’re going to say about them
-- "raw" that we won’t discuss further
-
+- `character` for string values 
+- `numeric` for numbers
+- `logical` for TRUE and FALSE (the boolean data type)
+- `integer` for integer numbers (e.g., 2L, the L indicates to R that it’s an integer)
+- `complex` to represent complex numbers with real and imaginary parts (e.g., 1+4i)
+- `raw` values store sequences of bytes, essentially representing raw binary data
+  
 # Data Structures
 We will be going through vectors, lists, matrixes, and dataframes. 
 
@@ -178,17 +178,16 @@ We can extract multiple elements at a time by specifying multiple indices inside
 
 
 # List
-Note a vector is actually an "atomic" vector. An "atomic" vector has a homogeneous datatype in every element. 
-A list is actually still a vector in R, but it’s not an atomic vector.
+Note that a vector is an "atomic" vector. An "atomic" vector has a homogeneous datatype in every element. 
+A list is still a vector in R, but it’s not an atomic vector.
 
 
-There are three operators that can be used to extract subsets of R objects.
+Three operators can be used to extract subsets of R objects.
 
 - `[` returns an object of the same class as the original.
 - `[[` used to extract elements of a list or a data frame. It can only be used to extract a single element, and the returned object's class will not necessarily be a list or data frame.
     > Hint: If you apply `[` to a list it always returns a list: it never gives you the contents of the list.
 - The $ operator is used to extract elements of a list or data frame by literal name. Its semantics are similar to that of [[.
-
 
 
 ```
@@ -207,10 +206,12 @@ There are three operators that can be used to extract subsets of R objects.
 
 ```
 
-As seen above, the advantage of a list is that they can:
+
+As seen above, the advantage of a list is that it can:
 - Be heterogeneous, i.e. can be of different datatype. They don’t need to be atomic vectors – you can stick a function in there!
 - Have different lengths.
 - Have names. Or not. Or some of both.
+
 
 
 > Exercise
@@ -233,7 +234,7 @@ Matrixes are:
 - two-dimensional organisation of an m*n array
 - good for arithmetic operations
 - only a single class of data
-    - why do we utilize data frames instead
+
 
 To form a simple matrix, we use the command below.
 
@@ -262,7 +263,7 @@ x <- matrix(1:9, nrow=3, byrow=TRUE)
 
 To access elements of a matrix. 
 - Use square brackets `[` indexing method
-- elements can be accessed as `matrix[row_num,col_num]` where row_num/column_num is a vector of the number assigned to the row/column of interest.
+- Elements can be accessed as `matrix[row_num,col_num]` where row_num/column_num is a vector of the number assigned to the row/column of interest.
 
 Select rows 2 and 3 and columns 1 and 3.
 
@@ -286,7 +287,7 @@ x[c(2,3),c(1,3)]
 >    
 
 
-> Note: For particular packages there are custom R objects. These can combine all of the datatypes above to better streamline certain commands and pipelines. For example, Seurat has the format below.  
+> Note: For particular packages, there are custom R objects. These can combine all of the datatypes above to better streamline certain commands and pipelines. For example, Seurat has the format below.  
 ![layout](../img/seurat.png)
 
 
