@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Key Infomation
+title: Key Information
 ---
 
 # Intro to R
