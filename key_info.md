@@ -8,11 +8,11 @@ Welcome All!
 
 
 ## When (workshop will run over 2 days):
-- **Day 1:** Monday 30 June, 10am–3pm 
+- **Day 1:** Wednesday 6th May, 1pm–4pm 
 
-- **Day 2:** Tuesday 1 July, 10am–3pm
+- **Day 2:** Friday 8th May, 10am–4pm
 
-## Before the course please make sure you have:
+## Before the course please make sure that you have:
  - Charger 
  - Positive attitude!
  - RStudio and R installed (see the instructions below)
