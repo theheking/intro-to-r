@@ -12,6 +12,9 @@ Welcome All!
 
 - **Day 2:** Friday 8th May, 10am–4pm
 
+## Where:
+- John Shine Room, Level 6, TKCC
+
 ## Before the course please make sure that you have:
  - Charger 
  - Positive attitude!
