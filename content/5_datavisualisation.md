@@ -23,9 +23,11 @@ When we are working with large sets of numbers, it can be useful to display that
 
 However, for most people, you would only use the histogram function in base R plots. We will test that out on the genome size of our metadata.
 
+```
     genome_size <- metadata$genome_size
-
+```
 We can do this by using the `hist` function:
+
 ```
     hist(genome_size)
 ```
@@ -65,11 +67,10 @@ Each type of geom usually has a **required set of aesthetics** to be set, and us
 
 
 Aesthetic mappings are set with the aes() function. Examples include:
-*   position (i.e., on the x and y axes)
-*   colour (“outside” colour)
-*   fill (“inside” colour) shape (of points)
-*   line type
-*   size
+*   x (variable for the x axes)
+*   y (variable for the y axes)
+*   colour (variable for outline)
+*   fill (variable for "inside" colour)
 
 To start, we will add the column names that correspond to the variable we want to set for the x- and y-values.
 `geom_point` requires arguments for x and y, all other arguments are optional.
@@ -79,6 +80,9 @@ We will run the most basic scatterplot of `sample` against `genome size`.
       geom_point(aes(x = sample, y= genome_size))
 ```
 ![](../img/ggplot_1.png)
+
+> [!IMPORTANT]
+> Common beginner mistake: If you have these aesthetics inside aes() e.g. `geom_point(aes(fill = variable))` then every unique value in the "variable" column will be assigned a unique fill colour. If you want ALL items to be the same colour, then you put the fill argument in geom_point instead e.g. `geom_point(fill = 'red')` now all items will be red. If you do `geom_point(fill = variable)`, you will probably get an error.
 
 The problem is that the labels on the x-axis are quite hard to read. To change this, we need to add a theme layer. The ggplot2 `theme` system handles non-data plot information such as:
 
@@ -102,78 +106,35 @@ _For example, the colour of the points will reflect the number of generations an
 ```
 ![](../img/ggplot_2.png)
 
-Histogram
----------
+Combining data wrangling and plotting
+=======================
 
-To plot a histogram, we require another geometric object, `geom_bar`, which requires a statistical transformation. Some plot types (such as scatterplots) do not require transformations; each point is plotted at x and y coordinates equal to the original value. Other plots, such as boxplots and histograms, as well as prediction lines, require transformation and typically have a default statistic that can be modified via the `stat_bin` argument.
-```
-    ggplot(metadata) +
-      geom_histogram(aes(x = genome_size))
-```
-
-Could you try plotting with the default value and compare it to the plot using the binwidth values? How do they differ?
-
-```
-    ggplot(metadata) +
-      geom_bar(aes(x = genome_size), stat = "bin", binwidth=0.05)
-```
+Let's now try something a little more advanced (and a little more realistic). We will use a messier example dataset that is available in R.
 
 
-![](../img/ggplot_3.png)
-
-
-
-Please explore the different options found on the [cheatsheet](https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf)
-
-
-> Exercise
-> --------
-> Go to the [R Gallery](https://r-graph-gallery.com/). Choose your favourite histogram. Change the colour of the histogram to red. Should this be within the `aes()` function, or outside?
-> 
->  **Hint** Look at the cheatsheet
-
-
-
-
-Boxplot
--------
-
-Now that we have all the required information, let’s try plotting a boxplot similar to what we had done using the base plot functions at the start of this lesson. 
-
-We can add some additional layers to include a plot title and change the axis labels. 
-
-
-Please take a look at the code below and the various layers we have added to understand the contributions of each layer to the final graphic.
-```
-    ggplot(metadata) +
-      geom_boxplot(aes(x = cit, y = genome_size, fill = cit)) +
-      ggtitle('Boxplot of genome size by citrate mutant type') +
-      xlab('citrate mutant') +
-      ylab('genome size') +
-      theme(panel.grid.major = element_line(color = "grey"),
-              axis.text.x = element_text(angle=45, hjust=1),
-              axis.title = element_text(size = rel(1.5)),
-              axis.text = element_text(size = rel(1.25)))
-```
-![](../img/ggplot_4.png)
-
-> Exercise
-> --------
-> Check out other options using the [r-graph gallery](https://r-graph-gallery.com/264-control-ggplot2-boxplot-colors.html).
-> 
 
 Writing figures to a file
 =======================
 
-There are two ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio ‘Plots’ panel, by clicking on `Export` when the image is plotted. This will give you the option of `png` or `pdf` and selecting the directory to which you wish to save it to.
+In Rstudio, there are 3 ways in which figures and plots can be output to a file (rather than simply displaying on screen). The first (and easiest) is to export directly from the RStudio ‘Plots’ panel, by clicking on `Export` when the image is plotted. This will give you the option of `png` or `pdf` and selecting the directory to which you wish to save it to.
 
-The second option is to use R functions in the console, allowing you the flexibility to specify parameters to dictate the size and resolution of the output image. Some of the more popular formats include `pdf()`, `png()`, which are functions that initialise a plot that will be written directly to a file in the `pdf` or `png` format, respectively. Within the function, you will need to specify a name for your image in quotes and the width and height. Specifying the width and height is optional, but can be very useful if you are using the figure in a paper or presentation and need it to have a particular resolution. Note that the default units for image dimensions are either pixels (for png) or inches (for pdf). To save a plot to a file, you need to:
+However, what if you forgot the dimensions you chose last time? And now your new plot with slightly different dimensions looks squashed in comparison. Very annoying. This is where the other 2 methods come in handy.
+
+For the other 2 methods, I would recommend as best practise to assign the plots to an object. This is the common convention e.g.
+```
+p <- ggplot()
+```
+
+Option 2: `pdf()`, `png()`, etc functions with `dev.off`
+
+These functions initialise a plot that will be written directly to a file in the `pdf` or `png` format, respectively. Within the function, you will need to specify a name for your image in quotes and the width and height. Specifying the width and height is optional, but can be very useful if you are using the figure in a paper or presentation and need it to have a particular resolution. Note that the default units for image dimensions are either pixels (for png) or inches (for pdf). To save a plot to a file, you need to:
 
 1.  Initialise the plot using the function that corresponds to the type of file you want to make: `pdf("filename")`
-2.  Write the code that makes the plot.
+2.  Write the code that makes the plot or if you assigned the plot to an object just use the object e.g.
 3.  Close the connection to the new file (with your plot) using `dev.off()`.
 
 ```
+    # this works!
     pdf("figure/boxplot.pdf")
     
     ggplot(example_data) +
@@ -188,8 +149,34 @@ The second option is to use R functions in the console, allowing you the flexibi
     
     dev.off()
 
+    # this also works!
+    p <- ggplot(example_data) +
+      geom_boxplot(aes(x = cit, y =....) +
+      ggtitle(...) +
+      xlab(...) +
+      ylab(...) +
+      theme(panel.grid.major = element_line(...),
+              axis.text.x = element_text(...),
+              axis.title = element_text(...),
+              axis.text = element_text(...)
+
+    pdf("figure/boxplot.pdf")
+
+    p
+
+    dev.off()
+
+
 ```
 
+Option 3. `ggsave` family of functions - only works for ggplot objects but very powerful. This is the preferred method of plot saving for most people as it is easy to automate the saving of many plots.
+
+```
+p <- ggplot()
+
+ggsave('figure/boxplot.pdf', p, height = 6, width = 4)
+
+```
 
 > Exercise
 > --------
