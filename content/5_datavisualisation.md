@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 6 - Data Visualisation
+title: 5 - Data Visualisation
 ---
 
 
@@ -9,71 +9,33 @@ Data Visualisation using ggplot
 > Learning Objectives
 > -------------------
 > 
-> *   Create simple scatterplots, histograms, and boxplots in R.
-> *   Compare the plotting features of base R and the ggplot2 package.
-> *   Customize the aesthetics of an existing plot.
-> *   Create plots from data in a data frame.
+> *   Understand that there is basic R plotting (histograms) and more popular ggplot2 package plots (for everything else).
+> *   Be able to shape data into the correct format for making your desired plot.
+> *   Customise the aesthetics of an existing plot.
 > *   Export plots from RStudio to standard graphical file formats.
 
-Basic plots in R
-================
+Basic plots in R (Histogram)
+============================
 
 The mathematician Richard Hamming once said, “The purpose of computing is insight, not numbers”, and the best way to develop insight is often to visualise data. Visualisation deserves an entire lecture (or course) of its own, but we can explore a few features of R’s plotting packages.
 
-When we are working with large sets of numbers, it can be useful to display that information graphically. R has several built-in tools for basic graph types such as histograms, scatter plots, bar charts, boxplots and much [more](http://www.statmethods.net/graphs/). We’ll test a few of these out here on the `genome_size` vector from our metadata.
+When we are working with large sets of numbers, it can be useful to display that information graphically. R has several built-in tools for basic graph types such as histograms, scatter plots, bar charts, boxplots and much [more](http://www.statmethods.net/graphs/). 
+
+However, for most people, you would only use the histogram function in base R plots. We will test that out on the genome size of our metadata.
 
     genome_size <- metadata$genome_size
 
-Scatterplot
------------
-
-Let’s start with a **scatterplot**. A scatter plot provides a graphical view of the relationship between two sets of numbers. We don’t have a variable in our metadata that is a continuous variable, so there is nothing to plot it against, but we can plot the values against their index values just to demonstrate the function.
-
-    plot(genome_size)
-
-![](../img/genome_size.png)
-
-Each point represents a clone, and the value on the x-axis is the clone index in the file, where the values on the y-axis correspond to the genome size for the clone. For any plot, you can customise many features of your graphs (fonts, colours, axes, titles) through [graphic options](http://www.statmethods.net/advgraphs/parameters.html). For example, we can change the shape of the data point using `pch`.
-```
-    plot(genome_size, pch=8)
-```
-![](../img/genome_size_8.png)
-
-We can add a title to the plot by assigning a string to `main`:
-```
-    plot(genome_size, pch=8, main="Scatter plot of genome sizes")
-```
-![](../img/genome_size_8_title.png)
-
-Histogram
----------
-
-Another way to visualise the distribution of genome sizes is to use a histogram. We can do this by using the `hist` function:
+We can do this by using the `hist` function:
 ```
     hist(genome_size)
 ```
 ![](../img/genome_size_histogram.png)
 
-Boxplot
--------
-
-Using additional information from our metadata, we can use plots to compare values between the different citrate mutant status using a **boxplot**. A boxplot provides a graphical view of the median, quartiles, maximum, and minimum of a data set.
-```
-    # creating a boxplot
-    cit <- metadata$cit
-    boxplot(genome_size ~ cit, metadata)
-```
-![](../img/genome_size_cit.png)
-
-However, these are really ugly plots, so we are going to facilitate using ggplot and other packages to improve visualisation. 
-
-> Hint: For more options for boxplots please explore [here](https://www.datamentor.io/r-programming/box-plot).
-> Or use the [R gallery](https://r-graph-gallery.com/) to visualise what plot you would like and some example code to adapt.
 
 Advanced figures (`ggplot2`)
 ============================
 
-More recently, R users have shifted away from base graphic options and toward a plotting package called [`ggplot2`](http://docs.ggplot2.org/), which adds significant functionality to the basic plots seen above. The syntax takes some getting used to but it’s extremely powerful and flexible. We can start by re-creating some of the above plots but using ggplot functions to get a feel for the syntax.
+More recently, R users have shifted away from base graphic options and toward a plotting package called [`ggplot2`](http://docs.ggplot2.org/), which adds significant functionality to the basic plots seen above. The syntax takes some getting used to but it’s extremely powerful and flexible. Let's try out a basic scatterplot.
 
 `ggplot2` is best used on data in the `data.frame` form, so we will work with `metadata` for the following figures. Let’s start by loading the `ggplot2` library.
 ```
