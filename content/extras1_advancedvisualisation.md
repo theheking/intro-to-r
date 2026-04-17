@@ -166,8 +166,10 @@ msleep %>%
 **Exercise: Can you compare the brain to body weight ratio of each animal between diets?**
 
 This is the plot we are looking for:
-<img width="600" height="918" alt="image" src="https://github.com/user-attachments/assets/e12b5e31-a77f-4831-b37c-061e025f2661" />
 
+<img width="600" height="918" alt="image" src="https://github.com/user-attachments/assets/b2645374-08e1-4590-b660-b9fc187d15f7" />
+
+For anything where you have a different number of samples plotted, I HIGHLY recommend using `geom_text` to plot the number of samples, such as in this boxplot. However, this is a bit more advanced. Hint: You need to use a different `data` argument for the `geom_text`... A counts data perhaps...?
 
 ### Reshaping data
 
@@ -194,6 +196,7 @@ Most sensible format for plotting longitudinal data:
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/01ac787e-80d0-43ac-8f6a-af94d50b7fd9" />
 
 Hint: You can try to be very specific with LLMs:
+
 <img width="797" height="1023" alt="image" src="https://github.com/user-attachments/assets/00d375ba-cada-4790-ae0f-34e6efda45ba" />
 
 
