@@ -110,6 +110,48 @@ _For example, the colour of the points will reflect the number of generations an
 ```
 ![](../img/ggplot_2.png)
 
+### Custom colours
+The default ggplot2 colours can be quite ugly - continuous scales are ESPECIALLY bad. For best data visualisation, you want to choose colours that are intuitively associated with what you are trying to distinguish. 
+
+e.g. Hot = red, cold = blue, plants = green, etc. For discrete but ORDERED data e.g. low, medium, high, aim to choose the same colour, but darker as it gets higher. e.g low = light blue, medium = medium blue, high = navy to keep things intuitive! Alternatively, you could have low = blue, high = red. It depends on whether you want the data to be shown as *diverging*.
+
+Careful and prudent choice of colours and palettes can go a LONG way in making your plots more readable!
+
+You also want to consider colourblind-friendly colour palettes.
+
+<img width="1344" height="686" alt="image" src="https://github.com/user-attachments/assets/7ece98b8-92f0-45db-9da9-c744cf074845" />
+
+For continuous data, `viridis` is often the package of choice. You can now use it with ggplot2 without having to load the specific package. Let's try replacing the default colours for `generation`.
+
+This is done using the `scale_colour/fill` family of functions.
+
+```
+ggplot(metadata) +
+  geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
+  scale_colour_viridis_c(option = 'magma') +
+  theme(axis.text.x = element_text(angle=45, hjust=1))
+```
+<img width="600" height="918" alt="image" src="https://github.com/user-attachments/assets/0596d830-068b-4fa8-8421-41b469cd5029" />
+
+Already much clearer!
+
+Viridis supports discrete data as well with `scale_colour_viridis_d`. However, for discrete colour palettes, [Colourbrewer](https://r-graph-gallery.com/38-rcolorbrewers-palettes.html) is a popular option. Alternatively, you can always select your own colours by providing `"#HEXCODE"` or the [ggplot2 name](https://sape.inf.usi.ch/quick-reference/ggplot2/colour) of the colour.
+
+More info on how to use colours can be found [here](https://r-graph-gallery.com/ggplot2-color.html).
+
+**Advanced tip!**
+
+For discrete values, I always recommend having a **named vector** for repeated colours throughout your dataset to keep colours consistent throughout your study. e.g. T cells always in green, B cells always in blue, macrophages always in yellow etc.
+
+```
+# Your named vector
+cell_colours <- c('Tcell' = 'green', 'Bcell' = 'blue', 'macrophage', = 'yellow')
+
+# Apply with the manual family
+scale_fill_manual(values = cell_colours)
+
+```
+
 > Exercise
 > --------
 > Try making a scatterplot of genome size vs generation.
