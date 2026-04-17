@@ -124,6 +124,7 @@ Now let's bring up a dataset of sleep patterns across various animal species.
 ```
 data('msleep')
 ```
+<img width="1056" height="372" alt="image" src="https://github.com/user-attachments/assets/90f04f0f-0099-4fbf-be6a-7d13943fcfe0" />
 
 This dataset will be more like your data. There are multiple categorical character columns with grouping metadata, as well as several numerical data columns with measurement data and a lot of NAs/missing data that will affect the behaviour of ggplot.
 
@@ -134,6 +135,7 @@ ggplot(data = msleep)+
   geom_point(mapping = aes(x = vore, y = sleep_cycle))+
   theme_classic()
 ```
+<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/ec1871e6-8eee-4840-a827-5254dd594a9a" />
 
 And we get a warning message:
 ```
@@ -171,6 +173,7 @@ msleep %>%
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
 ```
+<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/8dd1853b-2354-47b1-a22c-4120ad61f664" />
 
 This is better, but the colours are all over the place! I want to more easily distinguish the diets of these animals better. This is where `facet_wrap` and `facet_grid` are your best friends and why R is better than Excel/Graphpad for plotting. Faceting lets your group by variables in a very powerful way. Let's try it:
 
@@ -184,45 +187,43 @@ msleep %>%
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
 ```
+<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/01ccaabf-86b0-4473-9363-6e2c9e01c305" />
 
 This is now looking even more informative but I have 2 gripes with it:
 1. We should order it in ascending order of sleep
 2. The number of variables per group is different across the different diets and this unevenness is ugly
 
-Let's fix the first problem first. This is where factors come back in. First, we need to get the ascending order of the animal "order" we want to have the plot create. I don't actually use tidy syntax so let's show you how I asked the LLM:
-
-Let's try it:
-```
-## get the order of values
-sleepiness_order <- msleep %>%
-  arrange(sleep_cycle) %>%
-  pull(order) %>%
-  unique()
-
-## factor it based on the order
-to_plot <- msleep %>%
-  mutate(order_new = factor(order, levels = sleepiness_order)) %>% 
-  drop_na(order, vore, sleep_cycle)
-
-## plot
-ggplot(data = to_plot)+
-    geom_point(mapping = aes(x = order_new, y = sleep_cycle, colour = vore))+
-    facet_grid(cols = vars(vore), scales = 'free_x', space = 'free_x')+
-    theme_classic()+
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+In order to fix the first problem, this is where factors come back in.
 
 ```
+library('forcats')
+msleep %>%
+  drop_na(order, vore, sleep_cycle) %>%
+  mutate(order_new = fct_reorder(order, sleep_cycle)) %>%
+    ggplot(data = to_plot)+
+        geom_point(mapping = aes(x = order_new, y = sleep_cycle, colour = vore))+
+        facet_grid(cols = vars(vore), scales = 'free_x', space = 'free_x')+
+        theme_classic()+
+        theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+
+```
+<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/2ba31420-7c3c-4bb8-bc7b-4e22f3f1f7b6" />
 
 **Bonus: Add a boxplot!**
 
+You can combine plots on top of each other if you'd like. The `geom`s get stacked on top of each other in the order you write them.
 ```
-ggplot(data = to_plot)+
-  geom_boxplot(mapping = aes(x = order_new, y = sleep_cycle, fill = vore), colour = 'black')+
-  geom_point(mapping = aes(x = order_new, y = sleep_cycle), colour = 'black')+
-  facet_grid(cols = vars(vore), scales = 'free_x', space = 'free_x')+
-  theme_classic()+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+msleep %>%
+  drop_na(order, vore, sleep_cycle) %>%
+  mutate(order_new = fct_reorder(order, sleep_cycle)) %>%
+    ggplot(data = to_plot)+
+        geom_boxplot(mapping = aes(x = order_new, y = sleep_cycle, fill = vore), colour = 'black')+
+        geom_point(mapping = aes(x = order_new, y = sleep_cycle), colour = 'black')+
+        facet_grid(cols = vars(vore), scales = 'free_x', space = 'free_x')+
+        theme_classic()+
+        theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 ```
+<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/15e3348b-676f-4ef6-b4bc-4c06a95f7af9" />
 
 Combining data wrangling and plotting: Extra calculations
 =======================
@@ -252,6 +253,7 @@ msleep %>%
   theme_minimal()
 
 ```
+<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/78166a2b-df9e-4a91-ab32-8de2ffc9b9a1" />
 
 **Exercise: Can you compare the brain to body weight ratio of each animal between diets?**
 
@@ -267,9 +269,16 @@ Lets investigate the world population by country longitudinal data set:
 ```
 data('world_bank_pop', package = 'tidyr')
 ```
+<img width="1338" height="326" alt="image" src="https://github.com/user-attachments/assets/3c026d73-cd08-4d22-a357-bfbb01588c0b" />
+
+Super long format:
+<img width="361" height="361" alt="image" src="https://github.com/user-attachments/assets/dd07b1fb-5dca-4713-be0e-9492d9e0557b" />
+
+Most sensible format for plotting longitudinal data:
+<img width="605" height="371" alt="image" src="https://github.com/user-attachments/assets/24c11195-98e6-4a9d-9f3c-1a1ee269e452" />
 
 **Exercise: Can you plot the population over time for Australia?**
-
+<img width="1204" height="918" alt="image" src="https://github.com/user-attachments/assets/01ac787e-80d0-43ac-8f6a-af94d50b7fd9" />
 
 Writing figures to a file
 =======================
@@ -293,44 +302,33 @@ These functions initialise a plot that will be written directly to a file in the
 
 ```
     # this works!
-    pdf("figure/boxplot.pdf")
+    pdf("figure/sleep.pdf")
     
-    ggplot(example_data) +
-      geom_boxplot(aes(x = cit, y =....) +
-      ggtitle(...) +
-      xlab(...) +
-      ylab(...) +
-      theme(panel.grid.major = element_line(...),
-              axis.text.x = element_text(...),
-              axis.title = element_text(...),
-              axis.text = element_text(...)
+    ggplot(msleep) +
+      geom_point(mapping = aes(x = vore, y = sleep_cycle))+
+      theme_classic()
     
     dev.off()
 
     # this also works!
-    p <- ggplot(example_data) +
-      geom_boxplot(aes(x = cit, y =....) +
-      ggtitle(...) +
-      xlab(...) +
-      ylab(...) +
-      theme(panel.grid.major = element_line(...),
-              axis.text.x = element_text(...),
-              axis.title = element_text(...),
-              axis.text = element_text(...)
+    p <- ggplot(msleep) +
+      geom_point(mapping = aes(x = vore, y = sleep_cycle))+
+      theme_classic()
 
-    pdf("figure/boxplot.pdf")
+    pdf("figure/sleep.pdf")
 
     p
 
     dev.off()
-
 
 ```
 
 Option 3. `ggsave` family of functions - only works for ggplot objects but very powerful. This is the preferred method of plot saving for most people as it is easy to automate the saving of many plots.
 
 ```
-p <- ggplot()
+p <- ggplot(msleep)+
+        geom_point(mapping = aes(x = vore, y = sleep_cycle))+
+        theme_classic()
 
 ggsave('figure/boxplot.pdf', p, height = 6, width = 4)
 
