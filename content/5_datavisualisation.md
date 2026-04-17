@@ -140,6 +140,7 @@ Viridis supports discrete data as well with `scale_colour_viridis_d`. However, f
 More info on how to use colours can be found [here](https://r-graph-gallery.com/ggplot2-color.html).
 
 > **Advanced tip!**
+> 
 > For discrete values, I always recommend having a **named vector** for repeated colours throughout your dataset to keep colours consistent throughout your study. e.g. T cells always in green, B cells always in blue, macrophages always in yellow etc.
 > ```
 > # Your named vector
