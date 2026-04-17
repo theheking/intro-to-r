@@ -102,7 +102,7 @@ This is now looking even more informative but I have 2 gripes with it:
 1. We should order it in ascending order of sleep
 2. The number of variables per group is different across the different diets and this unevenness is ugly
 
-In order to fix the first problem, this is where factors come back in.
+In order to fix the first problem, this is where factors come back in. It turns out we'll need an extra package `forcats`. This is loaded automatically if you load `tidyverse` at the very beginning instead of `tidyr`, `dplyr` and `ggplot2` separately. However, this will also load a lot of packages you may not necessarily need, so I usually prefer to just load required packages.
 
 ```
 library('forcats')
@@ -138,7 +138,9 @@ msleep %>%
 
 Let's say you want to check how many animals you actually have `sleep_cycle` data for for each diet (i.e. no NAs!)
 
-You need to calculate the "counts"! Let's see an example of how you'd ask the LLM:
+You need to calculate the "counts". Let's see an example of how you'd ask the LLM:
+
+<img width="832" height="1014" alt="image" src="https://github.com/user-attachments/assets/38cf30a0-6de2-436d-b057-d6e66269f77f" />
 
 Let's try it!
 
@@ -164,6 +166,8 @@ msleep %>%
 **Exercise: Can you compare the brain to body weight ratio of each animal between diets?**
 
 This is the plot we are looking for:
+<img width="600" height="918" alt="image" src="https://github.com/user-attachments/assets/e12b5e31-a77f-4831-b37c-061e025f2661" />
+
 
 ### Reshaping data
 
@@ -188,3 +192,37 @@ Most sensible format for plotting longitudinal data:
 **Exercise: Can you plot the population over time for Australia?**
 
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/01ac787e-80d0-43ac-8f6a-af94d50b7fd9" />
+
+Hint: You can try to be very specific with LLMs:
+<img width="797" height="1023" alt="image" src="https://github.com/user-attachments/assets/00d375ba-cada-4790-ae0f-34e6efda45ba" />
+
+
+---
+### Further reading
+
+We have really only touched the surface of basic calculations and data wrangling. 
+
+Imagine if for the world population data, someone could give you a separate table which is basically just an index of country codes, country names and continent they're on. Example:
+
+| country	| country_name | region |
+| ------- | ------------ | ------ |
+| AUS	| Australia	| Oceania |
+| CAN |	Canada |	North America |
+| GER	| Germany	| Europe |
+
+If you then `merge` or `join` this table (matching the country code) to the `world_bank_pop` table, you could further group the data and start analysing regional variations in population trends for example.
+
+Similarly, if some countries had missing data and you got an extra table with more countries in them, you could join that table based on the column names as well. 
+
+Then there are also so many other types of data that could be represented as tables which we haven't even touched on - heatmaps are super common to plot and there are dedicated heatmap plotting packages (e.g. [ComplexHeatmap](https://jokergoo.github.io/ComplexHeatmap-reference/book/) or you could go and use `geom_tile` in ggplot2. 
+
+This site is also a good resource that lists both common data transformations and also how you could do those transformations using different syntaxes.
+
+https://wetlandscapes.com/blog/a-comparison-of-r-dialects/
+
+If you plan to do a lot of Xenium/Phenocycler analysis, then the `data.table` syntax would be strongly recommended over the `tidy/dplyr` for data wrangling and calculations. You can read the vignettes [here](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html).
+
+If your goal is to learn single cell RNAseq analysis, it would be prudent to stick to tidy because the syntax is more similar.
+
+If your goal is to just replace Excel/Graphpad prism, use whatever makes you the most comfortable!
+
