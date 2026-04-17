@@ -56,6 +56,10 @@ Geometric objects are the actual marks we put on a plot. Examples include:
 *   points (`geom_point`, for scatter plots, dot plots, etc)
 *   lines (`geom_line`, for time series, trend lines, etc)
 *   boxplot (`geom_boxplot`, for, well, boxplots!)
+*   barchart (`geom_bar` or `geom_col` depending on whether you table needs to be "counted" or is already counted)
+
+However, really the number of plots is endless. This website shows a summary of the types:
+[<img width="869" height="550" alt="image" src="https://github.com/user-attachments/assets/f788e228-a252-4115-a829-f746536430ef" />](https://r-graph-gallery.com/)
 
 A plot **must have at least one geom**; there is no upper limit. You can add a geom to a plot using the + operator
 ```
@@ -105,6 +109,11 @@ _For example, the colour of the points will reflect the number of generations an
       theme(axis.text.x = element_text(angle=45, hjust=1))
 ```
 ![](../img/ggplot_2.png)
+
+> Exercise
+> --------
+> Try making a scatterplot of genome size vs generation.
+> **Advanced** Try out some of the advanced visualisation extras and see if you can revamp this plot to look better - group by cit for example!
 
 
 Writing figures to a file
@@ -160,11 +169,6 @@ p <- ggplot(metadata) +
 ggsave('figure/scatter.pdf', p, height = 6, width = 4)
 
 ```
-
-> Exercise
-> --------
-> Try making a scatterplot of genome size vs generation.
-> If you think this plot is still quite ugly, try out some of the advanced visualisation extras.
 
 Integrating statistical tests into your plot
 --------------------------------------
