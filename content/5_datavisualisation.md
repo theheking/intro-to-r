@@ -119,9 +119,9 @@ Careful and prudent choice of colours and palettes can go a LONG way in making y
 
 You also want to consider colourblind-friendly colour palettes.
 
-<img width="1344" height="686" alt="image" src="https://github.com/user-attachments/assets/7ece98b8-92f0-45db-9da9-c744cf074845" />
+<img width="700" height="686" alt="image" src="https://github.com/user-attachments/assets/7ece98b8-92f0-45db-9da9-c744cf074845" />
 
-For continuous data, `viridis` is often the package of choice. You can now use it with ggplot2 without having to load the specific package. Let's try replacing the default colours for `generation`.
+For continuous data, `viridis` is often the package of choice. They are colourblind friendly with high contrast and generally pleasant to look at. You can now use it with ggplot2 without having to load the specific package. Let's try replacing the default colours for `generation`.
 
 This is done using the `scale_colour/fill` family of functions.
 
@@ -139,22 +139,21 @@ Viridis supports discrete data as well with `scale_colour_viridis_d`. However, f
 
 More info on how to use colours can be found [here](https://r-graph-gallery.com/ggplot2-color.html).
 
-**Advanced tip!**
+> **Advanced tip!**
+> For discrete values, I always recommend having a **named vector** for repeated colours throughout your dataset to keep colours consistent throughout your study. e.g. T cells always in green, B cells always in blue, macrophages always in yellow etc.
+> ```
+> # Your named vector
+> cell_colours <- c('Tcell' = 'green', 'Bcell' = 'blue', 'macrophage', = 'yellow')
+>
+> # Apply with the manual family
+> scale_fill_manual(values = cell_colours)
+> ```
 
-For discrete values, I always recommend having a **named vector** for repeated colours throughout your dataset to keep colours consistent throughout your study. e.g. T cells always in green, B cells always in blue, macrophages always in yellow etc.
-
-```
-# Your named vector
-cell_colours <- c('Tcell' = 'green', 'Bcell' = 'blue', 'macrophage', = 'yellow')
-
-# Apply with the manual family
-scale_fill_manual(values = cell_colours)
-
-```
 
 > Exercise
 > --------
 > Try making a scatterplot of genome size vs generation.
+> 
 > **Advanced** Try out some of the advanced visualisation extras and see if you can revamp this plot to look better - group by cit for example!
 
 
