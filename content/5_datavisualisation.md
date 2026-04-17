@@ -135,7 +135,7 @@ ggplot(data = msleep)+
   geom_point(mapping = aes(x = vore, y = sleep_cycle))+
   theme_classic()
 ```
-<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/ec1871e6-8eee-4840-a827-5254dd594a9a" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/ec1871e6-8eee-4840-a827-5254dd594a9a" />
 
 And we get a warning message:
 ```
@@ -173,7 +173,7 @@ msleep %>%
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
 ```
-<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/8dd1853b-2354-47b1-a22c-4120ad61f664" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/8dd1853b-2354-47b1-a22c-4120ad61f664" />
 
 This is better, but the colours are all over the place! I want to more easily distinguish the diets of these animals better. This is where `facet_wrap` and `facet_grid` are your best friends and why R is better than Excel/Graphpad for plotting. Faceting lets your group by variables in a very powerful way. Let's try it:
 
@@ -187,7 +187,7 @@ msleep %>%
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
 ```
-<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/01ccaabf-86b0-4473-9363-6e2c9e01c305" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/01ccaabf-86b0-4473-9363-6e2c9e01c305" />
 
 This is now looking even more informative but I have 2 gripes with it:
 1. We should order it in ascending order of sleep
@@ -207,7 +207,7 @@ msleep %>%
         theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
 ```
-<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/2ba31420-7c3c-4bb8-bc7b-4e22f3f1f7b6" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/2ba31420-7c3c-4bb8-bc7b-4e22f3f1f7b6" />
 
 **Bonus: Add a boxplot!**
 
@@ -223,7 +223,7 @@ msleep %>%
         theme_classic()+
         theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 ```
-<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/15e3348b-676f-4ef6-b4bc-4c06a95f7af9" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/15e3348b-676f-4ef6-b4bc-4c06a95f7af9" />
 
 Combining data wrangling and plotting: Extra calculations
 =======================
@@ -253,7 +253,7 @@ msleep %>%
   theme_minimal()
 
 ```
-<img width="1182" height="918" alt="image" src="https://github.com/user-attachments/assets/78166a2b-df9e-4a91-ab32-8de2ffc9b9a1" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/78166a2b-df9e-4a91-ab32-8de2ffc9b9a1" />
 
 **Exercise: Can you compare the brain to body weight ratio of each animal between diets?**
 
@@ -269,16 +269,20 @@ Lets investigate the world population by country longitudinal data set:
 ```
 data('world_bank_pop', package = 'tidyr')
 ```
-<img width="1338" height="326" alt="image" src="https://github.com/user-attachments/assets/3c026d73-cd08-4d22-a357-bfbb01588c0b" />
+
+<img alt="image" src="https://github.com/user-attachments/assets/3c026d73-cd08-4d22-a357-bfbb01588c0b" />
 
 Super long format:
-<img width="361" height="361" alt="image" src="https://github.com/user-attachments/assets/dd07b1fb-5dca-4713-be0e-9492d9e0557b" />
+
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/dd07b1fb-5dca-4713-be0e-9492d9e0557b" />
 
 Most sensible format for plotting longitudinal data:
-<img width="605" height="371" alt="image" src="https://github.com/user-attachments/assets/24c11195-98e6-4a9d-9f3c-1a1ee269e452" />
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/24c11195-98e6-4a9d-9f3c-1a1ee269e452" />
 
 **Exercise: Can you plot the population over time for Australia?**
-<img width="1204" height="918" alt="image" src="https://github.com/user-attachments/assets/01ac787e-80d0-43ac-8f6a-af94d50b7fd9" />
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/01ac787e-80d0-43ac-8f6a-af94d50b7fd9" />
 
 Writing figures to a file
 =======================
