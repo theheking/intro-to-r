@@ -48,7 +48,7 @@ The `ggplot()` function is used to initialise the basic graph structure, and the
 
 We will start with a blank plot and add layers as we progress.
 ```
-    ggplot(metadata)
+    ggplot(data = metadata)
 ```
 
 Geometric objects are the actual marks we put on a plot. Examples include:
@@ -57,18 +57,27 @@ Geometric objects are the actual marks we put on a plot. Examples include:
 *   lines (`geom_line`, for time series, trend lines, etc)
 *   boxplot (`geom_boxplot`, for, well, boxplots!)
 *   barchart (`geom_bar` or `geom_col` depending on whether you table needs to be "counted" or is already counted)
+*   labels/text (`geom_text` to add annotations to your plots)
 
 However, really the number of plots is endless. This website shows a summary of the types:
 [<img width="869" height="550" alt="image" src="https://github.com/user-attachments/assets/f788e228-a252-4115-a829-f746536430ef" />](https://r-graph-gallery.com/)
 
 A plot **must have at least one geom**; there is no upper limit. You can add a geom to a plot using the + operator
 ```
-    ggplot(metadata) +
+    ggplot(data = metadata) +
       geom_point() 
 ```
 
-Each type of geom usually has a **required set of aesthetics** to be set, and usually accepts only a subset of all aesthetics – refer to the geom help pages to see what mappings each geom accepts. 
+For each geom, you need 2 essential arguments satisfied to create a plot:
+1. `data`
+2. `mapping` (aesthetics)
 
+> [!IMPORTANT]
+> While you don't strictly need to define `data = metadata` or `mapping = aes()`, it is highly recommended to explicitly define this for beginners. This will reduce chance of errors if you accidentally put things in the wrong order. While `geom_point(metadata, aes(x = x, y = y)` could work, you might run into trouble with the order of arguments if you're not careful, especially when you start creating complicated plots!
+
+Anything in ggplot() gets applied to all added geoms. So here, `data = metadata` is getting passed to `geom_point` already. 
+
+Geoms usually need a **required set of aesthetics** to be set, and usually accepts only a subset of all aesthetics – refer to the geom help pages to see what mappings each geom accepts. 
 
 Aesthetic mappings are set with the aes() function. Examples include:
 *   x (variable for the x axes)
@@ -77,11 +86,13 @@ Aesthetic mappings are set with the aes() function. Examples include:
 *   fill (variable for "inside" colour)
 
 To start, we will add the column names that correspond to the variable we want to set for the x- and y-values.
-`geom_point` requires arguments for x and y, all other arguments are optional.
+
+`geom_point` requires `aes()` arguments for x and y, all other arguments are optional.
+
 We will run the most basic scatterplot of `sample` against `genome size`.
 ```
-    ggplot(metadata) +
-      geom_point(aes(x = sample, y= genome_size))
+    ggplot(data = metadata) +
+      geom_point(mapping = aes(x = sample, y= genome_size))
 ```
 ![](../img/ggplot_1.png)
 
@@ -104,8 +115,8 @@ We will also add some additional aesthetics by assigning them to other variables
 
 _For example, the colour of the points will reflect the number of generations and the shape will reflect citrate mutant status._ The size of the points can be adjusted within the `geom_point` but does not need to be included in `aes()` since the value is not assigned to a variable.
 ```
-    ggplot(metadata) +
-      geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
+    ggplot(data = metadata) +
+      geom_point(mapping = aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
       theme(axis.text.x = element_text(angle=45, hjust=1))
 ```
 ![](../img/ggplot_2.png)
@@ -126,8 +137,8 @@ For continuous data, `viridis` is often the package of choice. They are colourbl
 This is done using the `scale_colour/fill` family of functions.
 
 ```
-ggplot(metadata) +
-  geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
+ggplot(data = metadata) +
+  geom_point(mapping = aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
   scale_colour_viridis_c(option = 'magma') +
   theme(axis.text.x = element_text(angle=45, hjust=1))
 ```
