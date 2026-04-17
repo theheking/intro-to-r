@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 6 - Automation
+title: Extras 2 - Automation
 ---
 
 Automation in R
@@ -10,8 +10,7 @@ Automation in R
 > ====================
 > * Understand why automation is useful for avoiding repetitive code
 > * Use a for loop to repeat a step across multiple elements
-> * Use a loop to generate multiple plots from a dataframe
-> * Use apply, lapply and sapply to apply a function across rows, columns, or list elements
+> * Use lapply to apply a function across a list
 > * Understand when to choose a loop vs an apply function
 
 
