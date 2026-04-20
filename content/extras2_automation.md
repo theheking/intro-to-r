@@ -66,22 +66,29 @@ The loop ran the `print()` call five times — once for each value in `1:5` — 
 
 This connects directly to what you learned in the [Data Visualisation](5_datavisualisation) section. Instead of writing a separate `ggplot` call for each column you want to inspect, you can loop over a list of column names and generate each plot automatically.
 
-Using the `metadata` dataframe, suppose we want to produce a histogram for each of the numeric columns:
+Using the `metadata` dataframe, suppose we want to produce a histogram for each of the numeric columns and add it to a list:
 
 ```
     library(ggplot2)
 
     numeric_cols <- c("genome_size", "generation")
+    
+    ## start an empty list that you can add things to
+    plots <- list()
 
     for (col in numeric_cols) {
-      p <- ggplot(metadata, aes(x = .data[[col]])) +
-        geom_histogram(binwidth = 0.05, fill = "steelblue", colour = "white") +
+      plots[[col]] <- ggplot(metadata, aes(x = .data[[col]])) +
+        geom_histogram(fill = "steelblue", colour = "white") +
         ggtitle(paste("Distribution of", col)) +
         xlab(col) +
         ylab("Count") +
         theme_minimal()
-      print(p)
     }
+    
+    print(plots$genome_size)
+    print(plots$generation)
+    
+    
 ```
 
 Each time the loop runs, `col` takes the next value from `numeric_cols` ("genome_size" then "generation"), and a new plot is produced and printed. The `.data[[col]]` syntax is the ggplot2 way of referring to a column by a variable name.
@@ -177,8 +184,8 @@ Again, X is a vector or list, and FUN is the function you want to use.
 `lapply()` is useful for performing operations on list objects and returns a list of the same length as the input. For example, converting a vector of species names to uppercase:
 
 ```
-    model_org <- c("echerichia_coli", "homo_sapiens", "chlamydomonas_reinhardtii",
-                   "drosophilia_melanogaster", "schizosaccharomyces_pombe",
+    model_org <- c("escherichia_coli", "homo_sapiens", "chlamydomonas_reinhardtii",
+                   "drosophila_melanogaster", "schizosaccharomyces_pombe",
                    "Saccharomyces_cerevisiae", "arabidopsis_thaliana",
                    "cavia_porcellus", "xenopus_laevis", "nothobranchius_furzeri",
                    "rattus_norvegicus", "danio_rerio")
@@ -218,14 +225,15 @@ If you are choosing between `lapply` and `sapply`: use `sapply` when you want a 
 ---
 ### Bonus: Super advanced automation with functions and plotting
 
-Remember our plot of animal phylogenetic orders vs sleep cycle?
+Remember our plot of animal phylogenetic orders vs sleep cycle from advanced ggplot2?
 
 ```
 library('forcats')
+data(msleep)
 msleep %>%
   drop_na(order, vore, sleep_cycle) %>%
   mutate(order_new = fct_reorder(order, sleep_cycle)) %>%
-    ggplot(data = to_plot)+
+    ggplot()+
         geom_point(mapping = aes(x = order_new, y = sleep_cycle, colour = vore))+
         facet_grid(cols = vars(vore), scales = 'free_x', space = 'free_x')+
         theme_classic()+

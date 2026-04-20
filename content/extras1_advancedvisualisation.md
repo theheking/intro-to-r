@@ -105,11 +105,15 @@ This is now looking even more informative but I have 2 gripes with it:
 In order to fix the first problem, this is where factors come back in. It turns out we'll need an extra package `forcats`. This is loaded automatically if you load `tidyverse` at the very beginning instead of `tidyr`, `dplyr` and `ggplot2` separately. However, this will also load a lot of packages you may not necessarily need, so I usually prefer to just load required packages.
 
 ```
+install.packages("forcats")
 library('forcats')
+
+## Here we are sending the filtered and reordered data directly into the ggplot function
+
 msleep %>%
   drop_na(order, vore, sleep_cycle) %>%
   mutate(order_new = fct_reorder(order, sleep_cycle)) %>%
-    ggplot(data = to_plot)+
+    ggplot()+
         geom_point(mapping = aes(x = order_new, y = sleep_cycle, colour = vore))+
         facet_grid(cols = vars(vore), scales = 'free_x', space = 'free_x')+
         theme_classic()+
@@ -125,7 +129,7 @@ You can combine plots on top of each other if you'd like. The `geom`s get stacke
 msleep %>%
   drop_na(order, vore, sleep_cycle) %>%
   mutate(order_new = fct_reorder(order, sleep_cycle)) %>%
-    ggplot(data = to_plot)+
+    ggplot()+
         geom_boxplot(mapping = aes(x = order_new, y = sleep_cycle, fill = vore), colour = 'black')+
         geom_point(mapping = aes(x = order_new, y = sleep_cycle), colour = 'black')+
         facet_grid(cols = vars(vore), scales = 'free_x', space = 'free_x')+

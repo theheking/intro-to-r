@@ -204,7 +204,7 @@ These functions initialise a plot that will be written directly to a file in the
       geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
       theme(axis.text.x = element_text(angle=45, hjust=1))
 
-    pdf("figure/scatter.pdf")
+    pdf("figure/scatter_p.pdf")
 
     p
 
@@ -219,7 +219,7 @@ p <- ggplot(metadata) +
       geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
       theme(axis.text.x = element_text(angle=45, hjust=1))
 
-ggsave('figure/scatter.pdf', p, height = 6, width = 4)
+ggsave('figure/scatter_ggsave.pdf', p, height = 6, width = 4)
 
 ```
 
@@ -266,7 +266,7 @@ For visualisation, you'll need to install the ggubr package, load it into your l
     # Visualise with a boxplot
     p <- ggboxplot(metadata, x = "cit", y = "genome_size",
                    color = "cit",
-                   palette = c("#4D00C7", "#DA3C07", "#05D3D3", "#C6C7C5"),
+                   palette = c("#4D00C7", "#DA3C07", "#05D3D3"),
                    add = "jitter", shape = "cit") +
          xlab("Citrate Mutant") + ylab("Genome Size (Mb)")
     
@@ -281,9 +281,10 @@ For visualisation, you'll need to install the ggubr package, load it into your l
     p + stat_compare_means(
           comparisons = my_comparisons,
           method = "wilcox.test",
-          aes(label = after_stat(p.signif)),
+          label = "p.signif",
           exact = FALSE  # avoid warning with ties
       )
+      
 ```
 
 
