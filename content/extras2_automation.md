@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 6 - Automation
+title: Extras 2 - Automation
 ---
 
 Automation in R
@@ -10,8 +10,7 @@ Automation in R
 > ====================
 > * Understand why automation is useful for avoiding repetitive code
 > * Use a for loop to repeat a step across multiple elements
-> * Use a loop to generate multiple plots from a dataframe
-> * Use apply, lapply and sapply to apply a function across rows, columns, or list elements
+> * Use lapply to apply a function across a list
 > * Understand when to choose a loop vs an apply function
 
 
@@ -67,22 +66,29 @@ The loop ran the `print()` call five times — once for each value in `1:5` — 
 
 This connects directly to what you learned in the [Data Visualisation](5_datavisualisation) section. Instead of writing a separate `ggplot` call for each column you want to inspect, you can loop over a list of column names and generate each plot automatically.
 
-Using the `metadata` dataframe, suppose we want to produce a histogram for each of the numeric columns:
+Using the `metadata` dataframe, suppose we want to produce a histogram for each of the numeric columns and add it to a list:
 
 ```
     library(ggplot2)
 
     numeric_cols <- c("genome_size", "generation")
+    
+    ## start an empty list that you can add things to
+    plots <- list()
 
     for (col in numeric_cols) {
-      p <- ggplot(metadata, aes(x = .data[[col]])) +
-        geom_histogram(binwidth = 0.05, fill = "steelblue", colour = "white") +
+      plots[[col]] <- ggplot(metadata, aes(x = .data[[col]])) +
+        geom_histogram(fill = "steelblue", colour = "white") +
         ggtitle(paste("Distribution of", col)) +
         xlab(col) +
         ylab("Count") +
         theme_minimal()
-      print(p)
     }
+    
+    print(plots$genome_size)
+    print(plots$generation)
+    
+    
 ```
 
 Each time the loop runs, `col` takes the next value from `numeric_cols` ("genome_size" then "generation"), and a new plot is produced and printed. The `.data[[col]]` syntax is the ggplot2 way of referring to a column by a variable name.
@@ -178,8 +184,8 @@ Again, X is a vector or list, and FUN is the function you want to use.
 `lapply()` is useful for performing operations on list objects and returns a list of the same length as the input. For example, converting a vector of species names to uppercase:
 
 ```
-    model_org <- c("echerichia_coli", "homo_sapiens", "chlamydomonas_reinhardtii",
-                   "drosophilia_melanogaster", "schizosaccharomyces_pombe",
+    model_org <- c("escherichia_coli", "homo_sapiens", "chlamydomonas_reinhardtii",
+                   "drosophila_melanogaster", "schizosaccharomyces_pombe",
                    "Saccharomyces_cerevisiae", "arabidopsis_thaliana",
                    "cavia_porcellus", "xenopus_laevis", "nothobranchius_furzeri",
                    "rattus_norvegicus", "danio_rerio")
@@ -213,6 +219,98 @@ Both do the same thing — the choice comes down to readability and context:
 
 If you are choosing between `lapply` and `sapply`: use `sapply` when you want a simple vector back, `lapply` when you want to keep the result as a list. If you want to specify the exact type of the output, use `vapply` — read more [here](https://www.r-bloggers.com/2020/10/why-you-should-use-vapply-in-r/).
 
+
+
+
+---
+### Bonus: Super advanced automation with functions and plotting
+
+Remember our plot of animal phylogenetic orders vs sleep cycle from advanced ggplot2?
+
+```
+library('forcats')
+data(msleep)
+msleep %>%
+  drop_na(order, vore, sleep_cycle) %>%
+  mutate(order_new = fct_reorder(order, sleep_cycle)) %>%
+    ggplot()+
+        geom_point(mapping = aes(x = order_new, y = sleep_cycle, colour = vore))+
+        facet_grid(cols = vars(vore), scales = 'free_x', space = 'free_x')+
+        theme_classic()+
+        theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+```
+
+Well part of the reason we plotted `order` on the x axis was because there were just too many animals otherwise. But what if we really want to compare within each group? i.e. For the herbivores, which animal sleeps the most? and so on?
+
+We can write a function that produces a single generalised plot:
+
+```
+plotPerVore <- function(diettype){
+  p <- msleep %>%
+    drop_na(vore, sleep_cycle) %>%
+    mutate(animal = fct_reorder(name, sleep_cycle)) %>%
+    filter(vore == diettype) %>%
+    ggplot()+
+      geom_col(mapping = aes(x = animal, y = sleep_cycle, fill = vore))+
+      guides(fill = 'none')+
+      ggtitle(paste0(diettype, 'vore sleep cycle'))+
+      theme_classic()+
+      theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+  
+  return(p)
+}
+
+## check if the function works by plotting just one of the options!
+plotPerVore('herbi')
+
+```
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/acbc60b6-2c17-4269-aadb-b0fb1a3429a0" />
+
+But what's this?? Why is herbivore now in the red, when it used to be green?
+
+It's because we were using the default ggplot2 colours, which are assigned based on order, and not by the ID. 
+
+If you want the colours to stay consistent, you need to predefine them! however, the plot otherwise looks good. Now lets define the colours.
+
+```
+colours <- c('herbi' = 'yellowgreen', 'omni' = 'purple', 'insecti' = 'cyan', 'carni' = 'salmon')
+
+## get all the different diets automatically!
+alldiets <- msleep %>%
+  drop_na(vore) %>%
+  pull(vore) %>%
+  unique()
+
+plotPerVore <- function(diettype){
+  p <- msleep %>%
+    drop_na(vore, sleep_cycle) %>%
+    mutate(animal = fct_reorder(name, sleep_cycle)) %>%
+    filter(vore == diettype) %>%
+    ggplot()+
+      geom_col(mapping = aes(x = animal, y = sleep_cycle, fill = vore))+
+      scale_fill_manual(values = colours, guide = 'none')+
+      ggtitle(paste0(diettype, 'vore sleep cycle'))+
+      theme_classic()+
+      theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+  
+  return(p)
+}
+
+per_diet_plots <- lapply(alldiets, plotPerVore)
+```
+
+Well now what? Nothing got produced in the plots tab? That's because all 4 of these plots are now saved in `per_diet_plots`. When you automate plotting, the Plots window becomes useless because automation will happen too fast for you to manually export those plots from the Plots window. Either you end with `ggsave()` instead of return, or you collect a list of plots to do what? To combine them of course!
+
+Introducing combination plots, using either the `cowplot` or `patchwork` package. 
+
+```
+library('cowplot')
+plot_grid(plotlist = per_diet_plots, nrow = 1, align = 'hv')
+
+```
+<img width="1300" alt="image" src="https://github.com/user-attachments/assets/971d2c11-7200-4ba7-a700-87e86f5201ce" />
+
+The result is somewhat similar to faceting isnt it? But it also opens up a lot of its own possibilities!
 
 ***
 Adapted from https://ademos.people.uic.edu/Chapter4.html
