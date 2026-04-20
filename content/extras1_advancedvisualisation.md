@@ -167,7 +167,7 @@ msleep %>%
 
 This is the plot we are looking for:
 
-<img width="600" height="918" alt="image" src="https://github.com/user-attachments/assets/b2645374-08e1-4590-b660-b9fc187d15f7" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/b2645374-08e1-4590-b660-b9fc187d15f7" />
 
 For anything where you have a different number of samples plotted, I HIGHLY recommend using `geom_text` to plot the number of samples, such as in this boxplot. However, this is a bit more advanced. Hint: You need to use a different `data` argument for the `geom_text`... A counts data perhaps...?
 
@@ -201,7 +201,8 @@ Hint: You can try to be very specific with LLMs:
 
 
 ---
-### Further reading
+Further Reading
+=======================
 
 We have really only touched the surface of basic calculations and data wrangling. 
 
@@ -219,13 +220,17 @@ Similarly, if some countries had missing data and you got an extra table with mo
 
 Then there are also so many other types of data that could be represented as tables which we haven't even touched on - heatmaps are super common to plot and there are dedicated heatmap plotting packages (e.g. [ComplexHeatmap](https://jokergoo.github.io/ComplexHeatmap-reference/book/) or you could go and use `geom_tile` in ggplot2. 
 
-This site is also a good resource that lists both common data transformations and also how you could do those transformations using different syntaxes.
+[This site](https://wetlandscapes.com/blog/a-comparison-of-r-dialects/) is also a good resource that lists both common data transformations and also how you could do those transformations using different syntaxes.
 
-https://wetlandscapes.com/blog/a-comparison-of-r-dialects/
+There are also many [cheat sheets](https://r-graph-gallery.com/cheatsheets) available online for various methods of reshaping data with some handy illustrations of what the reshaping does.
 
-If you plan to do a lot of Xenium/Phenocycler analysis, then the `data.table` syntax would be strongly recommended over the `tidy/dplyr` for data wrangling and calculations. You can read the vignettes [here](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html).
+### Choosing a "dialect"
 
-If your goal is to learn single cell RNAseq analysis, it would be prudent to stick to tidy because the syntax is more similar.
+As a beginner, just do whatever makes the most sense to you, but try to keep it consistent or you'll find learning extra difficult. If your goal is to just replace Excel/Graphpad prism, it really doesn't matter what you use so do whatever you like best.
 
-If your goal is to just replace Excel/Graphpad prism, use whatever makes you the most comfortable!
+However, if you plan to start working on analysis of more complex data, the type that can't really be opened on Excel:
+
+- If you plan to do a lot of Xenium/Phenocycler analysis, then the `data.table` syntax would be strongly recommended over the `tidy/dplyr` for data wrangling and calculations. You can read the vignettes [here](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html).
+
+- If your goal is to learn single cell RNAseq analysis, it would be prudent to stick to tidyverse because the syntax is more similar.
 
