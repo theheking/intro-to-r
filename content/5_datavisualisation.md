@@ -130,7 +130,7 @@ Careful and prudent choice of colours and palettes can go a LONG way in making y
 
 You also want to consider colourblind-friendly colour palettes.
 
-<img width="700" height="686" alt="image" src="https://github.com/user-attachments/assets/7ece98b8-92f0-45db-9da9-c744cf074845" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/7ece98b8-92f0-45db-9da9-c744cf074845" />
 
 For continuous data, `viridis` is often the package of choice. They are colourblind friendly with high contrast and generally pleasant to look at. You can now use it with ggplot2 without having to load the specific package. Let's try replacing the default colours for `generation`.
 
@@ -142,7 +142,7 @@ ggplot(data = metadata) +
   scale_colour_viridis_c(option = 'magma') +
   theme(axis.text.x = element_text(angle=45, hjust=1))
 ```
-<img width="600" height="918" alt="image" src="https://github.com/user-attachments/assets/0596d830-068b-4fa8-8421-41b469cd5029" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/0596d830-068b-4fa8-8421-41b469cd5029" />
 
 Already much clearer!
 
@@ -303,7 +303,7 @@ This occurs because the Wilcoxon rank-sum test (also called the Mann–Whitney U
 
 
 
-
+---
 
 Resources:
 ----------
