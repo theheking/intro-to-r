@@ -13,7 +13,7 @@
 title: Intro to R
 
 # Your name to show in the footer
-author: Helen King
+author: Data Science Platform
 
 ###############################################
 # --- List of links in the navigation bar --- #
@@ -27,7 +27,8 @@ navbar-links:
     - 3 - DataFrames: "content/3_dataframes"
     - 4 - Dplyr: "content/4_dplyr"
     - 5 - Data Visualisation: "content/5_datavisualisation"
-    - 6 - Automation: "content/6_apply"
+    - Extras 1 - Advanced ggplot2: "content/extras1_advancedvisualisation"
+    - Extras 2 - Automation: "content/extras2_automation"
 
 
 ################
