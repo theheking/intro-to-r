@@ -9,7 +9,7 @@ Data Visualisation using ggplot
 > Learning Objectives
 > -------------------
 > 
-> *   Understand that there is basic R plotting (histograms) and more popular ggplot2 package plots (for everything else).
+> *   Understand that there is basic R plotting (eg histograms) and more popular ggplot2 package plots (for everything else).
 > *   Customise the aesthetics of an existing plot.
 > *   Export plots from RStudio to standard graphical file formats.
 > *   Add basic statistical testing to your plots.
@@ -319,6 +319,6 @@ To investigate more into colour palettes [viridis](https://cran.r-project.org/we
 
 ***
 
-Material adapted from (https://datacarpentry.org/R-genomics/01-intro-to-R.html) and (https://datacarpentry.org/semester-biology/materials/r-intro/)
+Material adapted from (<https://datacarpentry.org/R-genomics/01-intro-to-R.html>) and (<https://datacarpentry.org/semester-biology/materials/r-intro/>) by Helen King. Further revisions by the Data Science Platform
 
 [Data Carpentry](http://datacarpentry.org/), 2017-2018. [License](LICENSE.html). [Contributing](CONTRIBUTING.html).  

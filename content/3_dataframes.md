@@ -31,11 +31,10 @@ The columns stand for:
 | run         | Sequence read archive sample ID            |
 | genome_size | size in Mbp (made up data for this lesson) |
 
-#### Workspace set up
 
-There are some functions within R that let you create folders and see what is in them. This can be useful for confirming for making output folders from your scripts and checking if files are present (the alternative is using the clickable options within RStudio). We will create the folder using You can also download files directly from within R using the download.file function
+### Workspace set up
 
-##### Make your folder and check the contents
+There are some functions within R that let you create folders and see what is in them. This can be useful for confirming for making output folders from your scripts and checking if files are present (the alternative is using the clickable options within RStudio). We will create the folder using the `dir.create()` function and confirm that the folder is empty using the `list.files()` function. You can also download files directly from within R using the `download.file` function
 
 ```         
 ## dir.create is the function for making a new folder (directory)
@@ -47,24 +46,29 @@ list.files("data")
 ## Now you can put the metadata file from the course materials into the data folder
 ```
 
-##### If there is a download link then you can download the file directly into the data folder
+##### 
+  
+We have put the data file within Google Drive so it is simpler to download the file manually and then add it (there is a `googledrive` R package) 
 
+A demonstration of downloading a file directly from the internet using `download.file()` is shown below;
 ```         
-download.file(url="placeholderURL/Ecoli_metadata.csv",destfile="data/Ecoli_metadata.csv")
+## DO NOT RUN -  Example code only
+#download.file(url="placeholderURL",destfile="data/Ecoli_metadata.csv")
 ```
 
 ##### To check that the file is in the data folder using R code you can use the list.files or file.exists functions
-
+  
 ```         
 list.files("data")
 # should show "Ecoli_metadata.csv" in the console
 file.exists("data/Ecoli_metadata.csv")
 # returns TRUE if the file is present or FALSE if the file is not present
 ```
-
-### Once the metadata file is in the folder, you are ready to load the data into R
+  
+### Loading the data into R
 
 You are now ready to load the data. As the data is in the csv (comma-separated values) format, we are going to use the R function `read.csv()` to load the data file into memory (as a `data.frame`):
+https://drive.google.com/file/d/1yg29Yol0FlkUnjS78qkoWxHdA3bvijZu/view?usp=sharing
 
 ```         
 metadata <- read.csv('data/Ecoli_metadata.csv')

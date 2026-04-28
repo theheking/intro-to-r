@@ -13,15 +13,16 @@ title: 1 - Setup of R and RStudio
 > -   Solve mathematical operations in R.
 > -   Organize files and directories for a set of analyses as an R Project.
 
-# Introducing R and RStudio
 
 R and RStudio are distinct programs and need separate downloads and installations.
 
-R is: - An open-source programming language under GPL - Aimed as a statistics and data analysis environment - Adapted to build websites, run simulations, and more - Good general language as it is both object-orientated and functional language
+R is: An open-source programming language under GPL - Aimed as a statistics and data analysis environment - Adapted to build websites, run simulations, and more - Good general language as it is both object-orientated and functional language
 
-R is the underlying statistical computing environment, but using R alone is not as intuitive.
+R is the underlying statistical computing environment, but while you can use R without RStudio, using R alone is not as intuitive
 
-RStudio is: - A graphical Integrated Development Environment (IDE) that makes using R much easier and more interactive - Makes developing code in R easier
+RStudio is: A graphical Integrated Development Environment (IDE) that makes using R much easier and more interactive - Makes developing code in R easier
+
+Note: There are popular alternatives to RStudio such as Visual Studio Code (VS Code)
 
 # Installation
 
@@ -37,11 +38,11 @@ You need to install R before you install RStudio. Please choose the operating sy
 -   Create a new R script (`File > New File > R script`) and save it in your working directory (e.g. Intro_to_R_day1.R)
 -   We can open it by clicking the New File button or using the `Ctrl-Shift-N` keyboard shortcut (`Cmd-Shift-N`) on Mac
 
-# Layout of RStudio and Interacting with R
+# Interacting with R via RStudio
 
 ![layout](../photos/layout.png) Parts of the RStudio
 
-### <span style="color: lightblue;">Folder setup, Plots, Packages, Help, and more</span>
+### <span style="color: deepskyblue;">1. Folder setup, Plots, Packages, Help, and more</span>
 -   If you haven't already, save the Rscript that we have just created. Please select `File --> Save` and enter in a suitable name for your Rscript.
 -   You should see this is now available in the folder.
 -   The following sections will explore the other tabs in this corner.
@@ -137,7 +138,11 @@ You need to install R before you install RStudio. Please choose the operating sy
     b <- 2
     ```
 
-> **Exercise** 1. How much are a and b added together? 2. Change the value of a to 10 3. Assign the value of a and b together to a new variable, c.
+> **Exercise** 
+> 1. How much are a and b added together? 
+> 2. Change the value of a to 10 
+> 3. Assign the value of a and b together to a new variable, c.
+>       Are there any issues with making a new variable called c?
 
 ------------------------------------------------------------------------
 

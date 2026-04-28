@@ -38,17 +38,18 @@ A variable is a name that has a value associated with it
 
 A function is a "canned script" that automates the processing of input and returns a value.
 
-We will be using <i>in-built</i> functions meaning that you don't need to run library("package name") to get them to work (these in-built functions are known as "base R").
+We will be using <i>in-built</i> functions in this session meaning that you don't need to run `library("package name")` to get them to work (these in-built functions are known as "base R").
 Other functions need to be first loaded (more on this later) before they can be <i> executed </i>.
 For instance with `sqrt`: the input (the argument) must be a number, and the return value (in fact, the output) is the square root of that number.
 Executing a function or running it is called <i>calling</i> the function.
 
 ```         
-    sqrt(49)
+sqrt(49)
 ```
 
 A function call is composed of two parts.
-- Name of the function - Arguments that the function requires to calculate the value it returns.
+- Name of the function
+- Arguments that the function requires to return and output.
 
 For instance as above: `sqrt()` is the name of the function, and `49` is the argument.
 
@@ -60,7 +61,7 @@ sqrt(genome_length_mb)
 ```
 
 Functions can take multiple arguments.
-For instance, let's round weight_lb to one decimal place.
+For instance, let's round genome_length_mb to one decimal place.
 Typing `round()` shows there are two arguments (pops up a yellow box).
 
 If you know the function, but don't know how to use it.
@@ -72,14 +73,14 @@ help(round)
 
 > Hint: Other helpful commands to explain the function are `?` before the function e.g. `?round` and `args(round)`
 
-However, if you are not sure what function is appropriate you can search all the help pages by running the command below...
-or simply searching google.
+However, if you are not sure what function is appropriate, you can search all the help pages by running the `help.search` function.
+Of course you can also search using Google/an LLM but remember to specify that you are using R ("eg how to round a number to one decimal place in R")
 
 ```         
 help.search("rounding of numbers")
 ```
 
-There are two arguments: 1) the number to be rounded and 2) the number of digits
+For the round function, there are two arguments: 1) the number to be rounded and 2) the number of digits
 
 ```         
 round(genome_length_mb, 1)
@@ -136,29 +137,29 @@ We will be going through vectors, lists, matrixes, and dataframes.
 Let’s create a vector containing the model organisms.
 
 ```         
-    model_org <- c("escherichia_coli", "homo_sapiens", "chlamydomonas_reinhardtii","drosophila_melanogaster","schizosaccharomyces_pombe","Saccharomyces_cerevisiae","arabidopsis_thaliana","cavia_porcellus","xenopus_laevis","nothobranchius_furzeri","xenopus_laevis","rattus_norvegicus","danio_rerio")
+model_org <- c("escherichia_coli", "homo_sapiens", "chlamydomonas_reinhardtii","drosophila_melanogaster","schizosaccharomyces_pombe","Saccharomyces_cerevisiae","arabidopsis_thaliana","cavia_porcellus","xenopus_laevis","nothobranchius_furzeri","xenopus_laevis","rattus_norvegicus","danio_rerio")
 ```
 
-In order to extract one or several values from a vector, we must provide one or several indices in square brackets, just as we do in math.
+In order to extract one or several values from a vector, we must provide one or several indices in square brackets, just as we do in mathematics.
 R indexes start at 1.
 
 So, to extract the 2nd element of `model_org` we type:
 
 ```         
-    model_org[2]
+model_org[2]
 ```
 
 We can extract multiple elements at a time by specifying multiple indices inside the square brackets as a vector.
 Notice how you can use `:` to make a vector of all integers and two numbers.
 
 ```         
-    model_org[c(1,7)]
+model_org[c(1,7)]
     
-    model_org[3:6]
+model_org[3:6]
     
-    model_org[10:1]
+model_org[10:1]
     
-    model_org[c(2, 8:10)]
+model_org[c(2, 8:10)]
 ```
 
 > ## Exercise
@@ -183,7 +184,7 @@ Three operators can be used to extract subsets of R objects.
 -   The \$ operator is used to extract elements of a list or data frame by literal name. Its semantics are similar to that of [[.
 
 ```         
-(drosophilia <- list(model_org = TRUE, num_nobel_drosophilists = 9L, num_species = 3 * 500, nobel = c("Thomas Hunt Morgan","Hermann Joseph Muller")))
+(drosophila <- list(model_org = TRUE, num_nobel_drosophilists = 9L, num_species = 3 * 500, nobel = c("Thomas Hunt Morgan","Hermann Joseph Muller")))
 #> $model_org
 #> [1] TRUE
 #> 
@@ -209,17 +210,17 @@ Or some of both.
 > How do we extract the name "Hermann Joseph Muller"?
 > Choose one or more of the options below.
 >
-> a.  `drosophilia$nobel[2]`
+> a.  `drosophila$nobel[2]`
 >
-> b.  `drosophilia[4][2]`
+> b.  `drosophila[4][2]`
 >
-> c.  `drosophilia[[4]][2]`
+> c.  `drosophila[[4]][2]`
 >
-> d.  `drosophilia[-1][1]`
+> d.  `drosophila[-1][1]`
 
 # Matrices
 
-Matrices are: - two-dimensional organisation of an m\*n array - good for arithmetic operations - only a single class of data
+Matrices are: - two-dimensional organisation of an m\*n array - good for arithmetic operations - <b>only a single class of data</b>
 
 To form a simple matrix, we use the command below.
 
