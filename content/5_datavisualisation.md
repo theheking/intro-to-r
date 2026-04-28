@@ -241,11 +241,12 @@ This isn’t a statistics class, so we won’t cover all available methods. Howe
 
 3. Group sizes. These are relatively small sample sizes.
 
- `table(metadata$cit)`
-  minus    plus unknown 
-      9       9      12 
-
-4. Data distribution and normality. While formal normality tests (e.g., shapiro.test() or ks.test()) can be used, small sample sizes and the presence of tied values (e.g., repeated 4.62, 4.63) already suggest that the data likely violate normality assumptions. The standard deviations are small, and visual inspections show limited spread within each group.
+```
+ table(metadata$cit)
+#minus  plus    unknown 
+#  9       9      12 
+```
+4. Data distribution and normality. While formal normality tests (e.g., `shapiro.test()` or `ks.test()`) can be used, small sample sizes and the presence of tied values (e.g., repeated 4.62, 4.63) already suggest that the data likely violate normality assumptions. The standard deviations are small, and visual inspections show limited spread within each group.
 
 Choosing the test because:
 - The data are numeric
