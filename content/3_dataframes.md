@@ -286,6 +286,7 @@ metadata$cit_unknown_first <- factor(metadata$cit,levels=c("unknown","minus","pl
 > metadata$cit_capitalised <- factor(metadata$cit,levels=c("Unknown","Minus","Plus"))
 > ```
 
+This demonstrates how the levels of a factor must match what is actually present in the column. Note that it does not return an error so it is important to check your output!
 ------------------------------------------------------------------------
 
 Material adapted from (<https://datacarpentry.org/R-genomics/01-intro-to-R.html>) and (<https://datacarpentry.org/semester-biology/materials/r-intro/>) by Helen King. Further revisions by the Data Science Platform.
