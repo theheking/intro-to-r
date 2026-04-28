@@ -1,41 +1,46 @@
 ---
 layout: page
-title: 4 - Utilising dplyr
+title: 4 - Data manipulation using the tidyverse
 ---
 
-Aggregating and analyzing data with dplyr
+Preparing your data for analysis
 =====================
 
 > Learning Objectives
 > -------------------
 > 
-> * Install and load dplyr package
-> * Apply common dplyr functions to manipulate data in R.
-> * Save a dataframe to csv file
+
+> * Understand why you need to perform data manipulation and how the tidyverse family of R packages can help
+> * Install and load the dplyr package
+> * Apply common tidyverse functions to manipulate data in R
 > * Utilise the ‘pipe’ operator to link together a sequence of functions.
 > * Utilise the ‘mutate’ function to apply other chosen functions to existing columns and create new columns of data.
-> * Apply the ‘split-apply-combine’ concept to split the data into groups, apply analysis to each group, and combine the results.
+> * Apply the ‘split-apply-combine’ concept to split the data into groups, apply analysis to each group, and combine the results
+> * Save the output of your data manipulation results
 
 
 # Installing packages 
-`dplyr` is a package for making data manipulation easier.
-
-It is a member of the tidyverse family, which is a collection of packages aimed to transform and better present data. In this course, we are learning dplyr and ggplot that have their own unique roles visualised below. 
+The "tidyverse" is a collection of packages that has been developed to help with manipulating and better presenting data. In this course, we are focusing on dplyr and ggplot that have their own unique roles visualised below. `dplyr` is a package for making data manipulation easier.
 
 ![tidyverse](../img/tidyverse-package-workflow.png)
 
-Packages in R are basically a collection of functions. The functions we’ve been using, like `str()`, come built into R; packages give you access to more functions. You need to install a package and then load it to be able to use it.
+The functions we have used so far have all been part of "base R" meaning that we haven't had to load any new packages. Packages are collections of related functions that are generally used together (eg ggplot has functions related to making plots)
 
-    install.packages("dplyr") ## install
+To get access to a new R packages, you need to install the package using a function like `install.packages()` and then load it using `library()` to be able to use it. The main places that you can get R packages from (called repositories) are CRAN and Bioconductor. For newer packages and newer versions of packages, you may need to install them from GitHub instead.
 
+```
+## To install a package from the main repository (CRAN), we can use the following function
+install.packages("dplyr") ## install
+```
 You might get asked to choose a CRAN mirror – this is basically asking you to choose a site to download the package from. The choice doesn’t matter too much; I’d recommend choosing the RStudio mirror.
 
     library("dplyr")          ## load
 
-You only need to install a package once per computer, but you need to load it every time you open a new R session and want to use that package.
+You only need to install a package once, but you need to load it every time you open a new R session and want to use that package.
 
 > Hint: Some libraries are not available via the `install.packages` function, especially Bioconductor. For example, DESeq2 used for differential expression analysis  (https://bioconductor.org/packages/release/bioc/html/DESeq2.html). To do this copy the code into the console.
 > 
+> This is for demonstration purposes only so you do not need to run this as we are not running differential expression analysis in this workshop
 > ```
 > if (!require("BiocManager", quietly = TRUE))
 >   install.packages("BiocManager")
@@ -46,7 +51,7 @@ You only need to install a package once per computer, but you need to load it ev
 What is dplyr?
 --------------
 
-The package `dplyr` is a fairly new (2014) package that tries to provide easy tools for the most common data manipulation tasks. 
+Data manipulation is the process of getting your data into a state that you can use for downstream analyses (eg subsetting, merging columns together). The package `dplyr` was developed to make it easier to do many of the most common data manipulation tasks. 
 It is built to work directly with data frames. 
 
 ### Load Metadata CSV File
@@ -74,10 +79,10 @@ To choose rows, use `filter()`:
 But what if you wanted to select and filter? There are three ways to do this: use intermediate dataframes, nested functions or finally, pipes.
 
  - By forming <b>intermediate data frames</b>, you create a temporary data frame and use that as input to the subsequent function. This can clutter up your workspace with lots of objects.
- - You can also <b>nest functions</b> (i.e. one function inside of another). This is handy but can be difficult to read if too many functions are nested as the process from the inside out.
- -   The last option, pipes, takes one function's output and sends it directly to the next. This is useful when you need apply different filtering or functions to the same data set. Pipes in R look like `%>%` and are made available via the `magrittr` package. We actually installed as part of `dplyr`.
+ - You can also <b>nest functions</b> (i.e. one function inside of another). This is handy but can be difficult to read if too many functions are nested.
+ -   The last option, pipes, takes one function's output and sends it directly to the next. This is useful when you need apply different filtering or functions to the same data set. Pipes in R look like `%>%` and are made available via the `magrittr` package. We actually installed it as part of `dplyr`. This is an example of a package dependency, meaning that dplyr can only be installed if a list of other packages are installed as well. Some packages such as Seurat have a very long list of dependencies so they can be quite time-consuming to install
 
-First, we are <i>piping</i> 
+First, we are <i>piping</i>. Piping is the standard way of using the tidyverse family of packages.
 ```
     metadata %>%
       filter(cit == "plus")
@@ -121,6 +126,14 @@ If this runs off your screen and you just want to see the first few rows, you ca
       mutate(genome_bp = genome_size *1e6) %>%
       head
 ```
+You can also use the `glimpse()` function. This shows the column names on the left and the column contents as rows so it can be easier to see if you have lots of columns
+```
+    metadata %>%
+      mutate(genome_bp = genome_size *1e6) %>%
+      glimpse()
+```
+
+
 The row has a NA value for clade, so if we wanted to remove those we could insert a `filter()` in this chain:
 ```
     metadata %>%
@@ -131,6 +144,7 @@ The row has a NA value for clade, so if we wanted to remove those we could inser
 
 `is.na()` is a function that determines whether something is or is not an `NA`. The `!` symbol negates it, so we’re asking for everything that is not an `NA`.
 
+Note: `head()` is a base R function rather than a tidyverse package function. You can use base R functions within pipes as well
 
 > Exercise
 > --------
@@ -154,7 +168,7 @@ Many data analysis tasks can be approached using the “split-apply-combine” p
 ```
 
 
-Here the summary function used was `n()` to find the count for each group. 
+Here the summarising function used was `n()` to find the count for each group. 
 
 We can also apply many other functions to individual columns to get other summary statistics. For example, in the R base package, we can use built-in functions like `mean`, `median`, `min`, and `max`. 
 
@@ -196,7 +210,7 @@ You can also summarize multiple variables at the same time:
       summarize(mean_size = mean(genome_size, na.rm = TRUE),
                 min_generation = min(generation))
 ```
-Look at [Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) for more possibilities with the dplyr package.
+Look at [Handy dplyr cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf) for more possibilities with the dplyr package.
 
 > Exercise
 > --------
@@ -207,18 +221,41 @@ Look at [Handy dplyr cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/
 >
 >
 
-### Exporting to csv 
-The goal is to export our processed dataset to a CSV file. 
+### Exporting your results 
+The goal is to export our processed dataset to a CSV file. We will firstly create a new folder called results for putting our outputs in. It is always a good idea to have some separation between input and output data
 We will use the `write.csv` function which takes two arguments: the data frame you want to export and the location. 
 
 ```
-write.csv(summarise_metadata, "data/summarised_metadata.csv")
+## create a results folder for outputs
+dir.create("results")
+## save your file as a csv
+write.csv(summarise_metadata, "results/summarised_metadata.csv")
+
 ```
 
+#### Exporting your results in rds and qs formats
+If you have tabular data, then it often makes sense to export it in the csv format that can be loaded in excel. In other situations like lists, Seurat objects, or other more complex data types it is often necessary to save them in other formats. Here are examples of how to save files as rds and qs objects. The qs package was developed to make it faster to load and save R objects so it is the better option if you have larger files (>100mb or more)
 
+```
+## To save the file as an rds file you use the saveRDS function (base R)
+saveRDS(summarise_metadata, "results/summarised_metadata.rds")
+
+## To load it back in you would run
+# summarise_metadata <- readRDS("results/summarised_metadata.rds")
+
+## To save in the qs file format, you first need to install the qs2 package from CRAN (this is the 2026 update of the original qs package)
+install.packages("qs2")
+library(qs2)
+
+qs_save(summarise_metadata, "results/summarised_metadata.qs")
+
+## 
+summarise_metadata <- qs_read("results/summarised_metadata.qs")
+
+```
 ****
 This lesson was copied or adapted from Jeff Hollister’s [materials](http://usepa.github.io/introR/2015/01/14/03-Clean/)_
-Material adapted from (https://datacarpentry.org/R-genomics/01-intro-to-R.html) and (https://datacarpentry.org/semester-biology/materials/r-intro/)
+Material adapted from (https://datacarpentry.org/R-genomics/01-intro-to-R.html) and (https://datacarpentry.org/semester-biology/materials/r-intro/) by Helen King. Further revisions by the Data Science Platform.
 
 
 
