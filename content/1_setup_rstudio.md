@@ -41,14 +41,12 @@ You need to install R before you install RStudio. Please choose the operating sy
 
 ![layout](../photos/layout.png) Parts of the RStudio
 
-### 1. Folder setup, Plots, Packages, Help, and more <span style="color: blue;">Blue</span>
-
+### <span style="color: lightblue;">Folder setup, Plots, Packages, Help, and more</span>
 -   If you haven't already, save the Rscript that we have just created. Please select `File --> Save` and enter in a suitable name for your Rscript.
 -   You should see this is now available in the folder.
 -   The following sections will explore the other tabs in this corner.
 
-### 2. Interpreter/Console is where R is actually running <span style="color: purple;">Dark purple</span>
-
+### <span style="color: purple;">2. Interpreter/Console  (this is where R is actually running)</span>
 -   Work in here interactively.
 
 -   <b>`>` indicates that R is ready to accept commands.</b>
@@ -69,13 +67,14 @@ You need to install R before you install RStudio. Please choose the operating sy
 
 -   <b>`+` indicates that R is waiting for you to finish entering a command.</b> This is usually due to not writing the pair of brackets or quotations.
 
-### 3. Environment, History, Git, and more <span style="color: orange;">Orange</span>
+### <span style="color: orange;">3. Environment, History, Git, and more</span>
+
 
 -   Every time we load data, make a variable or run a function that produces an output, we are adding to what is present in our R session. Everything present in your R session is your environment (We will demonstrate this shortly)
 -   You can run into memory issues if you keep on adding to your environment. You can remove everything using the broom icon or delete individual items by assigning them a value of NULL (shown below)
 -   The history tab shows the commands that you have run
 
-### 4. Text editor <span style="color: green;">Green</span>
+### <span style="color: green;">4. Text editor </span>
 
 -   Where we write code we want to keep and potentially reuse later
 
