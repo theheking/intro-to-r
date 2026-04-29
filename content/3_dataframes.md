@@ -48,7 +48,7 @@ list.files("data")
 
 ### Downloading the data 
   
-We have put the data file within Google Drive [here](https://drive.google.com/file/d/1yg29Yol0FlkUnjS78qkoWxHdA3bvijZu/view?usp=drive_link) so it is simpler to download the file manually and then add it (there is a `googledrive` R package but we are not using it here) 
+We have put the data file within a shared folder on [Google Drive](https://drive.google.com/drive/folders/1FGAUmqkgKEisNypqnIUL2afFeCfZ4Vm1?usp=drive_link) so it is simpler to download the file manually and then add it (there is a `googledrive` R package but we are not using it here) 
 
 A demonstration of downloading the file directly from Google Drive using `download.file()` is shown below;
 ```         
