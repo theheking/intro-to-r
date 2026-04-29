@@ -46,14 +46,15 @@ list.files("data")
 ## Now you can put the metadata file from the course materials into the data folder
 ```
 
-##### 
+### Downloading the data 
   
-We have put the data file within Google Drive so it is simpler to download the file manually and then add it (there is a `googledrive` R package) 
+We have put the data file within Google Drive [here](https://drive.google.com/uc?export=download&id=1yg29Yol0FlkUnjS78qkoWxHdA3bvijZu) so it is simpler to download the file manually and then add it (there is a `googledrive` R package but we are not using it here) 
 
-A demonstration of downloading a file directly from the internet using `download.file()` is shown below;
+A demonstration of downloading the file directly from Google Drive using `download.file()` is shown below;
 ```         
-## DO NOT RUN -  Example code only
-#download.file(url="placeholderURL",destfile="data/Ecoli_metadata.csv")
+## DO NOT RUN - This is the link to the file on Google Drive but it may require authentication 
+#download.file(url="https://drive.google.com/uc?export=download&id=1yg29Yol0FlkUnjS78qkoWxHdA3bvijZu" ,destfile="data/Ecoli_metadata.csv")
+
 ```
 
 ##### To check that the file is in the data folder using R code you can use the list.files or file.exists functions
@@ -68,7 +69,6 @@ file.exists("data/Ecoli_metadata.csv")
 ### Loading the data into R
 
 You are now ready to load the data. As the data is in the csv (comma-separated values) format, we are going to use the R function `read.csv()` to load the data file into memory (as a `data.frame`):
-https://drive.google.com/file/d/1yg29Yol0FlkUnjS78qkoWxHdA3bvijZu/view?usp=sharing
 
 ```         
 metadata <- read.csv('data/Ecoli_metadata.csv')
@@ -79,15 +79,15 @@ This statement doesn’t produce any output because the assignment doesn’t dis
 Let’s check the top (the first 6 lines) of this `data.frame` using the function `head()`:
 
 ```         
-    head(metadata)
+head(metadata)
 
-    ##     sample generation   clade strain     cit       run genome_size
-    ## 1   REL606          0    <NA> REL606 unknown                  4.62
-    ## 2 REL1166A       2000 unknown REL606 unknown SRR098028        4.63
-    ## 3   ZDB409       5000 unknown REL606 unknown SRR098281        4.60
-    ## 4   ZDB429      10000      UC REL606 unknown SRR098282        4.59
-    ## 5   ZDB446      15000      UC REL606 unknown SRR098283        4.66
-    ## 6   ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63
+##     sample generation   clade strain     cit       run genome_size
+## 1   REL606          0    <NA> REL606 unknown                  4.62
+## 2 REL1166A       2000 unknown REL606 unknown SRR098028        4.63
+## 3   ZDB409       5000 unknown REL606 unknown SRR098281        4.60
+## 4   ZDB429      10000      UC REL606 unknown SRR098282        4.59
+## 5   ZDB446      15000      UC REL606 unknown SRR098283        4.66
+## 6   ZDB458      20000 (C1,C2) REL606 unknown SRR098284        4.63
 ```
 
 We’ve just done two very useful things.
@@ -102,7 +102,7 @@ We’ve just done two very useful things.
 >
 > If the data was in .tsv format then you could use `read.table("data/Ecoli_metadata.csv", sep = "\t", header = TRUE)` instead.
 >
-> There are functions for loading all sorts of data types into R but you will typically need to install other R packages (eg read.xslx from the openxlsx package for excel files and Read10X/ReadXenium/Load10X_Spatial from the Seurat package for single cell and spatial data)
+> There are functions for loading all sorts of data types into R but you will typically need to install other R packages (eg `read.xslx()` from the `openxlsx` package for excel files and `Read10X()`/`ReadXenium()`/`Load10X_Spatial()` from the `Seurat` package for single cell and spatial data)
 
 ## Debugging errors
 
@@ -127,7 +127,7 @@ In file(file, "rt") :
 
 3.  Next, check your code for common errors (a) matched brackets (b) matched quotation marks (c) correct names/typos. <b> Is the text in your text editor the correct colour? </b>
 
-4.  Then, google the error message or paste it into your LLM of choice along with the code\*\* used to generate the error. \*\* Pasting code into an LLM is generally safe but it is better to use LLMs that Garvan has an enterprise agreement with. Avoid pasting in any sensitive information and direct file paths to where your data is kept
+4.  Then, google the error message or paste it into your LLM of choice along with the code used to generate the error. <b> Pasting code into an LLM is generally safe (as most often you will be using publicly available code) but it is better to use LLMs that Garvan has an enterprise agreement with. Avoid pasting in any sensitive information (eg patient IDs) and direct file paths to where your data is kept </b>
 
 5.  You can also check support sites such as github or stackoverflow.com. For stackoverflow, search using the [r] tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: <http://stackoverflow.com/questions/tagged/r>. If your issue is specific to a particular R package then you can also go to the issues section of the github page and look to see if anyone else has had the same problem (eg. <https://github.com/satijalab/seurat/issues>)
 
@@ -189,7 +189,7 @@ metadata[3, ]    # 3rd element for all columns
 metadata[, 7]    # Entire 7th column
 ```
 
-# Using column names to subset data frames
+## Using column names to subset data frames
 
 For larger datasets, it can be tricky to remember the column number that corresponds to a particular variable. Sometimes the column number for a particular variable can change if your analysis adds or removes columns. The best practice when working with columns in a data frame is to refer to them by name. This also makes your code easier to read and your intentions clearer.
 

@@ -18,14 +18,14 @@ editor_options:
 A variable is a name that has a value associated with it
 
 ```         
-    # Assigns a value to a variable
-    genome_size_mb <- 35
+# Assigns a value to a variable
+genome_size_mb <- 35
 
-    # Assigns a value to a variable and prints it out on the console
-    (genome_size_mb <- 35)
+# Assigns a value to a variable and prints it out on the console
+(genome_size_mb <- 35)
 
-    # Prints out the value of a variable on the console
-    genome_size_mb
+# Prints out the value of a variable on the console
+genome_size_mb
 ```
 
 > Hint: tab key autocompletes.
@@ -38,7 +38,7 @@ A variable is a name that has a value associated with it
 
 A function is a "canned script" that automates the processing of input and returns a value.
 
-We will be using <i>in-built</i> functions in this session meaning that you don't need to run `library("package name")` to get them to work (these in-built functions are known as "base R").
+We will be using <i>in-built</i> functions in this session meaning that you don't need to run `library("package name")` to get them to work <b>(these in-built functions are known as "base R")</b>.
 Other functions need to be first loaded (more on this later) before they can be <i> executed </i>.
 For instance with `sqrt`: the input (the argument) must be a number, and the return value (in fact, the output) is the square root of that number.
 Executing a function or running it is called <i>calling</i> the function.
@@ -198,7 +198,7 @@ Three operators can be used to extract subsets of R objects.
 #> [1] "Thomas Hunt Morgan" "Hermann Joseph Muller"
 ```
 
-As seen above, the advantage of a list is that it can: - Be heterogeneous, i.e. can be of different datatype.
+As seen above, the advantage of a list is that it can: - Be heterogeneous, i.e. can contain different datatypes.
 They don’t need to be atomic vectors – you can stick a function in there!
 - Have different lengths.
 - Have names.
@@ -220,9 +220,9 @@ Or some of both.
 
 # Matrices
 
-Matrices are: - two-dimensional organisation of an m\*n array - good for arithmetic operations - <b>only a single class of data</b>
+Matrices are: a two-dimensional organisation of an m\*n array - good for arithmetic operations - <b>in simple terms they are a table-like object containing only type of data (e.g. only numbers)</b>
 
-To form a simple matrix, we use the command below.
+To form a simple matrix, we use the command below;
 
 ```         
 matrix(1:9, nrow = 3, ncol = 3)

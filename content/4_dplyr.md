@@ -243,14 +243,14 @@ saveRDS(summarise_metadata, "results/summarised_metadata.rds")
 ## To load it back in you would run
 # summarise_metadata <- readRDS("results/summarised_metadata.rds")
 
+### Optional : Demonstration of how to use the qs2 package
 ## To save in the qs file format, you first need to install the qs2 package from CRAN (this is the 2026 update of the original qs package)
-install.packages("qs2")
-library(qs2)
-
-qs_save(summarise_metadata, "results/summarised_metadata.qs")
+#install.packages("qs2")
+#library(qs2)
+#qs_save(summarise_metadata, "results/summarised_metadata.qs")
 
 ## 
-summarise_metadata <- qs_read("results/summarised_metadata.qs")
+#summarise_metadata <- qs_read("results/summarised_metadata.qs")
 
 ```
 ****
