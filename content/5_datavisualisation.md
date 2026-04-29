@@ -24,12 +24,12 @@ When we are working with large sets of numbers, it can be useful to display that
 However, for most people, you would only use the histogram function in base R plots. We will test that out on the genome size of our metadata.
 
 ```
-    genome_size <- metadata$genome_size
+genome_size <- metadata$genome_size
 ```
 We can do this by using the `hist` function:
 
 ```
-    hist(genome_size)
+hist(genome_size)
 ```
 ![](../img/genome_size_histogram.png)
 
@@ -41,14 +41,14 @@ More recently, R users have shifted away from base graphic options and toward a 
 
 `ggplot2` is best used on data in the `data.frame` form, so we will work with `metadata` for the following figures. Let’s start by loading the `ggplot2` library.
 ```
-    library("ggplot2")
+library("ggplot2")
 ```
 
 The `ggplot()` function is used to initialise the basic graph structure, and then we add to it. The basic idea is that you specify different parts of the plot and add them together using the `+` operator.
 
 We will start with a blank plot and add layers as we progress.
 ```
-    ggplot(data = metadata)
+ggplot(data = metadata)
 ```
 
 Geometric objects are the actual marks we put on a plot. Examples include:
@@ -64,8 +64,8 @@ However, really the number of plots is endless. This website shows a summary of 
 
 A plot **must have at least one geom**; there is no upper limit. You can add a geom to a plot using the + operator
 ```
-    ggplot(data = metadata) +
-      geom_point() 
+ggplot(data = metadata) +
+    geom_point() 
 ```
 
 For each geom, you need 2 essential arguments satisfied to create a plot:
@@ -91,8 +91,8 @@ To start, we will add the column names that correspond to the variable we want t
 
 We will run the most basic scatterplot of `sample` against `genome size`.
 ```
-    ggplot(data = metadata) +
-      geom_point(mapping = aes(x = sample, y= genome_size))
+ggplot(data = metadata) +
+    geom_point(mapping = aes(x = sample, y= genome_size))
 ```
 ![](../img/ggplot_1.png)
 
@@ -115,9 +115,9 @@ We will also add some additional aesthetics by assigning them to other variables
 
 _For example, the colour of the points will reflect the number of generations and the shape will reflect citrate mutant status._ The size of the points can be adjusted within the `geom_point` but does not need to be included in `aes()` since the value is not assigned to a variable.
 ```
-    ggplot(data = metadata) +
-      geom_point(mapping = aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
-      theme(axis.text.x = element_text(angle=45, hjust=1))
+ggplot(data = metadata) +
+    geom_point(mapping = aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
+    theme(axis.text.x = element_text(angle=45, hjust=1))
 ```
 ![](../img/ggplot_2.png)
 
@@ -190,25 +190,28 @@ These functions initialise a plot that will be written directly to a file in the
 3.  Close the connection to the new file (with your plot) using `dev.off()`.
 
 ```
-    # this works!
-    pdf("figure/scatter.pdf")
+## start by making a figures folder
+dir.create("figures")
+
+# this works!
+pdf("figures/scatter.pdf")
     
-    ggplot(metadata) +
-      geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
-      theme(axis.text.x = element_text(angle=45, hjust=1))
+ggplot(metadata) +
+   geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
+   theme(axis.text.x = element_text(angle=45, hjust=1))
     
-    dev.off()
+   dev.off()
 
-    # this also works!
-    p <- ggplot(metadata) +
-      geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
-      theme(axis.text.x = element_text(angle=45, hjust=1))
+# this also works!
+p <- ggplot(metadata) +
+       geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
+       theme(axis.text.x = element_text(angle=45, hjust=1))
 
-    pdf("figure/scatter_p.pdf")
+pdf("figures/scatter_p.pdf")
 
-    p
+p
 
-    dev.off()
+dev.off()
 
 ```
 
@@ -219,7 +222,7 @@ p <- ggplot(metadata) +
       geom_point(aes(x = sample, y= genome_size, color = generation, shape = cit), size = rel(3.0)) +
       theme(axis.text.x = element_text(angle=45, hjust=1))
 
-ggsave('figure/scatter_ggsave.pdf', p, height = 6, width = 4)
+ggsave('figures/scatter_ggsave.pdf', p, height = 6, width = 4)
 
 ```
 
@@ -260,31 +263,27 @@ For testing across all three groups simultaneously, we would use the Kruskal–W
 For visualisation, you'll need to install the ggubr package, load it into your library, and plot your boxplot. 
 
 ```
-    # Install and load ggpubr
-    install.packages("ggpubr")
-    library(ggpubr)
+# Install and load ggpubr
+install.packages("ggpubr")
+library(ggpubr)
     
-    # Visualise with a boxplot
-    p <- ggboxplot(metadata, x = "cit", y = "genome_size",
-                   color = "cit",
-                   palette = c("#4D00C7", "#DA3C07", "#05D3D3"),
-                   add = "jitter", shape = "cit") +
-         xlab("Citrate Mutant") + ylab("Genome Size (Mb)")
+# Visualise with a boxplot
+p <- ggboxplot(metadata, x = "cit", y = "genome_size",
+               color = "cit",
+               palette = c("#4D00C7", "#DA3C07", "#05D3D3"),
+               add = "jitter", shape = "cit") +
+     xlab("Citrate Mutant") + ylab("Genome Size (Mb)")
     
-    # Define pairwise comparisons
-    my_comparisons <- list(
-      c("unknown", "minus"),
-      c("unknown", "plus"),
-      c("minus", "plus")
-    )
+# Define pairwise comparisons
+my_comparisons <- list(c("unknown", "minus"),
+                       c("unknown", "plus"),
+                       c("minus", "plus"))
     
-    # Add Wilcoxon test results with significance labels
-    p + stat_compare_means(
-          comparisons = my_comparisons,
-          method = "wilcox.test",
-          label = "p.signif",
-          exact = FALSE  # avoid warning with ties
-      )
+# Add Wilcoxon test results with significance labels
+p + stat_compare_means(comparisons = my_comparisons,
+                       method = "wilcox.test",
+                       label = "p.signif",
+                       exact = FALSE  # avoid warning with ties)
       
 ```
 

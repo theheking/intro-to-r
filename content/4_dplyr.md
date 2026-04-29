@@ -55,7 +55,7 @@ Data manipulation is the process of getting your data into a state that you can 
 It is built to work directly with data frames. 
 
 ### Load Metadata CSV File
-Please rerun the command from Monday's session. This might be different depending on where you are within your directory. 
+Please rerun the command from the earlier session. This might be different depending on where you are within your directory. 
 
 ```
 metadata <- read.csv("data/Ecoli_metadata.csv", stringsAsFactors = TRUE)
