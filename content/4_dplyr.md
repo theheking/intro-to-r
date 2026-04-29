@@ -266,8 +266,8 @@ As this is an introductory course, we are using a 'clean' dataset that does not 
 
 The best approach is to be rigorous in how you prepare your input data before bringing it into R but sometimes this is outside of your control. Generally speaking it is better to leave the raw data as is and then apply data manipulation steps within R
 
-#### Let's make a new dataframe that is a mess
-Run this to make a new dataframe called clinical data that has some examples of real-world issues
+### Let's make a new dataframe that is a mess
+Run the code below to make a new dataframe called clinical data that has some examples of real-world issues
 ```
 
 clinical_data <- data.frame(participant_ID = factor(c("Patient_1", "patient_1", "Patient 2", "patient2", "Patint_3", "Patient_3", "patient_4", "Patient 4", "PATIENT_5","Patient_5","patient6", "Patient_6", "Patient_7", "patient_7", "Patient 8", "patient_8", "Patint_9", "patient 10", "Patient_11","PATIENT_12")),
@@ -291,7 +291,7 @@ summary(clinical_data)
 
 ### Now let's run a series of steps to clean it up
 
-Load required packages and convert factor variables to character
+<b>Load required packages and convert factor variables to character</b>
 
 ```
 ## load require packages for the cleaning steps
@@ -317,7 +317,7 @@ summary(clinical_data)
 
 ```
 
-Run a piped step that removes white space, makes capitalisation consistent,replaces spaces with underscores,corrects a recurring typo, and returns a cleaned dataframe
+<b>Run a piped step that removes white space, makes capitalisation consistent,replaces spaces with underscores,corrects a recurring typo, and returns a cleaned dataframe</b>
 
 ```
 clinical_data_clean <- clinical_data %>%
@@ -336,7 +336,7 @@ clinical_data_clean <- clinical_data %>%
     mutate(participant_ID = str_replace_all(participant_ID, pattern="patint", replacement="patient"))
 ```
 
-Check the output
+<b>Check the output</b>
 ```
 #check remaining NA values per column (it should be the same as before)
 clinical_data_clean %>% summarise(across(everything(), ~ sum(is.na(.))))
@@ -353,7 +353,7 @@ summary(factor(clinical_data_clean$participant_ID))
 # "patient_2" and "patient2", "patient_6" and "patient 6"
 
 ```
-Correct the individual values that do not have an underscore. Here we will demonstrate how to do it using base R
+<b>Correct the individual values that do not have an underscore. Here we will demonstrate how to do it using base R</b>
 > Extra exercise: You can think of how you could do the same thing using dplyr
 
 ```
@@ -378,7 +378,7 @@ summary(factor(clinical_data_clean$participant_ID))
 #clinical_data_clean$participant_ID <- as.character(clinical_data_clean$participant_ID)
 
 ```
-You may want to add a column showing if a participant has both the normal tissue and tumour sample present for inclusion in downstream analyses. We can do this by first grouping the data using `participant_ID` and then
+<b>You may want to add a column after cleaning to indicate subjects with complete data (eg participants with both tumour and normal samples)</b>
 
 ```
 ## use dplyr to add a logical column called has_paired_samples_dplyr
@@ -409,7 +409,7 @@ table(baseR=clinical_data_clean$has_paired_samples_baseR,dplyr=clinical_data_cle
 ## same 16 rows were false for baseR and dplyr
 
 ```
-Think of any further checks that it would be good to do and how you would do them
+<b>Think of any further checks that it would be good to do and how you would do them</b>
 > E.g. Normal tissue should not have a tumour size
 
 ****
