@@ -291,7 +291,8 @@ summary(clinical_data)
 
 ### Now let's run a series of steps to clean it up
 
-1. Load required packages and convert factor variables to character
+Load required packages and convert factor variables to character
+
 ```
 ## load require packages for the cleaning steps
 library(dplyr)
@@ -313,8 +314,11 @@ summary(clinical_data)
 #                                                          Max.   :4.00   Max.   :35.10  
 #                                                          NA's   :10     NA's   :10  
 
+
 ```
-2. Run a piped step that removes white space, makes capitalisation consistent,replaces spaces with underscores,corrects a recurring typo, and returns a cleaned dataframe
+
+Run a piped step that removes white space, makes capitalisation consistent,replaces spaces with underscores,corrects a recurring typo, and returns a cleaned dataframe
+
 ```
 clinical_data_clean <- clinical_data %>%
     # remove leading and trailing whitespace using the str_trim function from stringr
@@ -332,7 +336,7 @@ clinical_data_clean <- clinical_data %>%
     mutate(participant_ID = str_replace_all(participant_ID, pattern="patint", replacement="patient"))
 ```
 
-3. Check the output
+Check the output
 ```
 #check remaining NA values per column (it should be the same as before)
 clinical_data_clean %>% summarise(across(everything(), ~ sum(is.na(.))))
@@ -349,7 +353,7 @@ summary(factor(clinical_data_clean$participant_ID))
 # "patient_2" and "patient2", "patient_6" and "patient 6"
 
 ```
-4. Correct the individual values that do not have an underscore. Here we will demonstrate how to do it using base R
+Correct the individual values that do not have an underscore. Here we will demonstrate how to do it using base R
 > Extra exercise: You can think of how you could do the same thing using dplyr
 
 ```
@@ -374,7 +378,7 @@ summary(factor(clinical_data_clean$participant_ID))
 #clinical_data_clean$participant_ID <- as.character(clinical_data_clean$participant_ID)
 
 ```
-5. You may want to add a column showing if a participant has both the normal tissue and tumour sample present for inclusion in downstream analyses. We can do this by first grouping the data using `participant_ID` and then
+You may want to add a column showing if a participant has both the normal tissue and tumour sample present for inclusion in downstream analyses. We can do this by first grouping the data using `participant_ID` and then
 
 ```
 ## use dplyr to add a logical column called has_paired_samples_dplyr
@@ -405,7 +409,7 @@ table(baseR=clinical_data_clean$has_paired_samples_baseR,dplyr=clinical_data_cle
 ## same 16 rows were false for baseR and dplyr
 
 ```
-6. Think of any further checks that it would be good to do and how you would do them
+Think of any further checks that it would be good to do and how you would do them
 > E.g. Normal tissue should not have a tumour size
 
 ****
