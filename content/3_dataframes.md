@@ -48,7 +48,7 @@ list.files("data")
 
 ### Downloading the data 
   
-We have put the data file within Google Drive [here](https://drive.google.com/uc?export=download&id=1yg29Yol0FlkUnjS78qkoWxHdA3bvijZu) so it is simpler to download the file manually and then add it (there is a `googledrive` R package but we are not using it here) 
+We have put the data file within Google Drive [here](https://drive.google.com/file/d/1yg29Yol0FlkUnjS78qkoWxHdA3bvijZu/view?usp=drive_link) so it is simpler to download the file manually and then add it (there is a `googledrive` R package but we are not using it here) 
 
 A demonstration of downloading the file directly from Google Drive using `download.file()` is shown below;
 ```         
@@ -57,8 +57,10 @@ A demonstration of downloading the file directly from Google Drive using `downlo
 
 ```
 
-##### To check that the file is in the data folder using R code you can use the list.files or file.exists functions
-  
+#### Checking that the file is in the data folder
+
+You can check that the file is in the data folder using the files panel in RStudio or you can use R functions such as `list.files` or `file.exists` as shown below
+
 ```         
 list.files("data")
 # should show "Ecoli_metadata.csv" in the console
@@ -94,9 +96,9 @@ We’ve just done two very useful things.
 
 1.  We’ve read our data in to R, so now we can work with it in R
 
-2.  We’ve created a data frame (with the read.csv command) in the standard way R works with data (notice that we didn't have to specify a dataframe when using read.csv - it is the default format that the function will return to you)
+2.  We’ve created a data frame using the `read.csv()` function. We didn't have to specify a dataframe when using `read.csv()` as it is the default format that the function will return to you
 
-##### Some more about read.csv and loading data
+#### Some more about read.csv and loading data
 
 > `read.csv()` is an example of a "wrapper" function as it uses `read.table()` inside of it but with the default arguments changed to what is required for a loading a .csv file. Running `read.table("data/Ecoli_metadata.csv", sep = ",", header = TRUE)` is the same as running `read.csv("data/Ecoli_metadata.csv")`
 >
@@ -247,7 +249,10 @@ They are very useful but not necessarily intuitive and therefore require some at
 
 Factors are used to represent categorical data. Factors can be ordered or unordered. They are an important class for statistical analysis and for plotting.
 
-Factors are: - stored as integers - have labels associated with these unique integers. - While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
+Factors are: 
+- stored as integers 
+- have labels associated with these unique integers. 
+- While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
 
 Let us convert the clade columns from a character to a factor column using the `factor` command.
 
@@ -262,10 +267,15 @@ The levels associated with this factor are `Levels: (C1,C2) C1 C2 C3 Cit+ UC unk
 > Let's reread our metadata data frame, but set every character column to be a factor.
 >
 > By looking at the help page, can you edit the command below with a new argument that would read all strings as factors?
->
-> ```         
-> metadata <- read.csv('data/Ecoli_metadata.csv')
-> ```
+
+```         
+metadata <- read.csv('data/Ecoli_metadata.csv')
+
+## Note that this is not the default option for read.csv and it is better
+## to set the columns that you want to be factors as factors rather than 
+## making every character column a factor
+
+```
 
 Factors are character vectors that can only contain a pre-defined set of values known as *levels*. By default, R always sorts *levels* in alphabetical order.
 
@@ -291,6 +301,22 @@ metadata$cit_unknown_first <- factor(metadata$cit,levels=c("unknown","minus","pl
 > ```
 
 This demonstrates how the levels of a factor must match what is actually present in the column. Note that it does not return an error so it is important to check your output!
+
+## Appendix - Additional tips for loading data
+
+Another useful argument to `read.csv` is `na.strings`. This argument tells read.csv if you want to convert anything from your raw data into `NA`. Converting missing data to `NA` means that you can use R functions like `is.na()` to deal with them later
+
+```
+## Anything matching `NA,""," ", or "Not Detected" will be converted to NA.
+## This is useful if you have been given data where someone has used a different
+## term for missing data (e.g "Not Detected") 
+metadata <- read.csv('data/Ecoli_metadata.csv',na.strings = c(NA,""," ","Not Detected"))
+```
+
+#### Larger data sets
+`read.csv()` can fail or be very slow at reading files more than a few hundred MB in size. In this case, you can look into the `data.table` package. It has functions for loading and running analyses on larger datasets
+
+
 ------------------------------------------------------------------------
 
 Material adapted from (<https://datacarpentry.org/R-genomics/01-intro-to-R.html>) and (<https://datacarpentry.org/semester-biology/materials/r-intro/>) by Helen King. Further revisions by the Data Science Platform.

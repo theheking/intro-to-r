@@ -40,12 +40,12 @@ You only need to install a package once, but you need to load it every time you 
 
 > Hint: Some libraries are not available via the `install.packages` function, especially Bioconductor. For example, DESeq2 used for differential expression analysis  (https://bioconductor.org/packages/release/bioc/html/DESeq2.html). To do this copy the code into the console.
 > 
-> This is for demonstration purposes only so you do not need to run this as we are not running differential expression analysis in this workshop
+> This is for demonstration purposes only so I have commented it out (we are not running differential expression analysis in this workshop)
 > ```
-> if (!require("BiocManager", quietly = TRUE))
->   install.packages("BiocManager")
+># if (!require("BiocManager", quietly = TRUE))
+>#   install.packages("BiocManager")
 >
-> BiocManager::install("DESeq2")
+># BiocManager::install("DESeq2")
 > ```
 
 What is dplyr?
