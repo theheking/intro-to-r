@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 4 - Data manipulation using the tidyverse
+title: 4 - Data manipulation
 ---
 
 Preparing your data for analysis
