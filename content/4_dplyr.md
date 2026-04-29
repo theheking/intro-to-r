@@ -233,7 +233,7 @@ write.csv(summarise_metadata, "results/summarised_metadata.csv")
 ```
 
 #### Exporting your results in rds and qs formats
-If you have tabular data, then it often makes sense to export it in the csv format that can be loaded in excel. In other situations like lists, Seurat objects, or other more complex data types it is often necessary to save them in other formats. Here are examples of how to save files as rds and qs objects. The qs package was developed to make it faster to load and save R objects so it is the better option if you have larger files (>100mb or more)
+If you have tabular data, then it often makes sense to export it in the csv format that can be loaded in excel. In other situations like lists, Seurat objects, or other more complex data types it is often necessary to save them in other formats. Here are examples of how to save files as `rds` and `qs` objects. The `qs` package (now updated to `qs2`) was developed to make it faster to load and save R objects so it is the better option if you have larger files (>100mb or more)
 
 ```
 ## To save the file as an rds file you use the saveRDS function (base R)
@@ -258,7 +258,7 @@ saveRDS(summarise_metadata, "results/summarised_metadata.rds")
 As this is an introductory course, we are using a 'clean' dataset that does not have many issues with it. In the real world, your input dataset may have common issues such as;
 
 1. Inconsistent capitalisation
-2. Inconsistent delimiters or separators ("Control-1","Control_1","Control 1") : avoid separators that have functions in R (e.g the hyphen `-` is used for subtraction)
+2. Inconsistent delimiters or separators `("Control-1","Control_1","Control 1")` : avoid separators that have functions in R (e.g the hyphen `-` is used for subtraction)
 3. Typos
 4. Leading whitespace (`" Control_1"` instead of `"Control_1"`)
 5. Trailing whitespace (`"Control_1 "` instead of `"Control_1"`)
@@ -266,8 +266,10 @@ As this is an introductory course, we are using a 'clean' dataset that does not 
 
 The best approach is to be rigorous in how you prepare your input data before bringing it into R but sometimes this is outside of your control. Generally speaking it is better to leave the raw data as is and then apply data manipulation steps within R
 
+#### Let's make a new dataframe that is a mess
+Run this to make a new dataframe called clinical data that has some examples of real-world issues
 ```
-## Run this to make a new dataframe called clinical data that has some examples of real-world issues
+
 clinical_data <- data.frame(participant_ID = factor(c("Patient_1", "patient_1", "Patient 2", "patient2", "Patint_3", "Patient_3", "patient_4", "Patient 4", "PATIENT_5","Patient_5","patient6", "Patient_6", "Patient_7", "patient_7", "Patient 8", "patient_8", "Patint_9", "patient 10", "Patient_11","PATIENT_12")),
   sample_type = factor(c("Normal", " Tumour", "NORMAL", "tumour", "Normal ", " Tumour", "Normal", "TUMOUR", "Normal", "tumour "," normal", "tumour ", "Normal", " Tumour", "normal", "Tumour", "Normal", "Tumour", " Normal", "Tumour")),
   chemotherapy = factor(c("Cisplatin", "Cisplatin", "Carboplatin", "Carboplatin", "Paclitaxel", "Paclitaxel", "Doxorubicin", "Doxorubicin","Cisplatin", "Cisplatin","Carboplatin", "Carboplatin", "Paclitaxel", "Paclitaxel", "Doxorubicin", "Doxorubicin", "Cisplatin", "Carboplatin","Paclitaxel", "Doxorubicin")),
@@ -284,9 +286,10 @@ summary(clinical_data)
 # patient_1 : 1      normal:1                      3rd Qu.:3.75   3rd Qu.:28.50  
 # Patient_1 : 1      Normal:1                      Max.   :4.00   Max.   :35.10  
 # (Other)   :14     (Other):5                      NA's   :10     NA's   :10 
+
 ```
 
-### Return a cleaned dataframe
+### Now let's run a series of steps to clean it up
 
 1. Load required packages and convert factor variables to character
 ```
