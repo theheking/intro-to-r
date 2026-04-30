@@ -48,7 +48,8 @@ list.files("data")
 
 ### Downloading the data 
   
-We have put the data file within a shared folder on [Google Drive](https://drive.google.com/drive/folders/1FGAUmqkgKEisNypqnIUL2afFeCfZ4Vm1?usp=drive_link) so it is simpler to download the file manually and then add it (there is a `googledrive` R package but we are not using it here) 
+We have put the data file within a shared folder on [Google Drive](https://drive.google.com/drive/folders/1FGAUmqkgKEisNypqnIUL2afFeCfZ4Vm1?usp=drive_link) so it is simpler to download the file manually and then add it (there is a `googledrive` R package but we are not using it here)
+<b> If you cannot access the file, there is code in the Appendix section at the bottom of this page for recreating the data within R </b>
 
 A demonstration of downloading the file directly from Google Drive using `download.file()` is shown below;
 ```         
@@ -302,7 +303,7 @@ metadata$cit_unknown_first <- factor(metadata$cit,levels=c("unknown","minus","pl
 
 This demonstrates how the levels of a factor must match what is actually present in the column. Note that it does not return an error so it is important to check your output!
 
-## Appendix - Additional tips for loading data
+## Appendix - Additional comments on loading data
 
 Another useful argument to `read.csv` is `na.strings`. This argument tells read.csv if you want to convert anything from your raw data into `NA`. Converting missing data to `NA` means that you can use R functions like `is.na()` to deal with them later
 
@@ -316,6 +317,23 @@ metadata <- read.csv('data/Ecoli_metadata.csv',na.strings = c(NA,""," ","Not Det
 #### Larger data sets
 `read.csv()` can fail or be very slow at reading files more than a few hundred MB in size. In this case, you can look into the `data.table` package. It has functions for loading and running analyses on larger datasets
 
+
+## If you could not access the Ecoli_metadata file. Copy and paste the code below to manually create the dataframe instead
+
+```
+# Only run this if you do not have access to the csv file
+metadata <- data.frame(
+    sample= c("REL606","REL1166A","ZDB409","ZDB429","ZDB446","ZDB458","ZDB464*","ZDB467","ZDB477","ZDB483","ZDB16","ZDB357","ZDB199*",
+    "ZDB200","ZDB564","ZDB30*","ZDB172","ZDB158","ZDB143","CZB199","CZB152","CZB154","ZDB83","ZDB87","ZDB96","ZDB99","ZDB107","ZDB111","REL10979","REL10988"),
+    generation = as.integer(c(0,2000,5000,10000,15000,20000,20000,20000,25000,25000,30000,30000,31500,31500,31500,32000,32000,32500,32500,33000,33000,33000,34000,34000,36000,36000,38000,38000,40000,40000)),
+    clade = c(NA,"unknown","unknown","UC","UC","(C1,C2)","(C1,C2)","(C1,C2)","C1","C3","C1","C2","C1","C2","Cit+","C3","Cit+","C2","Cit+","C1","Cit+",
+    "Cit+","Cit+","C2","Cit+","C1","Cit+","C2","Cit+","C2"),
+    strain = "REL606",
+    cit= c(rep("unknown",12),"minus","minus","plus","minus","plus","minus","plus","minus","plus","plus","minus","plus","plus","minus","plus","minus","plus","minus"),
+    run         = c("","SRR098028","SRR098281","SRR098282","SRR098283","SRR098284","SRR098285","SRR098286","SRR098287","SRR098288","SRR098031","SRR098280","SRR098044",
+    "SRR098279","SRR098289","SRR098032","SRR098042","SRR098041","SRR098040","SRR098027","SRR097977","SRR098026","SRR098034","SRR098035","SRR098036","SRR098037","SRR098038","SRR098039","SRR098029","SRR098030"),
+    genome_size = c(4.62,4.63,4.60,4.59,4.66,4.63,4.62,4.61,4.65,4.59,4.61,4.62,4.62,4.63,4.74,4.61,4.77,4.63,4.79,4.59,4.80,4.76,4.60,4.75,4.74,4.61,4.79,4.62,4.78,4.62))
+```
 
 ------------------------------------------------------------------------
 
