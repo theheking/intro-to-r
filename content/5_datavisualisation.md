@@ -309,7 +309,7 @@ We have only scratched the surface here. To learn more, see the [ggplot2 referen
 
 Much of the material here was adapted from the ggplot2 Tutorial from [IQSS](https://iqss.github.io/dss-workshops/Rgraphics.html).
 
-To investigate more into colour palettes [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
+Find more detail on the `viridis` colour palettes [here](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
 
 
 
