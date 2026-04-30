@@ -20,11 +20,11 @@ Preparing your data for analysis
 
 
 # Installing packages 
-The "tidyverse" is a collection of packages that has been developed to help with manipulating and better presenting data. In this course, we are focusing on `dplyr` and `ggplot` that have their own unique roles visualised below. `dplyr` is a package for making data manipulation easier.
+The `tidyverse` is a collection of packages that has been developed to help with manipulating and better presenting data. In this course, we are focusing on `dplyr` and `ggplot` that have their own unique roles visualised below. `dplyr` is a package for making data manipulation easier.
 
 ![tidyverse](../img/tidyverse-package-workflow.png)
 
-The functions we have used so far have all been part of "base R" meaning that we haven't had to load any new packages. Packages are collections of related functions that are generally used together (eg `ggplot` has functions related to making plots)
+The functions we have used so far have all been part of `base R` meaning that we haven't had to load any new packages. Packages are collections of related functions that are generally used together (eg `ggplot` has functions related to making plots)
 
 To get access to a new R packages, you need to install the package using a function like `install.packages()` and then load it using `library()` to be able to use it. The main places that you can get R packages from (called repositories) are <b>CRAN</b> and <b>Bioconductor</b>. For newer packages and newer versions of packages, you may need to install them from GitHub instead.
 
@@ -61,8 +61,9 @@ metadata <- read.csv("data/Ecoli_metadata.csv", stringsAsFactors = TRUE)
 
 ### Loading dplyr and selecting columns
 
-Firstly, we need to load the `dplyr` package using `library('packagename')` so that we can use `dplyr` functions. You always use the `library()` function to load an R package no matter which repository it has been installed from 
+Firstly, we need to load the `dplyr` package using `library()` so that we can use `dplyr` functions. You always use the `library()` function to load an R package no matter which repository it has been installed from 
 ```
+## To use library, you put the name of the package that you want to load in the parentheses
 library("dplyr")
 ```
 
@@ -75,9 +76,10 @@ select(metadata, sample, clade, cit, genome_size)
 
 Another commonly used dplyr function is `filter()`. Before we run it, let's use the R help menu to look at the function using `?filter()`
 
-![layout](../photos/filter_example.png)
+![layout](../photos/filter_example_pt1.png)
 
-<b>If two packages have a function with the same name then the one loaded last will be used</b>. You can see when we load dplyr that the filter function from the `stats` package has been masked (hidden). You can still access a masked function using the `::` operator as shown below. This is a way of specifying which package you want to use the filter function from and also allows you to use a function from a package that is installed on your computer without running the `library()` function;
+<b>If two packages have a function with the same name then the one loaded last will be used</b>. You can see when we load `dplyr` that the `filter()` function from the `stats` package has been masked (hidden). You can still access a masked function using the `::` operator as shown below. This is a way of specifying which package you want to use the `filter()` function from and also allows you to use a function from a package that is installed on your computer without running `library()`;
+![layout](../photos/filter_example_pt2.png)
 
 ```
 # Use the filter function from the stats package
@@ -92,7 +94,7 @@ dplyr::filter()
 ```
 
 #### Running the filter function
-We can use the filter function to choose rows of interest. Below, we use `filter()` to choose the rows where the value in the `cit` column is equal to `"plus"`:
+We can use the `filter()` function to choose rows of interest. Below, we use `filter()` to choose the rows where the value in the `cit` column is equal to `"plus"`:
 
 ```
 filter(metadata, cit == "plus")
@@ -104,9 +106,10 @@ But what if you wanted to select and filter? There are three ways to do this: us
 
  - By forming <b>intermediate data frames</b>, you create a temporary data frame and use that as input to the subsequent function. This can clutter up your workspace with lots of objects.
  - You can also <b>nest functions</b> (i.e. one function inside of another). This is handy but can be difficult to read if too many functions are nested.
- -   The last option, pipes, takes one function's output and sends it directly to the next. This is useful when you need apply different filtering or functions to the same data set. Pipes in R look like `%>%` and are made available via the `magrittr` package. We actually installed it as part of `dplyr`. This is an example of a package dependency, meaning that dplyr can only be installed if a list of other packages are installed as well. Some packages such as Seurat have a very long list of dependencies so they can be quite time-consuming to install
+ -   The last option, pipes, takes one function's output and sends it directly to the next. This is useful when you need apply different filtering or functions to the same data set. Pipes used in `tidyverse` packages look like `%>%` and are made available via the `magrittr` package. We actually installed it as part of `dplyr`. This is an example of a package dependency, meaning that `dplyr` requires it to work properly. Some packages such as `Seurat` have a very long list of dependencies so they can be quite time-consuming to install
+ -   Note that there is a pipe option in base R as well `|>` but it is more limited in how it can be used
 
-First, we are <i>piping</i>. Piping is the standard way of using the tidyverse family of packages.
+First, we are <i>piping</i>. Piping is the standard way of using the `tidyverse` family of packages.
 ```
 metadata %>%
     filter(cit == "plus")
