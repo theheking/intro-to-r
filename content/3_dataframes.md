@@ -331,8 +331,8 @@ metadata <- data.frame(
     clade = c(NA,"unknown","unknown","UC","UC","(C1,C2)","(C1,C2)","(C1,C2)","C1","C3","C1","C2","C1","C2","Cit+","C3","Cit+","C2","Cit+","C1","Cit+",
     "Cit+","Cit+","C2","Cit+","C1","Cit+","C2","Cit+","C2"),
     strain = "REL606",
-    cit= c(rep("unknown",12),"minus","minus","plus","minus","plus","minus","plus","minus","plus","plus","minus","plus","plus","minus","plus","minus","plus","minus"),
-    run         = c("","SRR098028","SRR098281","SRR098282","SRR098283","SRR098284","SRR098285","SRR098286","SRR098287","SRR098288","SRR098031","SRR098280","SRR098044",
+    cit = c(rep("unknown",12),"minus","minus","plus","minus","plus","minus","plus","minus","plus","plus","minus","plus","plus","minus","plus","minus","plus","minus"),
+    run = c("","SRR098028","SRR098281","SRR098282","SRR098283","SRR098284","SRR098285","SRR098286","SRR098287","SRR098288","SRR098031","SRR098280","SRR098044",
     "SRR098279","SRR098289","SRR098032","SRR098042","SRR098041","SRR098040","SRR098027","SRR097977","SRR098026","SRR098034","SRR098035","SRR098036","SRR098037","SRR098038","SRR098039","SRR098029","SRR098030"),
     genome_size = c(4.62,4.63,4.60,4.59,4.66,4.63,4.62,4.61,4.65,4.59,4.61,4.62,4.62,4.63,4.74,4.61,4.77,4.63,4.79,4.59,4.80,4.76,4.60,4.75,4.74,4.61,4.79,4.62,4.78,4.62))
 ```
