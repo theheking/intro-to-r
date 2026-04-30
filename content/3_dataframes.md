@@ -17,7 +17,7 @@ title: 3 - Dealing with Data Frames
 
 We are studying a population of Escherichia coli (designated Ara-3), which were propagated for more than 40,000 generations in a glucose-limited minimal medium. This medium was supplemented with citrate which E. coli cannot metabolize in the aerobic conditions of the experiment. Sequencing of the populations at regular time points reveals that spontaneous citrate-using mutants (Cit+) appeared at around 31,000 generations. This metadata describes information on the Ara-3 clones. Read more about the Long Term Evolution Experiment [here](https://the-ltee.org/about/) from Lenski.
 
-The metadata file required for this lesson can be [downloaded directly here](NEED%20URL). This data was taken from the Blount et al. paper in [Nature](https://www.nature.com/articles/nature11514).
+The data we are using today comes from the Blount et al. paper in [Nature](https://www.nature.com/articles/nature11514).
 
 The columns stand for:
 
@@ -34,7 +34,7 @@ The columns stand for:
 
 ### Workspace set up
 
-There are some functions within R that let you create folders and see what is in them. This can be useful for confirming for making output folders from your scripts and checking if files are present (the alternative is using the clickable options within RStudio). We will create the folder using the `dir.create()` function and confirm that the folder is empty using the `list.files()` function. You can also download files directly from within R using the `download.file` function
+We will start by making a folder for our input data. There are some functions within R that let you create folders and see what is in them. This can be useful for making output folders from your scripts and checking if files are present (the alternative is using the clickable options within RStudio). We will create the folder using the `dir.create()` function and confirm that the folder is empty using the `list.files()` function. You can also download files directly from within R using the `download.file` function
 
 ```         
 ## dir.create is the function for making a new folder (directory)

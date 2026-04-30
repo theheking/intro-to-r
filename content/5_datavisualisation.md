@@ -34,7 +34,7 @@ hist(genome_size)
 Better figures (`ggplot2`)
 ============================
 
-More recently, R users have shifted away from base graphic options and toward a plotting package called [`ggplot2`](http://docs.ggplot2.org/), which adds significant functionality to the basic plots seen above. The syntax takes some getting used to but it’s extremely powerful and flexible. Let's try out a basic scatterplot.
+More recently, R users have shifted away from base graphic options and toward a plotting package called [ggplot2](https://ggplot2.tidyverse.org/), which adds significant functionality to the basic plots seen above. The syntax takes some getting used to but it’s extremely powerful and flexible. Let's try out a basic scatterplot.
 
 `ggplot2` is best used on data in the `data.frame` form, so we will work with `metadata` for the following figures. Let’s start by loading the `ggplot2` library.
 ```
@@ -225,19 +225,19 @@ ggsave('figures/scatter_ggsave.pdf', p, height = 6, width = 4)
 
 Integrating statistical tests into your plot
 --------------------------------------
-Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it easier to interact with ggplot and integrate statistics. Different statistical tests are appropriate depending on the number of groups and the distribution of the data within the groups. 
+Utilise [ggpubr](https://rpkgs.datanovia.com/ggpubr/) to make it easier to interact with `ggplot` and integrate statistics. Different statistical tests are appropriate depending on the number of groups and the distribution of the data within the groups. 
 
 This isn’t a statistics class, so we won’t cover all available methods. However, we'll walk through the logic for choosing a suitable test for this dataset.
 
 ### Step-by-step: Choosing the appropriate test:
 
 1. Data type.
-   i. genome_size is numeric.
-   ii. cit is a categorical variable with three levels: "plus", "minus", and "unknown".
+   i. `genome_size` is numeric.
+   ii. `cit` is a categorical variable with three levels: `"plus", "minus","unknown"`.
 
 2. What are we comparing?
    i. We're interested in whether genome size differs between citrate-utilisation groups (cit status).
-   ii. We will perform pairwise comparisons: "minus" vs "plus", "unknown" vs "plus" and "minus" vs "unknown".
+   ii. We will perform pairwise comparisons: `"minus" vs "plus"`, `"unknown" vs "plus"` and `"minus" vs "unknown"`.
 
 3. Group sizes. These are relatively small sample sizes.
 
@@ -257,7 +257,7 @@ Choosing the test because:
 We choose the Wilcoxon rank-sum test (a non-parametric alternative to the t-test) for pairwise comparisons.
 For testing across all three groups simultaneously, we would use the Kruskal–Wallis test; however, that’s not necessary here, as we're interested in pairwise differences.
 
-For visualisation, you'll need to install the ggubr package, load it into your library, and plot your boxplot. 
+For visualisation, you'll need to install the `ggpubr` package, load it into your library, and plot your boxplot. 
 
 ```
 # Install and load ggpubr

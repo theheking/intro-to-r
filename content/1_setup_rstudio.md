@@ -68,7 +68,7 @@ You need to install R before you install RStudio. Please choose the operating sy
 
 -   <b>`+` indicates that R is waiting for you to finish entering a command.</b> This is usually due to not writing the pair of brackets or quotations.
 
-### <span style="color: orange;">3. Environment, History, Git, and more</span>
+### <span style="color: orangered;">3. Environment, History, Git, and more</span>
 
 
 -   Every time we load data, make a variable or run a function that produces an output, we are adding to what is present in our R session. Everything present in your R session is your environment (We will demonstrate this shortly)

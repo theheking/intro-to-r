@@ -79,8 +79,10 @@ Another commonly used dplyr function is `filter()`. Before we run it, let's use 
 ![layout](../photos/filter_example_pt1.png)
 
 <b>If two packages have a function with the same name then the one loaded last will be used</b>. You can see when we load `dplyr` that the `filter()` function from the `stats` package has been masked (hidden). You can still access a masked function using the `::` operator as shown below. This is a way of specifying which package you want to use the `filter()` function from and also allows you to use a function from a package that is installed on your computer without running `library()`;
+
 ![layout](../photos/filter_example_pt2.png)
 
+##### A demonstration of how to specify the version of `filter` that you want to use
 ```
 # Use the filter function from the stats package
 stats::filter()
@@ -102,11 +104,11 @@ filter(metadata, cit == "plus")
 
 ### Pipes
 
-But what if you wanted to select and filter? There are three ways to do this: use intermediate dataframes, nested functions or finally, pipes.
+But what if you wanted to `select` and `filter`? There are three ways to do this: use intermediate dataframes, nested functions or finally, pipes.
 
  - By forming <b>intermediate data frames</b>, you create a temporary data frame and use that as input to the subsequent function. This can clutter up your workspace with lots of objects.
  - You can also <b>nest functions</b> (i.e. one function inside of another). This is handy but can be difficult to read if too many functions are nested.
- -   The last option, pipes, takes one function's output and sends it directly to the next. This is useful when you need apply different filtering or functions to the same data set. Pipes used in `tidyverse` packages look like `%>%` and are made available via the `magrittr` package. We actually installed it as part of `dplyr`. This is an example of a package dependency, meaning that `dplyr` requires it to work properly. Some packages such as `Seurat` have a very long list of dependencies so they can be quite time-consuming to install
+ -   The last option, pipes, takes one function's output and sends it directly to the next. This is useful when you need apply different filtering or functions to the same data set. Pipes used in `tidyverse` packages look like `%>%` and are made available via the `magrittr` package. We actually installed it as part of `dplyr`. This is an example of a package dependency, meaning that `dplyr` requires `magrittr` to perform its standard operations
  -   Note that there is a pipe option in base R as well `|>` but it is more limited in how it can be used
 
 First, we are <i>piping</i>. Piping is the standard way of using the `tidyverse` family of packages.
@@ -161,7 +163,7 @@ metadata %>%
 ```
 
 
-The row has a NA value for clade, so if we wanted to remove those we could insert a `filter()` in this chain:
+The row has a NA value for `clade`, so if we wanted to remove those we could insert a `filter()` in this chain:
 ```
 metadata %>%
     mutate(genome_bp = genome_size *1e6) %>%
@@ -171,7 +173,7 @@ metadata %>%
 
 `is.na()` is a function that determines whether something is or is not an `NA`. The `!` symbol negates it, so we’re asking for everything that is not an `NA`.
 
-Note: `head()` is a base R function rather than a tidyverse package function. You can use base R functions within pipes as well
+Note: `head()` is a base R function rather than a `tidyverse` function. You can use base R functions within pipes as well
 
 > Exercise
 > --------
@@ -196,7 +198,7 @@ metadata %>%
 
 Here the summarising function used was `n()` to find the count for each group. 
 
-We can also apply many other functions to individual columns to get other summary statistics. For example, in the R base package, we can use built-in functions like `mean`, `median`, `min`, and `max`. 
+We can also apply many other functions to individual columns to get other summary statistics. For example in base R, we can use built-in functions like `mean`, `median`, `min`, and `max`. 
 
 By default, all **R functions operating on vectors that contain missing data will return NA**. It’s a way to make sure that users know they have missing data, and make a conscious decision on how to deal with it. When dealing with simple statistics like the mean, the easiest way to ignore `NA` (the missing data) is to use `na.rm=TRUE` (`rm` stands for remove).
 
