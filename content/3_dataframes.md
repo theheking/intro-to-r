@@ -3,13 +3,14 @@ layout: page
 title: 3 - Dealing with Data Frames
 ---
 
-# Importing and Manipulating Data Frames
+# Import data, debug errors, and  manipulate dataframes
 
 > ## Learning Objectives
 >
 > -   Load external tabular data from a .csv file into R.
 > -   Describe what an R data frame is.
 > -   Summarize the contents of a data frame in R.
+> -   Learn what to do when you encounter an error.
 
 ------------------------------------------------------------------------
 
@@ -318,7 +319,8 @@ metadata <- read.csv('data/Ecoli_metadata.csv',na.strings = c(NA,""," ","Not Det
 `read.csv()` can fail or be very slow at reading files more than a few hundred MB in size. In this case, you can look into the `data.table` package. It has functions for loading and running analyses on larger datasets
 
 
-## If you could not access the Ecoli_metadata file. Copy and paste the code below to manually create the dataframe instead
+## Manually recreate the Ecoli_metadata file contents as a dataframe
+If you could not access the Ecoli_metadata file. Copy and paste the code below to manually create it instead
 
 ```
 # Only run this if you do not have access to the csv file
