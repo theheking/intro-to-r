@@ -48,8 +48,8 @@ If there is an error, don't worry. Let us know at the beginning of the session; 
 
 ## macOS
 <b> To install R and RStudio </b>
- - Download R from the [CRAN website](https://cran.r-project.org/bin/macosx/sonoma-arm64/base/R-4.6.0-arm64.pkg).
-    - Note that for older Macs without the M1/M2 chip, you must select the appropriate Intel download from the [CRAN homepage](https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.6.0-x86_64.pkg). 
+ - Download R from [here](https://cran.r-project.org/bin/macosx/sonoma-arm64/base/R-4.6.0-arm64.pkg).
+    - <b>Note that for older Macs without the M1/M2 chip </b>, you must select the appropriate Intel download from [here](https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.6.0-x86_64.pkg). 
  - Click on the pkg file that was just downloaded. Please just leave all default settings in the installation options.
  - Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download) 
  - Under Installers, select RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit) (where x, y, and z represent version numbers)
