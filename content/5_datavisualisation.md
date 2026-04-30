@@ -305,9 +305,9 @@ This occurs because the Wilcoxon rank-sum test (also called the Mann–Whitney U
 Resources:
 ----------
 
-We have only scratched the surface here. To learn more, see the [ggplot2 reference site](http://docs.ggplot2.org/), and Winston Chang’s excellent [Cookbook for R](http://wiki.stdout.org/rcookbook/Graphs/) site. 
+We have only scratched the surface here. To learn more, see the [ggplot2 reference site](https://ggplot2.tidyverse.org/)
 
-Though slightly out of date, [ggplot2: Elegant Graphics for Data Analysis](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) is still the definitive book on this subject. Much of the material here was adapted from [Introduction to R graphics with ggplot2 Tutorial at IQSS](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html).
+Much of the material here was adapted from the ggplot2 Tutorial from [IQSS](https://iqss.github.io/dss-workshops/Rgraphics.html).
 
 To investigate more into colour palettes [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
 
@@ -316,5 +316,4 @@ To investigate more into colour palettes [viridis](https://cran.r-project.org/we
 ***
 
 Material adapted from (<https://datacarpentry.org/R-genomics/01-intro-to-R.html>) and (<https://datacarpentry.org/semester-biology/materials/r-intro/>) by Helen King. Further revisions by the Data Science Platform
-
-[Data Carpentry](http://datacarpentry.org/), 2017-2018. [License](LICENSE.html). [Contributing](CONTRIBUTING.html).  
+  
