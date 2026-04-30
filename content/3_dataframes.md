@@ -48,7 +48,7 @@ list.files("data")
 
 ### Downloading the data 
   
-We have put the data file within a shared folder on [Google Drive](https://drive.google.com/drive/folders/1FGAUmqkgKEisNypqnIUL2afFeCfZ4Vm1?usp=drive_link) so it is simpler to download the file manually and then add it (there is a `googledrive` R package but we are not using it here)
+We have put the data file within a shared folder on [Google Drive](https://drive.google.com/drive/folders/1FGAUmqkgKEisNypqnIUL2afFeCfZ4Vm1?usp=drive_link) so it is simpler to download the file manually and then add it (there is a `googledrive` R package but we are not using it here).
 <b> If you cannot access the file, there is code in the Appendix section at the bottom of this page for recreating the data within R </b>
 
 A demonstration of downloading the file directly from Google Drive using `download.file()` is shown below;
@@ -58,7 +58,7 @@ A demonstration of downloading the file directly from Google Drive using `downlo
 
 ```
 
-#### Checking that the file is in the data folder
+### Checking that the file is in the data folder
 
 You can check that the file is in the data folder using the files panel in RStudio or you can use R functions such as `list.files` or `file.exists` as shown below
 
@@ -107,7 +107,7 @@ We’ve just done two very useful things.
 >
 > There are functions for loading all sorts of data types into R but you will typically need to install other R packages (eg `read.xslx()` from the `openxlsx` package for excel files and `Read10X()`/`ReadXenium()`/`Load10X_Spatial()` from the `Seurat` package for single cell and spatial data)
 
-## Debugging errors
+# Debugging errors
 
 Let's create a very common error that you will encounter.
 
@@ -122,7 +122,7 @@ In file(file, "rt") :
     cannot open file 'dataa/Ecoli_metadata.csv': No such file or directory
 ```
 
-# What to do when you get an error
+## What to do when you get an error
 
 1.  Don't panic - you are not special
 
@@ -150,7 +150,7 @@ Let’s now check the structure of this `data.frame` in more details with the fu
 str(metadata)
 ```
 
-# Inspecting `data.frame` objects
+## Inspecting `data.frame` objects
 
 We already saw how the functions `head()` and `str()` can be useful to check the content and the structure of a `data.frame`. Here is a non-exhaustive list of functions to get a sense of the content/structure of the data.
 
@@ -303,7 +303,7 @@ metadata$cit_unknown_first <- factor(metadata$cit,levels=c("unknown","minus","pl
 
 This demonstrates how the levels of a factor must match what is actually present in the column. Note that it does not return an error so it is important to check your output!
 
-## Appendix - Additional comments on loading data
+# Appendix - Additional comments on loading data
 
 Another useful argument to `read.csv` is `na.strings`. This argument tells read.csv if you want to convert anything from your raw data into `NA`. Converting missing data to `NA` means that you can use R functions like `is.na()` to deal with them later
 
@@ -314,7 +314,7 @@ Another useful argument to `read.csv` is `na.strings`. This argument tells read.
 metadata <- read.csv('data/Ecoli_metadata.csv',na.strings = c(NA,""," ","Not Detected"))
 ```
 
-#### Larger data sets
+### Larger data sets
 `read.csv()` can fail or be very slow at reading files more than a few hundred MB in size. In this case, you can look into the `data.table` package. It has functions for loading and running analyses on larger datasets
 
 
