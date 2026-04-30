@@ -1,9 +1,7 @@
 ---
 layout: page
-title: Extras 2 - Automation
+title: Extras 2 - Automation in R
 ---
-
-Automation in R
 ===========================
 
 > Learning Objectives
@@ -21,9 +19,9 @@ A core principle in programming is **don't repeat yourself**. If you find yourse
 For example, imagine you want to plot histograms of three different columns from your metadata dataframe:
 
 ```
-    hist(metadata$genome_size)
-    hist(metadata$generation)
-    hist(metadata$clade)
+hist(metadata$genome_size)
+hist(metadata$generation)
+hist(metadata$clade)
 ```
 
 This works, but if you later want to change the plot style — say, add a title or change the colour — you have to remember to update every line. With automation, you write the logic once and let R handle the repetition.
@@ -37,27 +35,30 @@ There are two main approaches to automation in R:
 # For loops
 -------------------
 
-A for loop repeats a block of code once for each element in a sequence. The basic structure is:
+A `for loop` repeats a block of code once for each element in a sequence. The basic structure is shown below. The input variable goes into parentheses `()` while the code to be repeated goes inside braces `{}`:
 
 ```
-    for (variable in sequence) {
-      # code to run for each element
-    }
+## Do not run - Example code only - note the difference in bracket types () and {}
+for (variable in sequence) {
+    # code to run for each element
+}
 ```
 
 Each time the loop runs, `variable` takes the next value from `sequence`. For example:
 
+<b> This basic loop takes the numbers 1 to 5 and prints them </b>
 ```
-    for (i in 1:5) {
-      print(i)
-    }
+for (i in c(1:5)) {
+    print(i)
+}
 ```
+<b> This is the output of the loop above </b>
 ```
-    [1] 1
-    [1] 2
-    [1] 3
-    [1] 4
-    [1] 5
+[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5
 ```
 
 The loop ran the `print()` call five times — once for each value in `1:5` — without us having to write it out five times.
@@ -69,24 +70,27 @@ This connects directly to what you learned in the [Data Visualisation](5_datavis
 Using the `metadata` dataframe, suppose we want to produce a histogram for each of the numeric columns and add it to a list:
 
 ```
-    library(ggplot2)
+library(ggplot2)
 
-    numeric_cols <- c("genome_size", "generation")
+numeric_cols <- c("genome_size", "generation")
     
-    ## start an empty list that you can add things to
-    plots <- list()
+## start an empty list that you can add things to
+plots <- list()
 
-    for (col in numeric_cols) {
-      plots[[col]] <- ggplot(metadata, aes(x = .data[[col]])) +
-        geom_histogram(fill = "steelblue", colour = "white") +
-        ggtitle(paste("Distribution of", col)) +
-        xlab(col) +
-        ylab("Count") +
-        theme_minimal()
-    }
+for (col in numeric_cols) {
+# here we are making the plots one by one and adding them to the list called
+# `plots` so that we can use them later
+
+    plots[[col]] <- ggplot(metadata, aes(x = .data[[col]])) +
+      geom_histogram(fill = "steelblue", colour = "white") +
+      ggtitle(paste("Distribution of", col)) +
+      xlab(col) +
+      ylab("Count") +
+      theme_minimal()
+}
     
-    print(plots$genome_size)
-    print(plots$generation)
+print(plots$genome_size)
+print(plots$generation)
     
     
 ```
@@ -109,7 +113,7 @@ We will briefly explain `apply`, `sapply`, and `lapply`. There are many others (
 First, check the help page:
 
 ```
-    help(apply)
+help(apply)
 ```
 
 This shows the general structure: `apply(X, MARGIN, FUN)`
@@ -123,18 +127,18 @@ This shows the general structure: `apply(X, MARGIN, FUN)`
 Using the `metadata` dataframe:
 
 ```
-    apply(metadata, 1, sum)
+apply(metadata, 1, sum)
 ```
 
 This should output an error:
 ```
-    Error in FUN(newX[, i], ...) : invalid 'type' (character) of argument
+Error in FUN(newX[, i], ...) : invalid 'type' (character) of argument
 ```
 
 Reading the error message tells us we need to subset for only the numeric columns:
 
 ```
-    apply(metadata[,c("generation", "genome_size")], 1, sum)
+apply(metadata[,c("generation", "genome_size")], 1, sum)
 ```
 
 The apply function returns a vector containing the sums.
@@ -155,15 +159,15 @@ The apply function returns a vector containing the sums.
 Sometimes R does not have an appropriate built-in function. This is when you need to make a custom function. We will not go into detail, but an example of the notation for adding a log pseudocount is as follows:
 
 ```
-    logpseudocount <- function(x){
-      log(x+1)
-    }
+logpseudocount <- function(x){
+    log(x+1)
+}
 ```
 
 This custom function can then be passed into apply:
 
 ```
-    apply(metadata[,c("generation", "genome_size")], 2, logpseudocount)
+apply(metadata[,c("generation", "genome_size")], 2, logpseudocount)
 ```
 
 lapply, sapply and more
@@ -184,25 +188,25 @@ Again, X is a vector or list, and FUN is the function you want to use.
 `lapply()` is useful for performing operations on list objects and returns a list of the same length as the input. For example, converting a vector of species names to uppercase:
 
 ```
-    model_org <- c("escherichia_coli", "homo_sapiens", "chlamydomonas_reinhardtii",
-                   "drosophila_melanogaster", "schizosaccharomyces_pombe",
-                   "Saccharomyces_cerevisiae", "arabidopsis_thaliana",
-                   "cavia_porcellus", "xenopus_laevis", "nothobranchius_furzeri",
-                   "rattus_norvegicus", "danio_rerio")
+model_org <- c("escherichia_coli", "homo_sapiens", "chlamydomonas_reinhardtii",
+               "drosophila_melanogaster", "schizosaccharomyces_pombe",
+               "Saccharomyces_cerevisiae", "arabidopsis_thaliana",
+               "cavia_porcellus", "xenopus_laevis", "nothobranchius_furzeri",
+               "rattus_norvegicus", "danio_rerio")
 
-    model_org_upper <- lapply(model_org, toupper)
+model_org_upper <- lapply(model_org, toupper)
 ```
 
 Check the structure of the output:
 
 ```
-    str(model_org_upper)
+str(model_org_upper)
 ```
 
 `sapply` works just like `lapply`, but will simplify the output to a vector if possible:
 
 ```
-    model_org_upper <- sapply(model_org, toupper)
+model_org_upper <- sapply(model_org, toupper)
 ```
 
 > Exercise

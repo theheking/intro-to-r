@@ -3,9 +3,6 @@ layout: page
 title: 5 - Data Visualisation
 ---
 
-
-Data Visualisation using ggplot
-===================================
 > Learning Objectives
 > -------------------
 > 
@@ -14,8 +11,8 @@ Data Visualisation using ggplot
 > *   Export plots from RStudio to standard graphical file formats.
 > *   Add basic statistical testing to your plots.
 
-Basic plots in R (Histogram)
-============================
+## Basic plots in R (Histogram)
+
 
 The mathematician Richard Hamming once said, “The purpose of computing is insight, not numbers”, and the best way to develop insight is often to visualise data. Visualisation deserves an entire lecture (or course) of its own, but we can explore a few features of R’s plotting packages.
 

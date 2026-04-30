@@ -20,21 +20,19 @@ Preparing your data for analysis
 
 
 # Installing packages 
-The "tidyverse" is a collection of packages that has been developed to help with manipulating and better presenting data. In this course, we are focusing on dplyr and ggplot that have their own unique roles visualised below. `dplyr` is a package for making data manipulation easier.
+The "tidyverse" is a collection of packages that has been developed to help with manipulating and better presenting data. In this course, we are focusing on `dplyr` and `ggplot` that have their own unique roles visualised below. `dplyr` is a package for making data manipulation easier.
 
 ![tidyverse](../img/tidyverse-package-workflow.png)
 
-The functions we have used so far have all been part of "base R" meaning that we haven't had to load any new packages. Packages are collections of related functions that are generally used together (eg ggplot has functions related to making plots)
+The functions we have used so far have all been part of "base R" meaning that we haven't had to load any new packages. Packages are collections of related functions that are generally used together (eg `ggplot` has functions related to making plots)
 
-To get access to a new R packages, you need to install the package using a function like `install.packages()` and then load it using `library()` to be able to use it. The main places that you can get R packages from (called repositories) are CRAN and Bioconductor. For newer packages and newer versions of packages, you may need to install them from GitHub instead.
+To get access to a new R packages, you need to install the package using a function like `install.packages()` and then load it using `library()` to be able to use it. The main places that you can get R packages from (called repositories) are <b>CRAN</b> and <b>Bioconductor</b>. For newer packages and newer versions of packages, you may need to install them from GitHub instead.
 
 ```
 ## To install a package from the main repository (CRAN), we can use the following function
 install.packages("dplyr") ## install
 ```
 You might get asked to choose a CRAN mirror – this is basically asking you to choose a site to download the package from. The choice doesn’t matter too much; I’d recommend choosing the RStudio mirror.
-
-    library("dplyr")          ## load
 
 You only need to install a package once, but you need to load it every time you open a new R session and want to use that package.
 
@@ -61,14 +59,40 @@ Please rerun the command from the earlier session. This might be different depen
 metadata <- read.csv("data/Ecoli_metadata.csv", stringsAsFactors = TRUE)
 ```
 
-### Selecting columns and filtering rows
+### Loading dplyr and selecting columns
+
+Firstly, we need to load the `dplyr` package using `library('packagename')` so that we can use `dplyr` functions. You always use the `library()` function to load an R package no matter which repository it has been installed from 
+```
+library("dplyr")
+```
 
 We’re going to learn some of the most common `dplyr` functions: `select()`, `filter()`, `mutate()`, `group_by()`, and `summarize()`. To select columns of a data frame, use `select()`. The first argument to this function is the data frame (`metadata`), and the subsequent arguments are the columns to keep.
 ```
 select(metadata, sample, clade, cit, genome_size)
 ```
 
-To choose rows, use `filter()`:
+### Using the filter function and dealing with functions having the same name
+
+Another commonly used dplyr function is `filter()`. Before we run it, let's use the R help menu to look at the function using `?filter()`
+
+![layout](../photos/filter_example.png)
+
+<b>If two packages have a function with the same name then the one loaded last will be used</b>. You can see when we load dplyr that the filter function from the `stats` package has been masked (hidden). You can still access a masked function using the `::` operator as shown below. This is a way of specifying which package you want to use the filter function from and also allows you to use a function from a package that is installed on your computer without running the `library()` function;
+
+```
+# Use the filter function from the stats package
+stats::filter()
+# Look at the help menu for the filter function from the stats package
+?stats::filter
+
+# Use the filter function from the dplyr package
+dplyr::filter()
+# Look at the help menu for the filter function from the dplyr package
+?dplyr::filter
+```
+
+#### Running the filter function
+We can use the filter function to choose rows of interest. Below, we use `filter()` to choose the rows where the value in the `cit` column is equal to `"plus"`:
 
 ```
 filter(metadata, cit == "plus")
@@ -189,7 +213,7 @@ metadata %>%
     summarize(mean_size = mean(genome_size, na.rm = TRUE))
 ```
 
-Looks like for one of these clones, the clade is missing. We could then discard those rows using `filter()`:
+Looks like for one of these clones, the `clade` is missing. We could then discard those rows using `filter()`:
 
 ```
 metadata %>%
