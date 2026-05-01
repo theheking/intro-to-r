@@ -12,6 +12,7 @@ editor_options:
 > -   Use the built-in RStudio help interface to search for more information on R functions.
 > -   Describe what a function is in R.
 > -   Inspect the content of vectors in R and describe their content with class and str.
+> -   Learn what errors and warnings are and how to approach them
 
 # Recap Variables
 
@@ -127,6 +128,7 @@ class(genome_length_mb)
 > -   three \<- FALSE
 
 There are 6 data types: - `character` for string values - `numeric` for numbers - `logical` for TRUE and FALSE (the boolean data type) - `integer` for integer numbers (e.g., 2L, the L indicates to R that it’s an integer) - `complex` to represent complex numbers with real and imaginary parts (e.g., 1+4i) - `raw` values store sequences of bytes, essentially representing raw binary data
+
 
 # Data Structures
 
@@ -271,6 +273,70 @@ x[c(2,3),c(1,3)]
 > These can combine all of the datatypes above to better streamline certain commands and pipelines.
 > For example, Seurat has the format below.\
 > ![layout](../img/seurat.png)
+
+
+# Dealing with error messages and warning messages
+
+When running R code, you may encounter two types of messages that indicate something has gone wrong or needs attention.
+
+  - **Error**: An error means R could not complete the operation. <b>The code stops running at that point</b> and returns an error message describing what
+  went wrong. Errors must be resolved before the code can run successfully.
+    - <i>Sometimes error messages are not very helpful</i>
+  - **Warning**: A warning means <b>R completed the operation</b> but something unexpected happened that may affect your result. The code continues to run.
+  Warnings should be investigated as they can indicate silent problems in your data.
+    - <i>You should check what a warning means but they may not require you to change anything</i>
+
+The author of the function that you are using determines when a function will give a warning and when it will give an error
+
+### A simple error example
+We defined the genome length in MB earlier. One of the lines of code below will work while the other will return an error. <b> Which one will return and error and why?</b>
+```         
+genome_length_mb <- 4.61
+
+sqrt(genome_length_mb)
+
+sqrt("genome_length_mb")
+
+```
+
+### A problematic warning example
+Here we will show that some functions return errors and some will generate `NA` values and return a warning instead <b>Always check your output to make sure that it looks like what you expected</b>
+```         
+as.integer("genome_length_mb")
+
+```
+
+### Another warning example
+The example above produced output that was unusable. Sometimes a warning will indicate that there is a problem with part of your data like in the case below:
+```
+## code
+expression_values <- c(150, 230, -5, 89, 412)
+log(expression_values)
+
+## output
+[1] 5.010635 5.438079      NaN 4.488636 6.021023
+Warning message:
+In log(expression_values) : NaNs produced
+```
+
+## What to do when you get an error
+
+1.  Don't panic - you are not special
+
+2.  First read the error message - what does it say? \> Often you end up with general error messages that might not be very helpful for diagnosing the problem (e.g. “subscript out of bounds”).
+
+3.  Next, check your code for common errors (a) matched brackets (b) matched quotation marks (c) correct names/typos. <b> Is the text in your text editor the correct colour? </b>
+
+4.  Then, google the error message or paste it into your LLM of choice along with the code used to generate the error. <b> Pasting code into an LLM is generally safe (as most often you will be using publicly available code) but it is better to use LLMs that Garvan has an enterprise agreement with. Avoid pasting in any sensitive information (eg patient IDs) and direct file paths to where your data is kept </b>
+
+5.  You can also check support sites such as github or stackoverflow.com. For stackoverflow, search using the [r] tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: <http://stackoverflow.com/questions/tagged/r>. If your issue is specific to a particular R package then you can also go to the issues section of the github page and look to see if anyone else has had the same problem (eg. <https://github.com/satijalab/seurat/issues>)
+
+> ## Exercise
+>
+> Can you please try to create a unique error message? If you paste it into an LLM does it give you what you need to fix it?
+
+
+
 
 ------------------------------------------------------------------------
 

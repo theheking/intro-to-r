@@ -10,7 +10,7 @@ title: 3 - Dealing with Data Frames
 > -   Load external tabular data from a .csv file into R.
 > -   Describe what an R data frame is.
 > -   Summarize the contents of a data frame in R.
-> -   Learn what to do when you encounter an error.
+
 
 ------------------------------------------------------------------------
 
@@ -69,6 +69,15 @@ list.files("data")
 file.exists("data/Ecoli_metadata.csv")
 # returns TRUE if the file is present or FALSE if the file is not present
 ```
+If you see a message like the one below (`cannot open the connection`), then R has not been able to find the file in the folder. This usually means that the file isn't there or there is a typo somewhere
+
+```         
+Error in file(file, "rt") : cannot open the connection
+In addition: Warning message:
+In file(file, "rt") :
+    cannot open file 'data/Ecoli_metadata.csv': No such file or directory
+```
+
   
 ### Loading the data into R
 
@@ -108,36 +117,6 @@ We’ve just done two very useful things.
 >
 > There are functions for loading all sorts of data types into R but you will typically need to install other R packages (eg `read.xslx()` from the `openxlsx` package for excel files and `Read10X()`/`ReadXenium()`/`Load10X_Spatial()` from the `Seurat` package for single cell and spatial data)
 
-# Debugging errors
-
-Let's create a very common error that you will encounter.
-
-```         
-(metadata <- read.csv('dataa/Ecoli_metadata.csv'))
-```
-
-```         
-Error in file(file, "rt") : cannot open the connection
-In addition: Warning message:
-In file(file, "rt") :
-    cannot open file 'dataa/Ecoli_metadata.csv': No such file or directory
-```
-
-## What to do when you get an error
-
-1.  Don't panic - you are not special
-
-2.  First read the error message - what does it say? \> Often you end up with general error messages that might not be very helpful for diagnosing the problem (e.g. “subscript out of bounds”).
-
-3.  Next, check your code for common errors (a) matched brackets (b) matched quotation marks (c) correct names/typos. <b> Is the text in your text editor the correct colour? </b>
-
-4.  Then, google the error message or paste it into your LLM of choice along with the code used to generate the error. <b> Pasting code into an LLM is generally safe (as most often you will be using publicly available code) but it is better to use LLMs that Garvan has an enterprise agreement with. Avoid pasting in any sensitive information (eg patient IDs) and direct file paths to where your data is kept </b>
-
-5.  You can also check support sites such as github or stackoverflow.com. For stackoverflow, search using the [r] tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: <http://stackoverflow.com/questions/tagged/r>. If your issue is specific to a particular R package then you can also go to the issues section of the github page and look to see if anyone else has had the same problem (eg. <https://github.com/satijalab/seurat/issues>)
-
-> ## Exercise
->
-> On your table can you please try to create a unique error message?
 
 # What are data frames?
 
