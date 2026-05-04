@@ -152,7 +152,7 @@ More info on how to use colours can be found [here](https://r-graph-gallery.com/
 > For discrete values, I always recommend having a **named vector** for repeated colours throughout your dataset to keep colours consistent throughout your study. e.g. T cells always in green, B cells always in blue, macrophages always in yellow etc.
 > ```
 > # Your named vector
-> cell_colours <- c('Tcell' = 'green', 'Bcell' = 'blue', 'macrophage', = 'yellow')
+> cell_colours <- c('Tcell' = 'green', 'Bcell' = 'blue', 'macrophage' = 'yellow')
 >
 > # Apply with the manual family
 > scale_fill_manual(values = cell_colours)
@@ -280,7 +280,7 @@ my_comparisons <- list(c("unknown", "minus"),
 p + stat_compare_means(comparisons = my_comparisons,
                        method = "wilcox.test",
                        label = "p.signif",
-                       exact = FALSE  # avoid warning with ties)
+                       exact = FALSE)  # avoid warning with ties
       
 ```
 
