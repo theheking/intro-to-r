@@ -3,7 +3,7 @@ layout: page
 title: 3 - Dealing with Data Frames
 ---
 
-# Import data, debug errors, and  manipulate dataframes
+# Import data, debug errors, and manipulate dataframes
 
 > ## Learning Objectives
 >
@@ -111,7 +111,7 @@ We’ve just done two very useful things.
 
 #### Some more about read.csv and loading data
 
-> `read.csv()` is an example of a "wrapper" function as it uses `read.table()` inside of it but with the default arguments changed to what is required for a loading a .csv file. Running `read.table("data/Ecoli_metadata.csv", sep = ",", header = TRUE)` is the same as running `read.csv("data/Ecoli_metadata.csv")`
+> `read.csv()` is an example of a "wrapper" function as it uses `read.table()` inside of it but with the default arguments changed to what is required for loading a .csv file. Running `read.table("data/Ecoli_metadata.csv", sep = ",", header = TRUE)` is the same as running `read.csv("data/Ecoli_metadata.csv")`
 >
 > If the data was in .tsv format then you could use `read.table("data/Ecoli_metadata.csv", sep = "\t", header = TRUE)` instead.
 >

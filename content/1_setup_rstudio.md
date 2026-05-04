@@ -16,7 +16,7 @@ title: 1 - Setup of R and RStudio
 
 R and RStudio are distinct programs and need separate downloads and installations.
 
-R is: An open-source programming language under GPL - Aimed as a statistics and data analysis environment - Adapted to build websites, run simulations, and more - Good general language as it is both object-orientated and functional language
+R is: An open-source programming language under GPL - Aimed as a statistics and data analysis environment - Adapted to build websites, run simulations, and more - Good general language as it is both an object-oriented and functional language
 
 R is the underlying statistical computing environment, but while you can use R without RStudio, using R alone is not as intuitive
 

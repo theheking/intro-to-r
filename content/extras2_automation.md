@@ -21,7 +21,7 @@ For example, imagine you want to plot histograms of three different columns from
 ```
 hist(metadata$genome_size)
 hist(metadata$generation)
-hist(metadata$clade)
+
 ```
 
 This works, but if you later want to change the plot style — say, add a title or change the colour — you have to remember to update every line. With automation, you write the logic once and let R handle the repetition.

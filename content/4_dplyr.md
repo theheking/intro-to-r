@@ -36,7 +36,7 @@ You might get asked to choose a CRAN mirror – this is basically asking you to 
 
 You only need to install a package once, but you need to load it every time you open a new R session and want to use that package.
 
-> Hint: Some libraries are not available via the `install.packages` function, especially Bioconductor. For example, DESeq2 used for differential expression analysis  (https://bioconductor.org/packages/release/bioc/html/DESeq2.html). To do this copy the code into the console.
+> Hint: Some libraries are not available via the `install.packages` function, especially Bioconductor. For example, `DESeq2` which is used for differential expression analysis  (https://bioconductor.org/packages/release/bioc/html/DESeq2.html). To do this, copy the code into the console.
 > 
 > This is for demonstration purposes only so I have commented it out (we are not running differential expression analysis in this workshop)
 > ```

@@ -40,7 +40,7 @@ genome_size_mb
 A function is a "canned script" that automates the processing of input and returns a value.
 
 We will be using <i>in-built</i> functions in this session meaning that you don't need to run `library("package name")` to get them to work <b>(these in-built functions are known as "base R")</b>.
-Other functions need to be first loaded (more on this later) before they can be <i> executed </i>.
+Other functions need to be first loaded (more on this later) before they can be <i>executed</i>.
 For instance with `sqrt`: the input (the argument) must be a number, and the return value (in fact, the output) is the square root of that number.
 Executing a function or running it is called <i>calling</i> the function.
 
@@ -65,8 +65,7 @@ Functions can take multiple arguments.
 For instance, let's round genome_length_mb to one decimal place.
 Typing `round()` shows there are two arguments (pops up a yellow box).
 
-If you know the function, but don't know how to use it.
-We can find out more details about the command of interest, we can use the `help` command too.
+If you know the function, but don't know how to use it, we can use the `help` command too.
 
 ```         
 help(round)
@@ -182,8 +181,8 @@ A list is still a vector in R, but it’s not an atomic vector.
 Three operators can be used to extract subsets of R objects.
 
 -   `[` returns an object of the same class as the original.
--   `[[` used to extract elements of a list or a data frame. It can only be used to extract a single element, and the returned object's class will not necessarily be a list or data frame. \> Hint: If you apply `[` to a list it always returns a list: it never gives you the contents of the list.
--   The \$ operator is used to extract elements of a list or data frame by literal name. Its semantics are similar to that of [[.
+-   `[[` is used to extract elements of a list or a data frame. It can only be used to extract a single element, and the returned object's class will not necessarily be a list or data frame. \> Hint: If you apply `[` to a list it always returns a list: it never gives you the contents of the list.
+-   The \$ operator is used to extract elements of a list or data frame by name. Its usage is similar to that of `[[`.
 
 ```         
 (drosophila <- list(model_org = TRUE, num_nobel_drosophilists = 9L, num_species = 3 * 500, nobel = c("Thomas Hunt Morgan","Hermann Joseph Muller")))
@@ -289,7 +288,7 @@ When running R code, you may encounter two types of messages that indicate somet
 The author of the function that you are using determines when a function will give a warning and when it will give an error
 
 ### A simple error example
-We defined the genome length in MB earlier. One of the lines of code below will work while the other will return an error. <b> Which one will return and error and why?</b>
+We defined the genome length in MB earlier. One of the lines of code below will work while the other will return an error. <b> Which one will return an error and why?</b>
 ```         
 genome_length_mb <- 4.61
 
