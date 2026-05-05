@@ -69,8 +69,7 @@ For each geom, you need 2 essential arguments satisfied to create a plot:
 1. `data`
 2. `mapping` (aesthetics)
 
-> [!IMPORTANT]
-> While you don't strictly need to define `data = metadata` or `mapping = aes()`, it is highly recommended to explicitly define this for beginners. This will reduce chance of errors if you accidentally put things in the wrong order. While `geom_point(metadata, aes(x = x, y = y)` could work, you might run into trouble with the order of arguments if you're not careful, especially when you start creating complicated plots!
+**Common beginner mistake:** While you don't strictly need to define `data = metadata` or `mapping = aes()`, it is highly recommended to explicitly define this for beginners. This will reduce chance of errors if you accidentally put things in the wrong order. While `geom_point(metadata, aes(x = x, y = y)` could work, you might run into trouble with the order of arguments if you're not careful, especially when you start creating complicated plots!
 
 Anything in `ggplot()` gets applied to all added geoms. So here, `data = metadata` is getting passed to `geom_point` already. 
 
@@ -93,8 +92,7 @@ ggplot(data = metadata) +
 ```
 ![](../img/ggplot_1.png)
 
-> [!IMPORTANT]
-> Common beginner mistake: If you have these aesthetics inside aes() e.g. `geom_point(aes(fill = variable))` then every unique value in the "variable" column will be assigned a unique fill colour. If you want ALL items to be the same colour, then you put the fill argument in geom_point instead e.g. `geom_point(fill = 'red')` now all items will be red. If you do `geom_point(fill = variable)`, you will probably get an error.
+**Common beginner mistake:** If you have these aesthetics inside aes() e.g. `geom_point(aes(fill = variable))` then every unique value in the "variable" column will be assigned a unique fill colour. If you want ALL items to be the same colour, then you put the fill argument in geom_point instead e.g. `geom_point(fill = 'red')` now all items will be red. If you do `geom_point(fill = variable)`, you will probably get an error.
 
 The problem is that the labels on the x-axis are quite hard to read. To change this, we need to add a theme layer. The ggplot2 `theme` system handles non-data plot information such as:
 
@@ -147,9 +145,8 @@ Viridis supports discrete data as well with `scale_colour_viridis_d`. However, f
 
 More info on how to use colours can be found [here](https://r-graph-gallery.com/ggplot2-color.html).
 
-> **Advanced tip!**
-> 
-> For discrete values, I always recommend having a **named vector** for repeated colours throughout your dataset to keep colours consistent throughout your study. e.g. T cells always in green, B cells always in blue, macrophages always in yellow etc.
+**Advanced tip!** For discrete values, I always recommend having a **named vector** for repeated colours throughout your dataset to keep colours consistent throughout your study. e.g. T cells always in green, B cells always in blue, macrophages always in yellow etc.
+
 > ```
 > # Your named vector
 > cell_colours <- c('Tcell' = 'green', 'Bcell' = 'blue', 'macrophage' = 'yellow')
