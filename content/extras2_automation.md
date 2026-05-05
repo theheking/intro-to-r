@@ -1,20 +1,20 @@
 ---
 layout: page
-title: Extras 2 - Automation in R
+title: Extras 2 - Loops and Apply
 ---
 ===========================
 
 > Learning Objectives
 > ====================
-> * Understand why automation is useful for avoiding repetitive code
+> * Understand why iteration is useful for avoiding repetitive code
 > * Use a for loop to repeat a step across multiple elements
 > * Use lapply to apply a function across a list
 > * Understand when to choose a loop vs an apply function
 
 
-# Why automate?
+# Why use loops or apply?
 
-A core principle in programming is **don't repeat yourself**. If you find yourself copying and pasting the same code and just changing one value each time, that is a sign that automation will save you time and reduce errors.
+A core principle in programming is **don't repeat yourself**. If you find yourself copying and pasting the same code and just changing one value each time (such as making 10 different violin plots for 10 different genes), that is a sign that code iteration will save you time and reduce errors.
 
 For example, imagine you want to plot histograms of three different columns from your metadata dataframe:
 
@@ -24,9 +24,9 @@ hist(metadata$generation)
 
 ```
 
-This works, but if you later want to change the plot style — say, add a title or change the colour — you have to remember to update every line. With automation, you write the logic once and let R handle the repetition.
+This works, but if you later want to change the plot style — say, add a title or change the colour — you have to remember to update every line. With iteration, you write the logic once and let R handle the repetition.
 
-There are two main approaches to automation in R:
+There are two main approaches to iteration in R:
 
 - **For loops** — repeat a block of code for each element in a list or vector
 - **Apply functions** — a compact R-style alternative that applies a function to every element of a list, vector, or dataframe
@@ -106,7 +106,7 @@ Each time the loop runs, `col` takes the next value from `numeric_cols` ("genome
 # Apply functions
 -------------------
 
-R has its own built-in approach to automation called the **apply family**. These functions do the same job as a for loop — repeating an operation across each element — but in a more compact form. They are especially useful when working with dataframes and lists.
+R has its own built-in approach to iteration called the **apply family**. These functions do the same job as a for loop — repeating an operation across each element — but in a more compact form. They are especially useful when working with dataframes and lists.
 
 We will briefly explain `apply`, `sapply`, and `lapply`. There are many others (vapply, tapply, mapply) that we won't cover today.
 
@@ -227,7 +227,7 @@ If you are choosing between `lapply` and `sapply`: use `sapply` when you want a 
 
 
 ---
-### Bonus: Super advanced automation with functions and plotting
+### Bonus: Super advanced iteration with functions and plotting
 
 Remember our plot of animal phylogenetic orders vs sleep cycle from advanced ggplot2?
 
@@ -303,7 +303,7 @@ plotPerVore <- function(diettype){
 per_diet_plots <- lapply(alldiets, plotPerVore)
 ```
 
-Well now what? Nothing got produced in the plots tab? That's because all 4 of these plots are now saved in `per_diet_plots`. When you automate plotting, the Plots window becomes useless because automation will happen too fast for you to manually export those plots from the Plots window. Either you end with `ggsave()` instead of return, or you collect a list of plots to do what? To combine them of course!
+Well now what? Nothing got produced in the plots tab? That's because all 4 of these plots are now saved in `per_diet_plots`. When you iterate through plots, the Plots window becomes useless because the plot will appear too fast for you to manually export those plots from the Plots window. Either you end with `ggsave()` instead of return, or you collect a list of plots to do what? To combine them of course!
 
 Introducing combination plots, using either the `cowplot` or `patchwork` package. 
 

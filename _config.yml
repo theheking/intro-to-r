@@ -28,7 +28,7 @@ navbar-links:
     - 4 - Dplyr: "content/4_dplyr"
     - 5 - Data Visualisation: "content/5_datavisualisation"
     - Extras 1 - Advanced ggplot2: "content/extras1_advancedvisualisation"
-    - Extras 2 - Automation: "content/extras2_automation"
+    - Extras 2 - Loops and Apply: "content/extras2_automation"
 
 
 ################
