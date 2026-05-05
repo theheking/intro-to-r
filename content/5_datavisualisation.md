@@ -59,7 +59,7 @@ Geometric objects are the actual marks we put on a plot. Examples include:
 However, really the number of plots is endless. This website shows a summary of the types:
 [<img width="869" height="550" alt="image" src="https://github.com/user-attachments/assets/f788e228-a252-4115-a829-f746536430ef" />](https://r-graph-gallery.com/)
 
-A plot **must have at least one geom**; there is no upper limit. You can add a geom to a plot using the + operator
+A plot **must have at least one geom**; there is no upper limit. You can add a `geom` to a plot using the `+` operator
 ```
 ggplot(data = metadata) +
     geom_point() 
@@ -72,11 +72,11 @@ For each geom, you need 2 essential arguments satisfied to create a plot:
 > [!IMPORTANT]
 > While you don't strictly need to define `data = metadata` or `mapping = aes()`, it is highly recommended to explicitly define this for beginners. This will reduce chance of errors if you accidentally put things in the wrong order. While `geom_point(metadata, aes(x = x, y = y)` could work, you might run into trouble with the order of arguments if you're not careful, especially when you start creating complicated plots!
 
-Anything in ggplot() gets applied to all added geoms. So here, `data = metadata` is getting passed to `geom_point` already. 
+Anything in `ggplot()` gets applied to all added geoms. So here, `data = metadata` is getting passed to `geom_point` already. 
 
 Geoms usually need a **required set of aesthetics** to be set, and usually accepts only a subset of all aesthetics – refer to the geom help pages to see what mappings each geom accepts. 
 
-Aesthetic mappings are set with the aes() function. Examples include:
+Aesthetic mappings are set with the `aes()` function. Examples include:
 *   x (variable for the x axes)
 *   y (variable for the y axes)
 *   colour (variable for outline)
@@ -129,7 +129,7 @@ You also want to consider colourblind-friendly colour palettes.
 
 <img width="700" alt="image" src="https://github.com/user-attachments/assets/7ece98b8-92f0-45db-9da9-c744cf074845" />
 
-For continuous data, `viridis` is often the package of choice. They are colourblind friendly with high contrast and generally pleasant to look at. You can now use it with ggplot2 without having to load the specific package. Let's try replacing the default colours for `generation`.
+For continuous data, `viridis` is often the package of choice. They are colourblind friendly with high contrast and generally pleasant to look at. You can now use it with `ggplot2` without having to load the specific package. Let's try replacing the default colours for `generation`.
 
 This is done using the `scale_colour/fill` family of functions.
 
@@ -307,7 +307,7 @@ Resources:
 
 We have only scratched the surface here. To learn more, see the [ggplot2 reference site](https://ggplot2.tidyverse.org/)
 
-Much of the material here was adapted from the ggplot2 Tutorial from [IQSS](https://iqss.github.io/dss-workshops/Rgraphics.html).
+Much of the material here was adapted from the `ggplot2` Tutorial from [IQSS](https://iqss.github.io/dss-workshops/Rgraphics.html).
 
 Find more detail on the `viridis` colour palettes [here](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
 
